@@ -12,7 +12,7 @@
 	<li>Home page is just a log in button with minor styling (no info public facing).
 	Could be a request to sign up form. </li>
 	<li>Safety information (gather, write, and publish)</li>
-	<li>Set up a terminal in the lab that opens chrome with this website as the homepage (maybe have a lab/guest login automatically)</li>
+	<li>Set up a terminal in the lab that opens chrome with this website as the homepage (maybe have a lab/guest login)</li>
 	<li>Fix footer</li>
 </ul>
 
@@ -23,4 +23,7 @@
 	<li>Equipment booking service</li>
 	<li>Database -> Useful parameters (public facing)</li>
 	<li>Link to AucklandUni HR webpage?</li>
+	<li>Users pages can all be accessed from a list of staff with photos.
+	 Here is information about people projects and qualifications and a cool fact
+	 so people can get o know others.</li>
 </ul>

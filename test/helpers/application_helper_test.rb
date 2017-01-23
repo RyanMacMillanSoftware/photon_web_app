@@ -3,7 +3,7 @@ require 'test_helper'
 class ApplicationHelperTest < ActionView::TestCase
 
 	def setup
-		@base_title = "Ruby on Rails Tutorial Sample App"
+		@base_title = "The Photon Factory"
 	end
 
   test "full title helper" do
