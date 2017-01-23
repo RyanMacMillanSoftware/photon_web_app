@@ -8,19 +8,19 @@
 <h3>To do:</h3>
 <h4>Short Term Steps</h4>
 <ul>
-	<li>Admins creating accounts.</li>
-	<li>Home page is just a log in button with minor styling (no info public facing)</li>
+	<li>Admin accounts.</li>
+	<li>Home page is just a log in button with minor styling (no info public facing).
+	Could be a request to sign up form. </li>
 	<li>Safety information (gather, write, and publish)</li>
 	<li>Set up a terminal in the lab that opens chrome with this website as the homepage (maybe have a lab/guest login automatically)</li>
+	<li>Fix footer</li>
 </ul>
 
-<p>	
-	BIG GOALS:
-	<ul>
-		<li>Safety info</li>
-		<li>Chat room</li>
-		<li>Equipment booking service</li>
-		<li>Database -> Useful parameters (public facing)</li>
-		<li>Link to AucklandUni HR webpage?</li>
-	</ul>
-</p>
+<h4>Long term features</h4>
+<ul>
+	<li>Safety info</li>
+	<li>Chat room</li>
+	<li>Equipment booking service</li>
+	<li>Database -> Useful parameters (public facing)</li>
+	<li>Link to AucklandUni HR webpage?</li>
+</ul>
