@@ -3,7 +3,7 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
 	def setup
-		@base_title = "Photon Factory"
+		@base_title = "The Photon Factory"
 	end
 		  
   test "should get home" do
