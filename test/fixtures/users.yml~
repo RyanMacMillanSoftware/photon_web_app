@@ -21,7 +21,7 @@ lana:
   activated_at: <%= Time.zone.now %>
 
 malory:
-  name: Malory Archerrrrrr
+  name: Malory Archer
   email: boss@example.gov
   password_digest: <%= User.digest('password') %>
   activated: false
