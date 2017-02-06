@@ -4,9 +4,19 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
 	def setup
     ActionMailer::Base.deliveries.clear
+    @admin     = users(:michael)
+    @non_admin = users(:archer)
   end
 
+	test "signup not admin" do
+		log_in_as(@non_admin)
+		get signup_path
+		assert_redirected_to root_url
+	end
+
+
   test "invalid signup information" do
+  	 log_in_as(@admin)
     get signup_path
     assert_no_difference 'User.count' do
       post users_path, params: { user: { name:  "",
@@ -20,6 +30,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
   
   test "valid signup information with account activation" do
+  	 log_in_as(@admin)
     get signup_path
     assert_difference 'User.count', 1 do
       post users_path, params: { user: { name:  "Example User",
@@ -27,6 +38,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password:              "password",
                                          password_confirmation: "password" } }
     end
+    #delete logout_path
+    #assert_not is_logged_in?
     assert_equal 1, ActionMailer::Base.deliveries.size
     user = assigns(:user)
     assert_not user.activated?
