@@ -1,6 +1,11 @@
 class StaticPagesController < ApplicationController
 
-before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
+<<<<<<< HEAD
+before_action :logged_in_user#, only: [:index, :show, :edit, :update, :destroy]
+=======
+	before_action :logged_in_user
+  
+>>>>>>> login-required
   def home
   end
 
@@ -11,6 +16,7 @@ before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   end
   
   private
+<<<<<<< HEAD
 
     # Before filters
 
@@ -23,4 +29,17 @@ before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
       end
     end
     
+=======
+ 
+     # Before filters
+ 
+     # Confirms a logged-in user.
+     def logged_in_user
+       unless logged_in?
+       	store_location
+         flash[:danger] = "Please log in."
+         redirect_to login_url
+       end
+     end
+>>>>>>> login-required
 end

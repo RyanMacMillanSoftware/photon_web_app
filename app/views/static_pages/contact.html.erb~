@@ -1,6 +1,10 @@
 <% provide(:title, "Contact") %>
 <h1>Contact</h1>
 <p>
-  Contact details for personal at the Photon Factory with public facing
-  jobs. Also contact technical support with the website. 
+
+	<a href="https://drive.google.com/file/d/0BwhHSYTjcsmfdkgyRlBncHdHeFk/view?usp=sharing">Photon Factory Contact List</a>
+</p>
+<p>
+
+  Contact the website administrator, Ryan MacMillan, at rmac460@aucklanduni.ac.nz
 </p>
