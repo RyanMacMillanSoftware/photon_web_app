@@ -20,7 +20,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", edit_user_path(@user)
     delete logout_path
     assert_not is_logged_in?
-    assert_redirected_to root_url
+    assert_redirected_to login_path
      # Simulate a user clicking logout in a second window.
     delete logout_path
     follow_redirect!
@@ -43,20 +43,16 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   end
   
   test "redirected to login" do
-  	get root_path
+   	get root_path
   	assert_redirected_to login_path
   	get help_path
   	assert_redirected_to login_path
    get about_path
-  	assert_redirected_to login_path
-  	get contact_path
-  	assert_redirected_to login_path
-  	get users_path
-  	assert_redirected_to login_path
-  	get signup_path
-  	assert_redirected_to login_path
-  	get new_password_reset_path
-  	assert_redirected_to login_path
-  end
+   	assert_redirected_to login_path
+   	get contact_path
+   	assert_redirected_to login_path
+   	get users_path
+   	assert_redirected_to login_path
+   end
   
 end
