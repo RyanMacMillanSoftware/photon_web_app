@@ -42,4 +42,21 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_empty cookies['remember_token']
   end
   
+  test "redirected to login" do
+  	get root_path
+  	assert_redirected_to login_path
+  	get help_path
+  	assert_redirected_to login_path
+   get about_path
+  	assert_redirected_to login_path
+  	get contact_path
+  	assert_redirected_to login_path
+  	get users_path
+  	assert_redirected_to login_path
+  	get signup_path
+  	assert_redirected_to login_path
+  	get new_password_reset_path
+  	assert_redirected_to login_path
+  end
+  
 end

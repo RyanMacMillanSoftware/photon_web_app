@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails',        '5.0.1'
 gem 'bcrypt',         '3.1.11'
+gem 'cancancan'
 gem 'faker',          '1.6.6'
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
