@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy, :new]
+  before_action :correct_or_admin_user,    only: [:edit, :update]
   before_action :admin_user,     only: [:destroy, :create, :new]
    
   def destroy
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
     	@user.send_activation_email
-    	flash[:info] = "An email for account activation has been sent"
+    	flash[:info] = "An email for account activation has been sent to the user"
       redirect_to root_url
     else
       render 'new'
@@ -70,9 +70,11 @@ class UsersController < ApplicationController
     end
     
      # Confirms the correct user.
-    def correct_user
+    def correct_or_admin_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      if !current_user?(@user) & !@user.admin?
+      	redirect_to(root_url) 
+      end
     end
     
     # Confirms an admin user.
