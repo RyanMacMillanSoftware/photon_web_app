@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126204824) do
+ActiveRecord::Schema.define(version: 20170208033135) do
+
+  create_table "time_punches", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "check_in"
+    t.datetime "check_out"
+    t.integer  "check_in_seconds"
+    t.integer  "check_out_seconds"
+    t.integer  "seconds_elapsed"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
