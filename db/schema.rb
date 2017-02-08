@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208033135) do
+ActiveRecord::Schema.define(version: 20170208095626) do
 
   create_table "time_punches", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170208033135) do
     t.integer  "seconds_elapsed"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.boolean  "currently_in"
   end
 
   create_table "users", force: :cascade do |t|
