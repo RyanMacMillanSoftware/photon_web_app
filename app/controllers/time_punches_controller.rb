@@ -6,6 +6,7 @@ class TimePunchesController < ApplicationController
   def destroy
   	TimePunch.delete_all
 	flash[:info] = "Saved data deleted"
+	redirect_to microfab_url
   end  
   
   def index

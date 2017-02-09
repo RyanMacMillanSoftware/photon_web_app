@@ -16,10 +16,6 @@ class TimePunchesController < ApplicationController
       format.csv { send_data @time_punches.to_csv }
  		format.xls 
  	end
-    
-	flash[:info] = "Check your browser downloads"
-	redirect_to microfab_path
-	
   end
 
 
