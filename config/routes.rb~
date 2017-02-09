@@ -16,10 +16,8 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :timepunch, only: [:new, :create, :delete, :index, :edit, :update]
+  resources :timepunch, only: [:new, :create, :delete, :index]
   
-   resources :timepunch do
-    put :index, on: :collection
-  end
+   
   
 end
