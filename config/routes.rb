@@ -11,9 +11,13 @@ Rails.application.routes.draw do
   get '/microfab', to: 'time_punch#new'
   post '/microfab', to: 'time_punch#create'
   delete '/microfab', to: 'time_punch#destroy'
+  put '/microfab', to: 'time_punch#index'
   
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :timepunch, only: [:new, :create, :delete, :index, :edit, :update]
+  
+   
+  
 end
