@@ -19,6 +19,7 @@ class TimePunchesController < ApplicationController
     
 	flash[:info] = "Check your browser downloads"
 	redirect_to microfab_path
+	
   end
 
 

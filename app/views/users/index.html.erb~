@@ -1,6 +1,12 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<div>
+	<% if current_user.admin? %>
+	<%= link_to "Download Spreadsheet", time_punches_path(format: "xls") , class: "btn btn-primary" %>
+	<%end%>
+</div>
+
 <%= will_paginate %>
 
 <ul class="users">
