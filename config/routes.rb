@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   post '/microfab', to: 'time_punches#create'
   delete '/microfab', to: 'time_punches#destroy'
   put '/microfab', to: 'time_punches#index'
+  get '/timepunches.xls', to: 'time_punches#index'
   
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :timepunches, only: [:new, :create, :delete, :index]
+  resources :time_punches#, only: [:new, :create, :delete, :index]
   
    
   

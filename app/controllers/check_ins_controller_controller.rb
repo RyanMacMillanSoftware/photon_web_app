@@ -1,0 +1,2 @@
+class CheckInsControllerController < ApplicationController
+end

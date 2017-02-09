@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  time: 
+  seconds_since_midnight: 
+
+two:
+  name: MyString
+  email: MyString
+  time: 
+  seconds_since_midnight: 

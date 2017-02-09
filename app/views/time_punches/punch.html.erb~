@@ -1,0 +1,12 @@
+<% provide(:title, 'Time Puncher') %>
+<h1>MicroFab Time Puncher</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= f.collection_select(:name, User.all, :name) %>
+
+      <%= f.submit "Punch", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module CheckInsControllerHelper
+end
