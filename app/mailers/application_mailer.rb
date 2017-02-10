@@ -1,5 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default  :from     => 'from@example.com',
-          :reply_to => 'rmac460@aucklanduni.ac.nz'
+  default  :from     => 'from@example.com'
   layout 'mailer'
 end
