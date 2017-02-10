@@ -2,12 +2,10 @@
 
 one:
   name: MyString
-  email: MyString
   time: 
   seconds_since_midnight: 
 
 two:
   name: MyString
-  email: MyString
   time: 
   seconds_since_midnight: 

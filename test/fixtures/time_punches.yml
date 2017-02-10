@@ -2,7 +2,6 @@
 
 one:
   name: MyString
-  email: MyString
   check_in: 2017-02-08 16:31:35
   check_out: 2017-02-08 16:31:35
   check_in_seconds: 1
@@ -11,7 +10,6 @@ one:
 
 two:
   name: MyString
-  email: MyString
   check_in: 2017-02-08 16:31:35
   check_out: 2017-02-08 16:31:35
   check_in_seconds: 1

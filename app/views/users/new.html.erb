@@ -4,6 +4,21 @@
 <h1>Create a User</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= render 'form' %>
+    <%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages', object: @user %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :temporary_password %>
+  <%= f.password_field :temporary_password, class: 'form-control' %>
+  
+  
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
   </div>
 </div>

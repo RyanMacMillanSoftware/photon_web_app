@@ -8,3 +8,21 @@ Welcome to the Photon Factory! Click on the link below to activate your account:
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
+                                                    
+                                                    
+<p>
+Your temporary password is: "<%= @user.temporary_password %>". 
+Please log in and change this immediately by going to User/Settings
+</p>
+
+<p>
+If you have any queries feel free to contact me.
+</p>
+
+<p>
+Regards,
+</p>
+
+<p>
+Ryan
+</p>

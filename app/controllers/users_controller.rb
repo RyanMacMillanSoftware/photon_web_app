@@ -25,7 +25,9 @@ class UsersController < ApplicationController
   
 	def create
     @user = User.new(user_params)
+    @user.update_attributes(password: @user.temporary_password)
     if @user.save
+    	@user.update_attributes(temporary_active: true)
     	@user.send_activation_email
     	flash[:info] = "An email for account activation has been sent to the user"
       redirect_to root_url
@@ -41,6 +43,9 @@ class UsersController < ApplicationController
    def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
+    	if @user.temporary_active
+    		@user.update_attribute(:temporary_active, 'false')
+    	end
       flash[:success] = "Profile updated"
       redirect_to @user
     else
@@ -53,7 +58,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :temporary_password)
     end
 
     # Before filters
