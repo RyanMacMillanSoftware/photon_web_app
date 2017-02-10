@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'rmac460@aucklanduni.ac.nz'
+  default from: 'noreply@photonwebadmin.com'
   layout 'mailer'
 end
