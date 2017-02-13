@@ -1,6 +1,5 @@
 <% provide(:title, "Help") %>
 <h1>Help</h1>
 <p>
-  FAQ for how to create an account for staff, ....
-  How to contact technical staff for advice. 
+  Contact the website administrator, Ryan MacMillan, for any queries at rmac460@aucklanduni.ac.nz
 </p>
