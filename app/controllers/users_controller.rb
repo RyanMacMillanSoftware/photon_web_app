@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   
 	def create
     @user = User.new(user_params)
-    @user.update_attributes(password: @user.temporary_password)
+    @user.update_attributes(password: user_params[:temporary_password])
     if @user.save
     	@user.update_attributes(temporary_active: true)
     	@user.send_activation_email
