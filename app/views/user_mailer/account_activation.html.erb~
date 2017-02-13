@@ -11,7 +11,7 @@ Welcome to the Photon Factory! Click on the link below to activate your account:
                                                     
                                                     
 <p>
-Your temporary password is: "<%= user.temporary_password %>". 
+Your temporary password is: "<%= @user.temporary_password %>". 
 Please log in and change this immediately by going to User/Settings
 </p>
 
