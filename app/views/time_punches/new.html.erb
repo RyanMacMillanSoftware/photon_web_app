@@ -3,7 +3,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %>    	<%= f.label :name %>
-      <%= f.collection_select :name, User.where(activated: true), :name, :name %>
+    	<%@users = User.where(activated: true) %>
+      <%= f.collection_select :name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, :name %>
 
       <%= f.submit "Punch", class: "btn btn-primary" %>
     <% end %>
