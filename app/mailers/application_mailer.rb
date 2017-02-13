@@ -1,3 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  layout 'mailer'
+	default  from: 'noreply@photon-factory.herokuapp.com'
+	layout 'mailer'
 end
