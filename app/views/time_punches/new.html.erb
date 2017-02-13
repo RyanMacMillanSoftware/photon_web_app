@@ -36,7 +36,7 @@
 
 
 <div>
-<%= link_to "Undo Last Punch In", '#', class: "btn btn-primary", data: { confirm: "Are you sure?"} %>
+<%= link_to "Undo Last Punch In", '#', method: :patch ,class: "btn btn-primary", data: { confirm: "Are you sure?"} %>
 <% if current_user.admin? %>
 <%= link_to "Download Spreadsheet", time_punches_path(format: "xls") , class: "btn btn-primary" %>
 <%= link_to "Clear Saved Data", '#', class: "btn btn-primary",

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete '/microfab', to: 'time_punches#destroy'
   put '/microfab', to: 'time_punches#index'
   get '/timepunches.xls', to: 'time_punches#index'
+  patch '/microfab', to: 'time_punches#edit'
   
   resources :users
   resources :account_activations, only: [:edit]

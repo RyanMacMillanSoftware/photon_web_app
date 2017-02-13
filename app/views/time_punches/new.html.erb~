@@ -36,9 +36,9 @@
 
 
 <div>
-<%= link_to "Undo Last Punch In", '#', class: "btn btn-primary", data: { confirm: "Are you sure?"} %>
+<%= link_to "Undo Last Punch In", '#', method: :edit ,class: "btn btn-primary", data: { confirm: "Are you sure?"} %>
 <% if current_user.admin? %>
-<%= link_to "Download Spreadsheet", timepunches_path(format: "xls") , class: "btn btn-primary" %>
+<%= link_to "Download Spreadsheet", time_punches_path(format: "xls") , class: "btn btn-primary" %>
 <%= link_to "Clear Saved Data", '#', class: "btn btn-primary",
 				method: :delete , data: { confirm: "Are you sure? It is recommended you save the spreadsheet locally first"} %>
 

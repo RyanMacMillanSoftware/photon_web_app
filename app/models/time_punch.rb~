@@ -16,7 +16,7 @@ validates :name,  presence: true, length: { maximum: 50 }
 	update_attribute(:seconds_elapsed, (self.check_out_seconds-self.check_in_seconds))  	
   end
 
-  def self.to_csv
+  def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << 'Name' << 'Check In Time' << 'Check Out Time' << 'Seconds Elapsed'
       all.each do |timepunch|
