@@ -89,7 +89,7 @@ Rails.application.configure do
     :password       => ENV['SENDGRID_PASSWORD'],
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
-    :from => 'default@photon-factory.herokuapp.com'
+    :from => 'noreply@photon-factory.herokuapp.com'
   }
   
   
