@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     	@user.update_attributes(temporary_active: true)
     	@user.send_activation_email
     	flash[:info] = "An email for account activation has been sent to the user"
-      redirect_to root_url
+      redirect_to users_path
     else
       render 'new'
     end
