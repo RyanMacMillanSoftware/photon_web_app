@@ -3,7 +3,7 @@ require 'test_helper'
 class TimePunchTest < ActiveSupport::TestCase
   
   def setup
-    @timepunch = TimePunch.new(name: "Example User", email: "user@example.com", 
+    @timepunch = TimePunch.new(name: "Example User", 
     check_in: DateTime.current(), check_out: DateTime.current())
   end
 
@@ -11,5 +11,9 @@ class TimePunchTest < ActiveSupport::TestCase
     assert @timepunch.valid?
   end
   
+  test "name should be present" do
+    @timepunch.name = "     "
+    assert_not @timepunch.valid?
+  end
   
 end

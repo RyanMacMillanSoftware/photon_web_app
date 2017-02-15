@@ -45,13 +45,11 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "redirected to login" do
    	get root_path
   	assert_redirected_to login_path
-  	get help_path
-  	assert_redirected_to login_path
-   get about_path
-   	assert_redirected_to login_path
    	get contact_path
    	assert_redirected_to login_path
    	get users_path
+   	assert_redirected_to login_path
+   	get microfab_path
    	assert_redirected_to login_path
    end
   

@@ -3,8 +3,7 @@ require 'test_helper'
 class TimePunchTest < ActiveSupport::TestCase
   
   def setup
-    @timepunch = TimePunch.new(name: "Example User", email: "user@example.com", 
-    check_in: DateTime.current(), check_out: DateTime.current())
+    @timepunch = time_punches(:one)
   end
 
   test "should be valid" do

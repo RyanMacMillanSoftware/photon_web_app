@@ -38,11 +38,13 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password:              "password",
                                          password_confirmation: "password" } }
     end
-    #delete logout_path
-    #assert_not is_logged_in?
+    
     assert_equal 1, ActionMailer::Base.deliveries.size
     user = assigns(:user)
     assert_not user.activated?
+    #log out of admin
+    delete logout_path
+    assert_not is_logged_in?
     # Try to log in before activation.
     log_in_as(user)
     assert_not is_logged_in?
