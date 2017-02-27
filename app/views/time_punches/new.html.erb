@@ -2,11 +2,20 @@
 <h1>Punch in or out of the MicroFab</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %>    	<%= f.label :name %>
+    <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %>    	
+    	
+    	<%= f.label :name %>
     	<%@users = User.where(activated: true) %>
-      <%= f.collection_select :name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, :name %>
-
-      <%= f.submit "Punch", class: "btn btn-primary" %>
+      <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
+      				:name) %>
+	
+      
+  		<%= f.submit "Punch", class: "btn btn-primary" %> 
+      
+      
+      
+      
+      
     <% end %>
   </div>
 </div>
@@ -20,30 +29,27 @@
   </div>
 
   <!-- Table -->
- <table class="table">
+ <table class="table table-hover">
  	<tr>
  		<th>Name</th>
  		<th>Punch In Time</th>
+ 		<th></th>
  	</tr>
 	<% CheckIn.all.each do |check_in| %>
 			<tr>
 			<td><%=check_in.name%></td>
 			<td><%=check_in.time%></td>
+			<td><%= link_to "edit", edit_check_in_path(check_in) ,class: "btn, btn-secondary" %>  
+			| <%= link_to "delete", check_in, method: :delete ,class: "btn, btn-secondary", data: { confirm: "Are you sure?"} %></td>
 			</tr>
 	<% end %>
 
 </table>
 </div>
 
-
-<div>
-<%= link_to "Undo Last Punch In", '#', method: :patch ,class: "btn btn-primary", data: { confirm: "Are you sure?"} %>
 <% if current_user.admin? %>
-<%= link_to "Download Spreadsheet", time_punches_path(format: "xls") , class: "btn btn-primary" %>
-<%= link_to "Clear Saved Data", '#', class: "btn btn-primary",
-				method: :delete , data: { confirm: "Are you sure? It is recommended you save the spreadsheet locally first"} %>
-
- <% end %>
-
+<div>
+	<%= link_to "Download Spreadsheet", new_selection_path , class: "btn btn-primary" %>
 </div>
+ <% end %>
 

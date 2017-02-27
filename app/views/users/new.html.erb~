@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages', object: @user %>
+  <%= render 'shared/selection_error_messages', object: @selection %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
@@ -14,7 +14,7 @@
   <%= f.email_field :email, class: 'form-control' %>
 
   <%= f.label :temporary_password %>
-  <%= f.password_field :temporary_password, class: 'form-control' %>
+  <%= f.text_field :temporary_password, class: 'form-control' %>
   
   
 

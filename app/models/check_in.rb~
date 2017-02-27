@@ -1,8 +1,7 @@
 class CheckIn < ApplicationRecord
 
-	validates :name,  presence: true, length: { maximum: 50 }
-		config.time_zone = 'Eastern Time (US & Canada)'
-config.active_record.default_timezone = :local
+	validates :name,  presence: true, length: { maximum: 50 },
+                    uniqueness: { case_sensitive: true }
 
   #Check in and update attributes   
   def do_check_in

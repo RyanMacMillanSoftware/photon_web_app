@@ -12,8 +12,8 @@ validates :name,  presence: true, length: { maximum: 50 }
   #Check out and update attributes   
   def do_check_out(seconds_since_midnight)
   	update_columns(check_out: DateTime.current(), check_out_seconds: seconds_since_midnight)
-	elapsed = self.check_out_seconds-self.check_in_seconds
-	update_attribute(:seconds_elapsed, (self.check_out_seconds-self.check_in_seconds))  	
+	elapsed = ((check_in - check_out) * 24 * 60 * 60).to_i
+	update_attribute(:seconds_elapsed, elapsed)  	
   end
 
   def self.to_csv(options = {})

@@ -1,6 +1,7 @@
 class CheckIn < ApplicationRecord
 
-	validates :name,  presence: true, length: { maximum: 50 }
+	validates :name,  presence: true, length: { maximum: 50 },
+                    uniqueness: { case_sensitive: true }
 
   #Check in and update attributes   
   def do_check_in

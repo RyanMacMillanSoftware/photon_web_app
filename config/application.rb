@@ -8,8 +8,7 @@ Bundler.require(*Rails.groups)
 
 require File.expand_path('../boot', __FILE__)
 
-require 'csv'
-require 'rails/all'
+
  
 
 module SampleApp
@@ -21,6 +20,10 @@ module SampleApp
 	 
 config.time_zone = 'Pacific/Auckland'
 	config.active_record.default_timezone = :local  
+	
+	config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+  html_tag
+}
     
   end
 end
