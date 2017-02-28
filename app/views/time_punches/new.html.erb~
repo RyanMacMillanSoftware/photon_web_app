@@ -5,20 +5,12 @@
     <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %>    	
     	
     	<%= f.label :name %>
-    	<div class = "select">
     	<%@users = User.where(activated: true) %>
       <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
-		</div>	
-		
-		<div id="punch_out" style="display:none;">
-      	<%= f.submit "Punch out", class: "btn btn-primary" %>
-   	
-		</div>
-
-		<div id="punch_in" style="display:none;">
-  		<%= f.submit "Punch", class: "btn btn-primary" %>
-		</div>      
+	
+      
+  		<%= f.submit "Punch", class: "btn btn-primary" %> 
       
       
       
@@ -47,8 +39,14 @@
 			<tr>
 			<td><%=check_in.name%></td>
 			<td><%=check_in.time%></td>
-			<td><%= link_to "edit", edit_check_in_path(check_in) ,class: "btn, btn-secondary" %>  
-			| <%= link_to "delete", check_in, method: :delete ,class: "btn, btn-secondary", data: { confirm: "Are you sure?"} %></td>
+			<td>
+			<%if (Time.current - check_in.created_at).to_i > 600%>
+			<%= link_to "edit", edit_check_in_path(check_in) ,class: "btn, btn-secondary" %>  
+			| 
+			<%end%>
+			<%= link_to "delete", check_in, method: :delete ,class: "btn, btn-secondary", data: { confirm: "Are you sure?"} %>
+			
+			</td>
 			</tr>
 	<% end %>
 
@@ -60,27 +58,4 @@
 	<%= link_to "Download Spreadsheet", new_selection_path , class: "btn btn-primary" %>
 </div>
  <% end %>
- 
- 
 
- 
- <script type="text/javascript">
-    $(document).ready(function() {
-    	  $('#punch_out').hide();
-        $('#punch_in').show();
-        $( ".select" ).change(function() {
-        
-        		name_js = $(this).val();
-        		
-        		$('#punch_out').hide();
-             $('#punch_in').show();
-             
-        	<% CheckIn.all.each do |check_in| %>
-        		if (name_js == <%= check_in.name %>  ) {
-              $('#punch_in').hide();
-              $('#punch_out').show();
-            }
-          <% end %>
-        });
-        });
-</script>
