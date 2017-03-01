@@ -12,19 +12,10 @@ validates :name,  presence: true, length: { maximum: 50 }
   #Check out and update attributes   
   def do_check_out(seconds_since_midnight)
   	update_columns(check_out: DateTime.current(), check_out_seconds: seconds_since_midnight)
-	elapsed = ((check_in - check_out) * 24 * 60 * 60).to_i
+	elapsed = (((check_out - check_in).to_f)/60).to_i
 	update_attribute(:seconds_elapsed, elapsed)  	
   end
 
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << 'Name' << 'Check In Time' << 'Check Out Time' << 'Seconds Elapsed'
-      all.each do |timepunch|
-        csv << timepunch.attributes.values_at("name", "check_in", "check_out", "seconds_elapsed")
-
-      end
-    end
-  end
 	
 
 end

@@ -13,7 +13,6 @@ class TimePunchesController < ApplicationController
   end
   
 	def create
-		seconds_since_midnight = DateTime.now.seconds_since_midnight()
 		CheckIn.all.each do |check_in| 
 			
 			if check_in.name == params[:time_punch][:name] then 
@@ -21,7 +20,7 @@ class TimePunchesController < ApplicationController
 				if @time_punch.save
 					@time_punch.do_check_in check_in
 					check_in.delete
-					@time_punch.do_check_out(seconds_since_midnight)
+					@time_punch.do_check_out
 					if	@time_punch.save
 						flash[:success] = "Successfully punched out"
 						redirect_to microfab_path

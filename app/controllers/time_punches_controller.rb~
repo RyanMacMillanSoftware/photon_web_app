@@ -6,7 +6,6 @@ class TimePunchesController < ApplicationController
    
  
   
-  
 
 
   def new

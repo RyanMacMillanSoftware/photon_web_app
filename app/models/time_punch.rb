@@ -10,9 +10,9 @@ validates :name,  presence: true, length: { maximum: 50 }
   
   
   #Check out and update attributes   
-  def do_check_out(seconds_since_midnight)
-  	update_columns(check_out: DateTime.current(), check_out_seconds: seconds_since_midnight)
-	elapsed = ((check_in - check_out) * 24 * 60 * 60).to_i
+  def do_check_out
+  	update_columns(check_out: DateTime.current(), check_out_seconds: DateTime.now.seconds_since_midnight())
+	elapsed = (((check_out - check_in).to_f)/60).to_i
 	update_attribute(:seconds_elapsed, elapsed)  	
   end
 
