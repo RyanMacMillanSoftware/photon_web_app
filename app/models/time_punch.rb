@@ -12,7 +12,7 @@ validates :name,  presence: true, length: { maximum: 50 }
   #Check out and update attributes   
   def do_check_out
   	update_columns(check_out: DateTime.current(), check_out_seconds: DateTime.now.seconds_since_midnight())
-	elapsed = (((check_out - check_in).to_f)/60).to_i
+	elapsed = (((check_out - check_in).to_f)/60).ceil
 	update_attribute(:seconds_elapsed, elapsed)  	
   end
 
