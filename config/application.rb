@@ -18,8 +18,8 @@ module SampleApp
     # -- all .rb files in that directory are automatically loaded.
     
 	 
-config.time_zone = 'Pacific/Auckland'
-	config.active_record.default_timezone = "Pacific/Auckland" 
+config.time_zone = "Pacific/Auckland"
+	config.active_record.default_timezone = :local
 	
 	config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
   html_tag
