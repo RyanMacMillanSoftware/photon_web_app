@@ -58,13 +58,32 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
   
+  test "should allow the @microfab attribute to editted by admin" do
+    log_in_as(@admin)
+    patch user_path(@non_admin), params: {
+                                    user: { password:              'password',
+                                            password_confirmation: 'password',
+                                            admin: true, microfab: "1" } }
+    assert_not @non_admin.microfab?
+  end
+  
+  test "should not allow the @microfab attribute to be edited via the web" do
+    log_in_as(@non_admin)
+    assert_not @non_admin.admin?
+    patch user_path(@non_admin), params: {
+                                    user: { password:              'password',
+                                            password_confirmation: 'password',
+                                            admin: true, microfab: "1" } }
+    assert_not @non_admin.microfab?
+  end
+  
   test "should not allow the @admin attribute to be edited via the web" do
     log_in_as(@non_admin)
     assert_not @non_admin.admin?
     patch user_path(@non_admin), params: {
                                     user: { password:              'password',
                                             password_confirmation: 'password',
-                                            admin: true } }
+                                            admin: true, microfab: "0" } }
     assert_not @non_admin.admin?
   end
   
