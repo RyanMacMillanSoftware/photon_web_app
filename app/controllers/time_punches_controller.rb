@@ -1,13 +1,7 @@
 class TimePunchesController < ApplicationController
 	
 	before_action :logged_in_user
-  before_action :admin_user,     only: [:index]
    
-   
- 
-  
-
-
   def new
   	@time_punch = TimePunch.new
   end
