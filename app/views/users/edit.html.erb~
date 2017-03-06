@@ -13,11 +13,16 @@
   <%= f.label :email %>
   <%= f.email_field :email, class: 'form-control' %>
 
-  <%= f.label :password_optional %>
+  <%= f.label :optional_password %>
   <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :password_confirmation %>
+  <%= f.label :optional_password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
+  
+  <% if current_user.admin? %>
+  <%= f.label :microfab_access %>
+  <%= f.check_box :microfab%>
+  <% end %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

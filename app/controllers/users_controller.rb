@@ -42,10 +42,14 @@ class UsersController < ApplicationController
   
    def update
     @user = User.find(params[:id])
+    if params[:user][:microfab] == true
+    	admin_user
+    end
     if @user.update_attributes(user_params)
     	if @user.temporary_active?
     		@user.temporary_active = false
     	end
+    	@user.save
       flash[:success] = "Profile updated"
       redirect_to @user
     else
@@ -57,12 +61,12 @@ class UsersController < ApplicationController
    private
 
     def temp_user_params
-      params.require(:user).permit(:name, :email, :temporary_password)
+      params.require(:user).permit(:name, :email, :temporary_password, :microfab)
     end
     
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :microfab)
     end
 
 

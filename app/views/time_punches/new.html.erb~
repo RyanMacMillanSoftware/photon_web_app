@@ -39,14 +39,14 @@
 			<tr>
 			<td><%=check_in.name%></td>
 			<td><%=check_in.time%></td>
+			
+			<% if current_user.admin? %>
 			<td>
-			<%if (Time.current - check_in.created_at).to_i< 600%>
 			<%= link_to "edit", edit_check_in_path(check_in) ,class: "btn, btn-secondary" %>  
 			| 
-			<%end%>
 			<%= link_to "delete", check_in, method: :delete ,class: "btn, btn-secondary", data: { confirm: "Are you sure?"} %>
-			
 			</td>
+			<% end %>
 			</tr>
 	<% end %>
 

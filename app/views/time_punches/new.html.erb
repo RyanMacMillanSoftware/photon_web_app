@@ -5,7 +5,7 @@
     <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %>    	
     	
     	<%= f.label :name %>
-    	<%@users = User.where(activated: true) %>
+    	<%@users = User.where(activated: true, microfab: true) %>
       <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
 	

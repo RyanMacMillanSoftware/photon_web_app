@@ -16,7 +16,8 @@
   <%= f.label :temporary_password %>
   <%= f.text_field :temporary_password, class: 'form-control' %>
   
-  
+  <%= f.label :microfab_access %>
+  <%= f.check_box :microfab%>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

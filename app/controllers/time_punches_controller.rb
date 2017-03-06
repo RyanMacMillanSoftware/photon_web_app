@@ -1,6 +1,7 @@
 class TimePunchesController < ApplicationController
 	
 	before_action :logged_in_user
+	before_action :microfab_access
    
   def new
   	@time_punch = TimePunch.new
@@ -50,6 +51,15 @@ class TimePunchesController < ApplicationController
       	store_location
         flash[:danger] = "Please log in."
         redirect_to login_url
+      end
+    end
+    
+    # Confirms a user with microfab access.
+    def microfab_access
+      if current_user.nil?
+      	redirect_to(root_url)
+      else
+      	redirect_to(root_url) unless current_user.microfab?
       end
     end
     
