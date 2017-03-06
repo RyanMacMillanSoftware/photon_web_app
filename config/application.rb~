@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 require File.expand_path('../boot', __FILE__)
 
-require 'spreadsheet'
+
  
 
 module SampleApp
@@ -19,7 +19,8 @@ module SampleApp
     
 	 
 config.time_zone = 'Pacific/Auckland'
-	config.active_record.default_timezone = :local  
+	config.active_record.default_timezone = "Pacific/Auckland" 
+	config.time_zone = "Pacific/Auckland"
 	
 	config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
   html_tag
