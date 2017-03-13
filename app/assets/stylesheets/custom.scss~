@@ -13,6 +13,11 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+.btn-primary:visited {
+    color: #FFFFFF;
+}
+
+
 body {
   padding-top: 60px;
 }
