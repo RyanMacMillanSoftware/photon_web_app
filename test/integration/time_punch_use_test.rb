@@ -10,8 +10,6 @@ class TimePunchUseTest < ActionDispatch::IntegrationTest
     @check_in = check_ins(:one)
   end 
   
-  
-  
   test "should punch to check_in, then punch for time_punch" do
   	log_in_as(@non_admin_with_access)
     get microfab_path

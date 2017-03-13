@@ -10,6 +10,9 @@
       				:name) %>
 	
       
+  		<%= f.label :do_you_have_a_buddy? %>
+  		<%= f.check_box :buddy, class: 'form-control'%>
+  		
   		<%= f.submit "Punch", class: "btn btn-primary" %> 
       
       
@@ -57,11 +60,11 @@
 	<% if current_user.admin? %>
 	<%= link_to "Download Spreadsheet", new_selection_path , class: "btn btn-primary" %>
  	<% end %> 
-	<%= link_to "Buddy Policy", '#',  class: "btn btn-primary", data: { confirm: "The safety policy of the AUckland Microfab requires that all student users (postgraduate included) are paired with a \"buddy\" when using the clean room.
+	<%= link_to "Buddy Policy", '#',  class: "btn btn-primary", data: { confirm: "The safety policy of the Auckland Microfab requires that all student users (postgraduate included) are paired with a \"buddy\" when using the clean room.
 	
 	Staff are encouraged but not required to also use a buddy.
 	
-	Your buddy must be in the same room (cleanroom), in 301.B043 outside of the cleanroom, or in an adjacent room (301.B048 or 301.BO34) while you are in the cleanroom. Failure to follow this policy will lead to loss ocf access.
+	Your buddy must be in the same room (cleanroom), in 301.B043 outside of the cleanroom, or in an adjacent room (301.B048 or 301.BO34) while you are in the cleanroom. Failure to follow this policy will lead to loss of access.
 	
 	All buddies must have either cleanroom safety training or SCS safety training."} %>
 </div>

@@ -8,6 +8,10 @@ class TimePunchesController < ApplicationController
   end
   
 	def create
+		if params[:time_punch][:buddy] == false
+			return
+		end	
+	
 		CheckIn.all.each do |check_in| 
 			
 			if check_in.name == params[:time_punch][:name] then 
@@ -54,8 +58,8 @@ class TimePunchesController < ApplicationController
       end
     end
     
-    # Confirms a logged-in user.
-    def logged_in_user
+    # Confirms a user with microfab access.
+    def microfab_access
       if current_user.nil?
       	redirect_to(root_url)
       else
