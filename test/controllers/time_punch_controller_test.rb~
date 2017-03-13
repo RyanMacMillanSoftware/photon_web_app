@@ -1,0 +1,24 @@
+require 'test_helper'
+
+class TimePunchControllerTest < ActionDispatch::IntegrationTest
+  
+  def setup
+    @admin       = users(:michael)
+    @non_admin = users(:archer)
+  end
+  
+   test "should redirect microfab when not logged in" do
+    get microfab_path
+    assert_redirected_to login_url
+  end
+  
+  
+  test "should control microfab data and spreadsheet as admin" do
+    get microfab_path
+  end
+  
+	test "should have no access to microfab data as non-admin" do
+    get microfab_path
+  end
+  
+end

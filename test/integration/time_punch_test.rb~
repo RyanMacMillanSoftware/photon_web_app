@@ -1,0 +1,71 @@
+require 'test_helper'
+
+class TimePunchTest < ActionDispatch::IntegrationTest
+  
+	def setup
+    @admin       = users(:michael)
+    @non_admin = users(:archer)
+  end  
+  
+  test "should punch to check_in, then punch for time_punch" do
+  	log_in_as(@non_admin)
+    get microfab_path
+    assert_template 'time_punches/new'
+    
+    assert_difference 'CheckIn.count', 1 do
+      post microfab_path, params: { time_punch: { name:  @admin.name } }
+    end
+    
+    
+    assert_not flash.empty?
+	 assert_redirected_to microfab_path
+	 follow_redirect!
+    
+    assert_difference 'CheckIn.count', -1 do
+      post microfab_path, params: { time_punch: { name:  @admin.name } }
+    end
+    
+    assert_not flash.empty?
+	 assert_redirected_to microfab_path
+	 follow_redirect!
+	 
+    assert_difference 'CheckIn.count', 1 do
+      post microfab_path, params: { time_punch: { name:  @non_admin.name } }
+    end
+
+	assert_not flash.empty?
+	 assert_redirected_to microfab_path
+follow_redirect!
+    
+    assert_difference 'TimePunch.count', 1 do
+     post microfab_path, params: { time_punch: { name:  @non_admin.name } }
+    end
+    
+    assert_not flash.empty?
+	 assert_redirected_to microfab_path
+	 follow_redirect!    
+    
+    
+    assert_difference 'CheckIn.count', 1 do
+     post microfab_path, params: { time_punch: { name:  @admin.name } }
+    end
+    
+	assert_not flash.empty?
+	 assert_redirected_to microfab_path
+	 follow_redirect!
+
+
+	#UNDO
+    assert_difference 'CheckIn.count', -1 do
+     patch microfab_path, params: { time_punch: { name:  @admin.name } }
+    end 
+    
+    assert_not flash.empty?
+	 assert_redirected_to microfab_path
+	  follow_redirect!
+    
+  end
+  
+  
+  
+end

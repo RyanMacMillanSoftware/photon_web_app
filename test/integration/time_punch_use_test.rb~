@@ -1,0 +1,57 @@
+require 'test_helper'
+
+class TimePunchUseTest < ActionDispatch::IntegrationTest
+  
+	def setup
+    @admin_no_access       = users(:michael)
+    @non_admin_no_access = users(:archer)
+    @non_admin_with_access       = users(:stan)
+    @admin_with_access = users(:stanny)
+    @check_in = check_ins(:one)
+  end 
+  
+  
+  
+  test "should punch to check_in, then punch for time_punch" do
+  	log_in_as(@non_admin_with_access)
+    get microfab_path
+    
+	 
+    assert_difference 'CheckIn.count', 1 do
+      post microfab_path, params: { time_punch: { name:  @non_admin_with_access.name } }
+    end
+
+	assert_not flash.empty?
+	 assert_redirected_to microfab_path
+follow_redirect!
+    
+    assert_difference 'TimePunch.count', 1 do
+     post microfab_path, params: { time_punch: { name:  @non_admin_with_access.name } }
+    end
+    
+    assert_not flash.empty?
+	 assert_redirected_to microfab_path
+	 follow_redirect!    
+   end
+  
+  test "microfab as non admin" do
+  	log_in_as(@non_admin_with_access)
+  	get microfab_path
+  	assert_template 'time_punches/new'
+  	
+  	assert_select 'a', text: 'Download Spreadsheet', count: 0
+  	assert_select 'a', text: 'delete', count: 0
+		assert_select 'a', text: 'edit', count: 0
+  
+  end
+  
+  test "microfab as admin" do
+   log_in_as(@admin_with_access)
+  	get microfab_path
+  	assert_select 'a[href=?]', new_selection_path, text: 'Download Spreadsheet', count: 1
+		assert_select 'a', text: 'delete'
+		assert_select 'a', text: 'edit'
+    
+  end
+  
+end
