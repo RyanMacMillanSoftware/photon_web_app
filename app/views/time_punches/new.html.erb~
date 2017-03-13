@@ -9,11 +9,7 @@
       <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
 	
-      
-  		<%= f.label :do_you_have_a_buddy? %>
-  		<%= f.check_box :buddy, class: 'form-control'%>
-  		
-  		<%= f.submit "Punch", class: "btn btn-primary" %> 
+  		<%= f.submit "Punch", class: "btn btn-primary", data: { confirm: Confirm whether you comply with the buddy policy } %> 
       
       
       

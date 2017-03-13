@@ -9,7 +9,7 @@
       <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
 	
-  		<%= f.submit "Punch", class: "btn btn-primary" %> 
+  		<%= f.submit "Punch", class: "btn btn-primary", data: { confirm: "Confirm whether you comply with the buddy policy" } %> 
       
       
       
