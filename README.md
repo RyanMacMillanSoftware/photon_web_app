@@ -14,6 +14,7 @@ Database -> Spreadsheet downloading
 To run (on linux):
 
 1 Download the source code / clone
+
 2 Open a console, navigate to the top folder of the project
 3 Use command "rails console"
 4 Open a browser and navigate to your local host
