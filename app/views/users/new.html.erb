@@ -18,6 +18,11 @@
   
   <%= f.label :microfab_access %>
   <%= f.check_box :microfab%>
+  
+   
+  <%= f.label :privileges%>
+  <%= f.select :permission, ['Student', 'Staff']%>
+ 
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

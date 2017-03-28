@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.update_attributes(password: temp_user_params[:temporary_password], password_confirmation: temp_user_params[:temporary_password])
     if @user.save
-    	@user.update_attributes(temporary_active: true)
     	@user.send_activation_email
     	flash[:info] = "An email for account activation has been sent to the user"
       redirect_to users_path
@@ -61,12 +60,12 @@ class UsersController < ApplicationController
    private
 
     def temp_user_params
-      params.require(:user).permit(:name, :email, :temporary_password, :microfab)
+      params.require(:user).permit(:name, :email, :temporary_password, :microfab, :permission)
     end
     
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :microfab)
+                                   :password_confirmation, :microfab, :permission)
     end
 
 

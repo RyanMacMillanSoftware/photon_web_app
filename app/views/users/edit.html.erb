@@ -22,6 +22,11 @@
   <% if current_user.admin? %>
   <%= f.label :microfab_access %>
   <%= f.check_box :microfab, class: 'form-control'%>
+  
+  
+  <%= f.label :privileges%>
+  <%= f.select :permission, ['Student', 'Staff']%>
+  
   <% end %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
