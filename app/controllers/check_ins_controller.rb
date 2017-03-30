@@ -29,7 +29,7 @@ class CheckInsController < ApplicationController
    	end
    	@check_in.name = params[:check_in][:name]
    	@check_in.time = @check_in.time.change({hour: params[:check_in][:'time(4i)'], min: params[:check_in][:'time(5i)']})
-   	
+   	@check_in.buddy = params[:check_in][:buddy]
   		if  @check_in.save
       	flash[:success] = "Time punch successfully changed"
       	redirect_to microfab_path

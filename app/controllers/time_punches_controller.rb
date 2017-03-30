@@ -14,6 +14,7 @@ class TimePunchesController < ApplicationController
 				@time_punch = TimePunch.new(name: params[:time_punch][:name])
 				if @time_punch.save
 					@time_punch.do_check_in check_in
+					@time_punch.buddy = params[:time_punch][:buddy]
 					check_in.delete
 					@time_punch.do_check_out
 					if	@time_punch.save
@@ -24,9 +25,9 @@ class TimePunchesController < ApplicationController
 				return
 			end
 		end
-		@time_punch = CheckIn.new(name: params[:time_punch][:name])
-		if @time_punch.save
-			@time_punch.do_check_in
+		@check_in = CheckIn.new(name: params[:time_punch][:name], buddy: params[:time_punch][:buddy] )
+		if @check_in.save
+			@check_in.do_check_in
 			flash[:success] = "Successfully punched in"
 			redirect_to microfab_path
 		end

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   put '/microfab', to: 'time_punches#index'
   patch '/microfab', to: 'time_punches#edit'
   
+  #dynamic form. access javascript controller
+  #map.connect ':controller/:action.:format'
+  
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

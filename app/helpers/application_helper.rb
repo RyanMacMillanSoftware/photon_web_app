@@ -9,4 +9,10 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+  
+  #adds javascript include tags in head
+	#dynamically determine javascript file for template
+  def javascript(*files)
+		content_for(:head) { javascript_include_tag(*files) }  
+  end
 end
