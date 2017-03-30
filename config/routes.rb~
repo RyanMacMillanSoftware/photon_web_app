@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   patch '/microfab', to: 'time_punches#edit'
   
   #dynamic form. access javascript controller
-  map.connect ':controller/:action.:format'
+  match ':controller/:action:id', via: [:get, :post]
   
   resources :users
   resources :account_activations, only: [:edit]
