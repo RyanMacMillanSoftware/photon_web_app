@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :time_punches
   resources :check_ins
   resources :selections
+  resources :micro_fab_users
   
    
   
