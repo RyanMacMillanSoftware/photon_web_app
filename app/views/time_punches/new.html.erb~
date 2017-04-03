@@ -4,7 +4,8 @@
 <h1>Punch in or out of the MicroFab</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %>    	
+    <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %> 
+    	<%= render 'shared/error_messages', object: @time_punch %>   	
     	
     	<%= f.label :name %>
     	<%@users = User.where(activated: true, microfab: true) %>
@@ -14,7 +15,8 @@
       <%= f.label :buddy %>
       <div id="buddy_field">
     	<%@users = User.where(activated: true, microfab: true) %>
-      <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase }) %>
+      <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
+      				:name) %>
 		</div>
 	
   		<%= f.submit "Punch", class: "btn btn-primary" %> 
