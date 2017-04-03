@@ -16,14 +16,6 @@ validates :name,  presence: true, length: { maximum: 50 }
 	update_attribute(:seconds_elapsed, elapsed)  	
   end
 
-	private
-		def student_needs_buddy
-			user = User.find_by(name: name)
-			return if user.name == 'Staff'
-
-  		if user.name == "Student" && buddy.nil?
-    		errors.add(:to_time, "students need a buddy") 
-  		end 
-		end
+	
 
 end

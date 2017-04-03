@@ -21,7 +21,7 @@ validates :name,  presence: true, length: { maximum: 50 }
 			user = User.find_by(name: name)
 			return if user.name == 'Staff'
 
-  		if user.name == "Student" && 
+  		if user.name == "Student" && buddy.empty?
     		errors.add(:to_time, "students need a buddy") 
   		end 
 		end

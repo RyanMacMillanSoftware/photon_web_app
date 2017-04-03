@@ -25,7 +25,7 @@ class TimePunchesController < ApplicationController
 				return
 			end
 		end
-		@check_in = CheckIn.new(params[:time_punch])
+		@check_in = CheckIn.new(name: params[:time_punch][:name], buddy: params[:time_punch][:buddy] )
 		if @check_in.save
 			@check_in.do_check_in
 			flash[:success] = "Successfully punched in"
