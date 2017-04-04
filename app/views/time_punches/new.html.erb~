@@ -68,7 +68,7 @@
 	<% if current_user.admin? %>
 	<%= link_to "Download Spreadsheet", new_selection_path , class: "btn btn-primary" %>
 	<%= link_to "Quick Add User", new_micro_fab_user_path , class: "btn btn-primary" %>
-	<%= link_to "Manage Quick Users", new_micro_fab_user_path , class: "btn btn-primary" %>
+	<%= link_to "Manage Quick Users", micro_fab_users_path , class: "btn btn-primary" %>
  	<% end %> 
 	<%= link_to "Buddy Policy", '#',  class: "btn btn-primary", data: { confirm: "The safety policy of the Auckland Microfab requires that all student users (postgraduate included) are paired with a \"buddy\" when using the clean room.\n\nStaff are encouraged but not required to also use a buddy.\n\nYour buddy must be in the same room (cleanroom), in 301.B043 outside of the cleanroom, or in an adjacent room (301.B048 or 301.BO34) while you are in the cleanroom. Failure to follow this policy will lead to loss of access.\n\nAll buddies must have either cleanroom safety training or SCS safety training."} %>
 
