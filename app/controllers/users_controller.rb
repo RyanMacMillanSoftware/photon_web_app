@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy, :new]
-  before_action :correct_or_admin_user,    only: [:edit, :update]
-  before_action :admin_user,     only: [:destroy, :create, :new]
+  before_action :admin_user
    
   def destroy
     User.find(params[:id]).destroy
@@ -10,10 +8,7 @@ class UsersController < ApplicationController
     redirect_to users_url
   end  
   
-  def index
-    @users = User.where(activated: true).paginate(page: params[:page])
-  end
-
+ 
   def show
     @user = User.find(params[:id])
     redirect_to login_path and return unless @user.activated?
@@ -71,27 +66,6 @@ class UsersController < ApplicationController
 
     # Before filters
     
-    
-
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-      	store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-    
-     # Confirms the correct user or an admin.
-    def correct_or_admin_user
-      
-      @user = User.find(params[:id])
-      if current_user.nil?
-      	redirect_to(root_url)
-      else
-      	redirect_to(root_url) unless current_user.admin? | current_user?(@user)
-      end
-    end
     
     # Confirms an admin user.
     def admin_user
