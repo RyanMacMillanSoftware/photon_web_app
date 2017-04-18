@@ -2,11 +2,7 @@ class UsersController < ApplicationController
 
   before_action :admin_user
    
-  def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
-  end  
+  
   
  
   def show
@@ -14,21 +10,7 @@ class UsersController < ApplicationController
     redirect_to login_path and return unless @user.activated?
   end
   
-  def new
-  	@user = User.new
-  end
   
-	def create
-    @user = User.new(user_params)
-    @user.update_attributes(password: temp_user_params[:temporary_password], password_confirmation: temp_user_params[:temporary_password])
-    if @user.save
-    	@user.send_activation_email
-    	flash[:info] = "An email for account activation has been sent to the user"
-      redirect_to users_path
-    else
-      render 'new'
-    end
-  end
   
   def edit
     @user = User.find(params[:id])

@@ -67,27 +67,6 @@ class UsersController < ApplicationController
     # Before filters
     
     
-
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-      	store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-    
-     # Confirms the correct user or an admin.
-    def correct_or_admin_user
-      
-      @user = User.find(params[:id])
-      if current_user.nil?
-      	redirect_to(root_url)
-      else
-      	redirect_to(root_url) unless current_user.admin? | current_user?(@user)
-      end
-    end
-    
     # Confirms an admin user.
     def admin_user
     	if current_user.nil?
