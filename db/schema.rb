@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170403221255) do
     t.integer  "seconds_since_midnight"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.         "buddy"
+    t.string    "buddy"
   end
 
   create_table "micro_fab_users", force: :cascade do |t|

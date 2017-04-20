@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209235803) do
+ActiveRecord::Schema.define(version: 20170403221255) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "name"
@@ -18,6 +18,22 @@ ActiveRecord::Schema.define(version: 20170209235803) do
     t.integer  "seconds_since_midnight"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string    "buddy"
+  end
+
+  create_table "micro_fab_users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "selections", force: :cascade do |t|
+    t.datetime "from_time"
+    t.datetime "to_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "time_punches", force: :cascade do |t|
@@ -29,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170209235803) do
     t.integer  "seconds_elapsed"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.         "buddy"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,7 +62,8 @@ ActiveRecord::Schema.define(version: 20170209235803) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "temporary_password"
-    t.boolean  "temporary_active"
+    t.boolean  "microfab"
+    t.string   "permission"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
