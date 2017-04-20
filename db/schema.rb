@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420003642) do
+ActiveRecord::Schema.define(version: 20170420011039) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "name"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20170420003642) do
     t.datetime "reset_sent_at"
     t.string   "temporary_password"
     t.boolean  "microfab"
-    t.string   "permission"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
