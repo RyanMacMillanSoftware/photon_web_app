@@ -1,0 +1,2 @@
+module MicroFabUsersHelper
+end

@@ -1,0 +1,16 @@
+<% provide(:title, 'All users') %>
+<h1>All Users</h1>
+
+<div>
+	<% if current_user.admin? %>
+	<%= link_to "Add User", new_micro_fab_user_path , class: "btn btn-primary" %>
+	<%end%>
+</div>
+
+<%= will_paginate @mf_users %>
+
+<ul class="users">
+  <%= render @mf_users %>
+</ul>
+
+<%= will_paginate @mf_users%>

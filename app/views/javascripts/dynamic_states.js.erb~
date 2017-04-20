@@ -1,0 +1,26 @@
+var users = new Array();
+<%@users.sort { |a,b| a.name.downcase <=> b.name.downcase }%>
+<% for user in @users -%>
+	users.push(new Array(<%= user.name%>));
+<% end -%>
+
+function userSelected() {
+		name = $('user_name').getValue();
+		options = $('user_buddy').options;
+		options.length = 1;
+		users.each(function(user){
+			if(user[0] != name){
+					options[options.length] = new Option(user[0]);
+			}		
+		});
+		if (options.length == 1) {
+			$('buddy_field').hide();		
+		} else {
+			$('state_field').show();		
+		}
+}
+
+document.observe('dom:loaded', function(){
+	userSelected();
+	$('user_name').observe('change', userSelected);
+});
