@@ -55,7 +55,7 @@
  	<tr>
  		<th>Name</th>
  		<th>Buddy</th>
- 		<th>Punch In Time</th>
+ 		<th>Log In Time</th>
  		<th></th>
  	</tr>
 	<% CheckIn.all.each do |check_in| %>
