@@ -1,5 +1,4 @@
 <% provide(:title, 'Time Punch') %>
-<% javascript 'dynamic_states' %>
 
 <h1>Punch in or out of the MicroFab</h1>
 <div class="row">
@@ -7,18 +6,32 @@
     <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %> 
     	<%= render 'shared/time_punch_error_messages', object: @time_punch %>   	
     	
+    	
     	<%= f.label :name %>
-    	<%@users = User.where(activated: true, microfab: true) %>
+    	<%@users = MicroFabUser.all %>
       <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
+            
+      
+      <div id="guest_name_id">
+      				
+      <%= f.label :guest_name %>
+      <%= f.text_field :guest_name, class: 'form-control' %>	
+      
+      </div>			
       				
       <%= f.label :buddy %>
-      <div id="buddy_field">
-    	<%@users = User.where(activated: true, microfab: true) %>
       <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name, {include_blank: 'N/A (Staff Only)'}) %>
-		</div>
-	
+
+		
+		<div id="guest_buddy_name_id">
+      				
+      <%= f.label :other_name, "Buddy name" %>
+      <%= f.text_field :other_name, class: 'form-control' %>	
+      
+      </div>	
+      
   		<%= f.submit "Punch", class: "btn btn-primary" %> 
       
       
