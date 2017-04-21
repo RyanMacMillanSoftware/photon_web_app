@@ -21,10 +21,10 @@ class MicroFabUsersController < ApplicationController
   end
   
 	def create
-    @mf_user = MicroFabUser.new(user_params)
+    @mf_user = MicroFabUser.new(mfuser_params)
      if @mf_user.save
     	flash[:success] = "Account created"
-      redirect_to @mf_user
+      redirect_to micro_fab_users
     else
       render 'new'
     end
@@ -40,7 +40,7 @@ class MicroFabUsersController < ApplicationController
     if @mf_user.update_attributes(mfuser_params)
     	@mf_user.save
       flash[:success] = "Profile updated"
-      redirect_to @mf_user
+      redirect_to micro_fab_users_path
     else
       render 'edit'
     end
@@ -50,7 +50,7 @@ class MicroFabUsersController < ApplicationController
    private
 
     def mfuser_params
-      params.require(:user).permit(:name, :email)
+      params.require(:micro_fab_user).permit(:name, :email)
     end
 
 

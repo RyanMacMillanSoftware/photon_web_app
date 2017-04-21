@@ -8,6 +8,29 @@ class TimePunchesController < ApplicationController
   end
   
 	def create
+		
+
+		if params[:time_punch][:guest_name].empty? && params[:time_punch][:name] == "Guest" then
+			flash[:danger] = "You must enter a Guest's name"
+			redirect_to microfab_path
+			return
+		end
+		
+		if params[:time_punch][:other_name].empty? && params[:time_punch][:buddy] == "Guest" then
+			flash[:warning] = "You must enter a Guest's name"
+			redirect_to microfab_path
+			return
+		end
+				
+		
+		if !params[:time_punch][:guest_name].empty? then
+			params[:time_punch][:name] = params[:time_punch][:guest_name]
+		end	
+		
+		if !params[:time_punch][:other_name].empty? then
+			params[:time_punch][:buddy] = params[:time_punch][:other_name]
+		end
+		
 		CheckIn.all.each do |check_in| 
 			
 			if check_in.name == params[:time_punch][:name] then 
@@ -25,6 +48,7 @@ class TimePunchesController < ApplicationController
 				return
 			end
 		end
+		
 		if params[:time_punch][:guest_name].empty? then
 			@time_punch = CheckIn.new(name: params[:time_punch][:name], buddy: params[:time_punch][:buddy] )
 		else 
