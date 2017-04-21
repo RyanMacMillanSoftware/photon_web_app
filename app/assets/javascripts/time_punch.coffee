@@ -9,7 +9,12 @@ jQuery ->
 	select = $("#time_punch_name")
 
 	select2 = $("#time_punch_buddy")	
+	
 	$(document).ready ->
+		
+		select = $("#time_punch_name")
+
+		select2 = $("#time_punch_buddy")	
 		selection = select.val()
 		selection2 = select2.val()
 		if selection is "Guest" 

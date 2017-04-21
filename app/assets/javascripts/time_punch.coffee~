@@ -9,6 +9,7 @@ jQuery ->
 	select = $("#time_punch_name")
 
 	select2 = $("#time_punch_buddy")	
+	
 	$(document).ready ->
 		selection = select.val()
 		selection2 = select2.val()

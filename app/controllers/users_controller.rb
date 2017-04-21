@@ -37,12 +37,12 @@ class UsersController < ApplicationController
    private
 
     def temp_user_params
-      params.require(:user).permit(:name, :email, :temporary_password, :microfab)
+      params.require(:user).permit(:name, :email, :temporary_password)
     end
     
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :microfab)
+                                   :password_confirmation)
     end
 
 
