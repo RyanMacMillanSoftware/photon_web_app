@@ -74,7 +74,7 @@ class User < ApplicationRecord
 	def permission_either_student_or_staff
       return if permission.blank?
 
-  		if permission != 'Student' || permission != 'Staff'
+  		if permission != "Student" || permission != "Staff"
     		errors.add(:to_time, "not a valid permissions type") 
   		end 
 	end 

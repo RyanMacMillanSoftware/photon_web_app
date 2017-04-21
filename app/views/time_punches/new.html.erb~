@@ -1,6 +1,6 @@
 <% provide(:title, 'Time Punch') %>
 
-<h1>Punch in or out of the MicroFab</h1>
+<h1>Log in or out of the MicroFab</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %> 
@@ -9,7 +9,7 @@
     	
     	<%= f.label :name %>
     	<%@users = MicroFabUser.all %>
-      <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } + ['Guest'] , :name, 
+      <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
             
       
@@ -21,7 +21,7 @@
       </div>			
       				
       <%= f.label :buddy %>
-      <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } + ['Guest'] , :name, 
+      <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name, {include_blank: 'N/A (Staff Only)'}) %>
 
 		
