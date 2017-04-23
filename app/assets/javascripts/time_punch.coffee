@@ -14,11 +14,11 @@ jQuery ->
 		currentdate = new Date();
 		time = currentdate.getHours()
 		
-		if (((time>6)&&(time<8))||(time>22))
+		if (((time>=6)&&(time<8))||(time>=22))
       	$("#green_status").hide()
       	$("#orange_status").show()
       	$("#red_status").hide()
-		else if ((time>8)&&(time<22))
+		else if ((time>=8)&&(time<22))
       	$("#green_status").show()
       	$("#orange_status").hide()
       	$("#red_status").hide()		
