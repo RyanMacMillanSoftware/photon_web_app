@@ -10,6 +10,26 @@ jQuery ->
 		
 	
 	$(document).ready ->
+		
+		currentdate = new Date();
+		time = currentdate.getHours()
+		
+		if (((time>6)&&(time<8))||(time>22))
+      	$("#status_green").hide()
+      	$("#status_orange").show()
+      	$("#status_red").hide()
+		else if ((time>8)&&(time<22))
+      	$("#status_green").show()
+      	$("#status_orange").hide()
+      	$("#status_red").hide()		
+		else 
+      	$("#status_green").hide()
+      	$("#status_orange").hide()
+      	$("#status_red").show()	
+				
+		
+	
+	
 		select = $("#time_punch_name")
 		select2 = $("#time_punch_buddy")	
 		selection = select.val()
@@ -25,20 +45,20 @@ jQuery ->
 		
 		
 	
-	select = $("#time_punch_name")
-	select.change ->
-		selection = select.val()
-		if selection is "Guest" 
-      	$("#guest_name_id").show()
-		else 
-			$("#guest_name_id").hide()	
+		select = $("#time_punch_name")
+		select.change ->
+			selection = select.val()
+			if selection is "Guest" 
+      		$("#guest_name_id").show()
+			else 
+				$("#guest_name_id").hide()	
 	
-	select2 = $("#time_punch_buddy")
-	select2.change ->
-		selection2 = select2.val()
-		if selection2 is "Guest" 
-      	$("#guest_buddy_name_id").show()
-		else 
-			$("#guest_buddy_name_id").hide()				
+		select2 = $("#time_punch_buddy")
+		select2.change ->
+			selection2 = select2.val()
+			if selection2 is "Guest" 
+      		$("#guest_buddy_name_id").show()
+			else 
+				$("#guest_buddy_name_id").hide()				
 				
 		

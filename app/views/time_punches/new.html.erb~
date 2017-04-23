@@ -3,6 +3,11 @@
 <h1>Log in or out of the MicroFab</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+  
+  		<div class="status green" id="green_status">Low to high risk work permitted</div>
+  		<div class="status orange" id="orange_status">Low risk work permitted</div>
+  		<div class="status red" id="red_status">University Closed</div>
+    
     <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %> 
     	<%= render 'shared/time_punch_error_messages', object: @time_punch %>   	
     	
@@ -27,7 +32,7 @@
 		
 		<div id="guest_buddy_name_id">
       				
-      <%= f.label :other_name, "Buddy name" %>
+      <%= f.label :other_name, "Guest buddy name" %>
       <%= f.text_field :other_name, class: 'form-control' %>	
       
       </div>	

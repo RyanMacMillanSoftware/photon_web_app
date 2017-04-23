@@ -10,6 +10,26 @@ jQuery ->
 		
 	
 	$(document).ready ->
+		
+		currentdate = new Date();
+		time = currentdate.getHours()
+		
+		if (((time>6)&&(time<8))||(time>22))
+      	$("#green_status").hide()
+      	$("#orange_status").show()
+      	$("#red_status").hide()
+		else if ((time>8)&&(time<22))
+      	$("#green_status").show()
+      	$("#orange_status").hide()
+      	$("#red_status").hide()		
+		else 
+      	$("#green_status").hide()
+      	$("#orange_status").hide()
+      	$("#red_status").show()	
+				
+		
+	
+	
 		select = $("#time_punch_name")
 		select2 = $("#time_punch_buddy")	
 		selection = select.val()
