@@ -2,7 +2,7 @@
 <h1>Retrieve Data</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @selection, url: {action: "new"}, method: "post"  do |f| %> 
+    <%= form_for @selection do |f| %> 
     
   	<%= render 'shared/selection_error_messages', object: @selection %>   	
     	<%= f.label :from%>

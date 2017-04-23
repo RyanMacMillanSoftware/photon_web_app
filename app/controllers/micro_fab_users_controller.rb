@@ -5,7 +5,7 @@ class MicroFabUsersController < ApplicationController
   def destroy
     MicroFabUser.find(params[:id]).destroy
     flash[:success] = "User deleted"
-    redirect_to microfabusers_url
+    redirect_to micro_fab_users_url
   end  
   
   def index
@@ -23,7 +23,7 @@ class MicroFabUsersController < ApplicationController
 	def create
     @mf_user = MicroFabUser.new(mfuser_params)
      if @mf_user.save
-    	flash[:success] = "Account created"
+    	flash[:success] = "User created"
       redirect_to micro_fab_users_path
     else
       render 'new'
@@ -39,7 +39,7 @@ class MicroFabUsersController < ApplicationController
     
     if @mf_user.update_attributes(mfuser_params)
     	@mf_user.save
-      flash[:success] = "Profile updated"
+      flash[:success] = "User updated"
       redirect_to micro_fab_users_path
     else
       render 'edit'

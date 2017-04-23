@@ -19,7 +19,6 @@
   <%= f.label :optional_password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
   
-  <% end %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
