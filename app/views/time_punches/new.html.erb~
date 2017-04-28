@@ -26,6 +26,8 @@
       </div>			
       				
       <%= f.label :buddy %>
+      
+    	<%@users = MicroFabUser.where(name != "Guest") %>
       <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name, {include_blank: 'N/A (Staff Only)'}) %>
 
