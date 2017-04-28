@@ -1,9 +1,11 @@
 <li>
-  <%= micro_fab_user.name %>
+	<%if micro_fab_user.name != "Guest"%>
+  <%= micro_fab_user.name %> <%= micro_fab_user.email %>
+  
 	<% if current_user.admin? %>
 	 | <%= link_to "edit", edit_micro_fab_user_path(micro_fab_user) %>
     | <%= link_to "delete", micro_fab_user, method: :delete,
                                   data: { confirm: "Are you sure?" } %>
   <% end %>
-  
+  <%end%>
 </li>
