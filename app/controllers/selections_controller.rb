@@ -29,7 +29,7 @@ class SelectionsController < ApplicationController
   			render 'new'
   		end
   	else
-  		Selections.delete_all
+  		Selection.delete_all
   		flash[:danger] = "Missing field"
 		render 'new'
   	end
