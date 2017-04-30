@@ -5,39 +5,15 @@ class CheckInsController < ApplicationController
 	
 	def destroy
     @check_in = CheckIn.find(params[:id])
-    @check_in.delete
-    flash[:success] = "Check in deleted"
-    redirect_to microfab_path
-  end  
-	
-	def edit
-   
-   @check_in = CheckIn.find(params[:id])
-   
-   
-   	
-  end
+    time_punch = TimePunch.new(name: @check_in.name)
+    time_punch.save
+    time_punch.do_check_in @check_in
+    time_punch.do_check_out
+    	@check_in.delete
+		flash[:success] = "Successfully logged out"
+		redirect_to microfab_path
   
-   def update
-   	@check_in = CheckIn.find(params[:id])
-   	form_time = DateTime.current
-   	form_time = form_time.change({hour: params[:check_in][:'time(4i)'].to_i, min: params[:check_in][:'time(5i)'].to_i})
- 		if DateTime.current < form_time
-   		flash[:danger] = "You can not set the time to the future"
-   		render 'edit'
-   		return
-   	end
-   	@check_in.name = params[:check_in][:name]
-   	@check_in.time = @check_in.time.change({hour: params[:check_in][:'time(4i)'], min: params[:check_in][:'time(5i)']})
-   	@check_in.buddy = params[:check_in][:buddy]
-  		if  @check_in.save
-      	flash[:success] = "Time punch successfully changed"
-      	redirect_to microfab_path
- 
-    	else
-    		flash[:danger] = "Invalid. This person may already be punched in"
-      	render 'edit'
-    	end
+
   end
 
 	

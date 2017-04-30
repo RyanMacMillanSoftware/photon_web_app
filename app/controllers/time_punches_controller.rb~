@@ -17,7 +17,7 @@ class TimePunchesController < ApplicationController
 		end
 		
 		if params[:time_punch][:other_name].empty? && params[:time_punch][:buddy] == "Guest" then
-			flash[:warning] = "You must enter a Guest's name"
+			flash[:danger] = "You must enter a Guest's name"
 			redirect_to microfab_path
 			return
 		end

@@ -41,7 +41,7 @@ class TimePunchesController < ApplicationController
 					check_in.delete
 					@time_punch.do_check_out
 					if	@time_punch.save
-						flash[:success] = "Successfully punched out"
+						flash[:success] = "Successfully logged out"
 						redirect_to microfab_path
 					end
 				end
@@ -57,7 +57,7 @@ class TimePunchesController < ApplicationController
 		end		
 		if @time_punch.save
 			@time_punch.do_check_in
-			flash[:success] = "Successfully punched in"
+			flash[:success] = "Successfully logged in"
 			redirect_to microfab_path
 		end
   end
