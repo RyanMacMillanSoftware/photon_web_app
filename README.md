@@ -1,19 +1,8 @@
 # photon_web_app
 Developer: Ryan MacMillan
+contact: rmac460@aucklanduni.ac.nz
 
-A web project for a small research group. New tools to come. 
-
-Important features:
-
-User authentication (email authentication)
-
-Admin priviledges
-
-Exclusive permissions for some tools
-
-User lists and profiles
-
-A time punching system to record staff movements
+A web project for a research group. A time punching system to record staff movements.
 
 Database -> Spreadsheet downloading
 
@@ -23,7 +12,7 @@ To run (on linux):
 
 2 Open a console, navigate to the top folder of the project
 
-3 Use command "rails console"
+3 Use command "rails server"
 
 4 Open a browser and navigate to your local host
 
@@ -31,10 +20,14 @@ To run (on linux):
 
 5 Open another console, navigate to the top folder of the project
 
-6 Use command: rails console
+6 Use command: "rails console"
 
-7 Use command: User.new(name: "Your Name", email: "your_email@address.com", password: "choose_a_password", password_confirmation:                                     "choose_a_password", admin: true, authenticated: true)
+7 Use command: u = User.new(name: "Your Name", email: "your_email@address.com", password: "choose_a_password", password_confirmation: "choose_a_password", authenticated: true, microfab: true, admin: true)
                 
-8 Log in using your email and password in the browser
+8 Use command: u.save (If this fails, then a field of "u" is not valid)
+
+9 Exit console ("quit"/ctrl + c)
+
+10 Log in using your email and password in the browser
 
 Feedback most welcome.              

@@ -1,41 +1,32 @@
-# Ruby on Rails Tutorial sample application
+# photon_web_app
+Developer: Ryan MacMillan
 
-This is the sample application for
-[*Ruby on Rails Tutorial:
-Learn Web Development with Rails*](http://www.railstutorial.org/)
-by [Michael Hartl](http://www.michaelhartl.com/).
+A web project for a research group. A time punching system to record staff movements.
 
-## License
+Database -> Spreadsheet downloading
 
-All source code in the [Ruby on Rails Tutorial](http://railstutorial.org/)
-is available jointly under the MIT License and the Beerware License. See
-[LICENSE.md](LICENSE.md) for details.
+To run (on linux):
 
-## Getting started
+1 Download the source code / clone
 
-To get started with the app, clone the repo and then install the needed gems:
+2 Open a console, navigate to the top folder of the project
 
-```
-$ bundle install --without production
-```
+3 Use command "rails server"
 
-Next, migrate the database:
+4 Open a browser and navigate to your local host
 
-```
-$ rails db:migrate
-```
+(optional) To access the website you need an initial User (preferably admin)
 
-Finally, run the test suite to verify that everything is working correctly:
+5 Open another console, navigate to the top folder of the project
 
-```
-$ rails test
-```
+6 Use command: "rails console"
 
-If the test suite passes, you'll be ready to run the app in a local server:
+7 Use command: u = User.new(name: "Your Name", email: "your_email@address.com", password: "choose_a_password", password_confirmation: "choose_a_password", authenticated: true, microfab: true, admin: true)
+                
+8 Use command: u.save (If this fails, then a field of "u" is not valid)
 
-```
-$ rails server
-```
+9 Exit console ("quit"/ctrl + c)
 
-For more information, see the
-[*Ruby on Rails Tutorial* book](http://www.railstutorial.org/book).
+10 Log in using your email and password in the browser
+
+Feedback most welcome.              
