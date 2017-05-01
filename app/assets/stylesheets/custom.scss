@@ -13,8 +13,14 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+.table{
+	position:relative;
+}
 
-  
+btn-logout{
+	position: absolute;
+	left: 300px;
+}
 
 .btn-primary:visited {
     color: #FFFFFF;
@@ -23,7 +29,6 @@ $gray-medium-light: #eaeaea;
 .btn-primary {
     color: #FFFFFF;
 }
-
 
 body {
   padding-top: 60px;
