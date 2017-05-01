@@ -50,9 +50,9 @@ class TimePunchesController < ApplicationController
 		end
 		
 		if params[:time_punch][:guest_name].empty? then
-			@time_punch = CheckIn.new(name: params[:time_punch][:name], buddy: params[:time_punch][:buddy] )
+			@time_punch = CheckIn.new(name: params[:time_punch][:name], buddy: params[:time_punch][:buddy], guest: false )
 		else 
-			@time_punch = CheckIn.new(name: params[:time_punch][:guest_name], buddy: params[:time_punch][:buddy] )
+			@time_punch = CheckIn.new(name: params[:time_punch][:guest_name], buddy: params[:time_punch][:buddy], guest: true )
 		
 		end		
 		if @time_punch.save

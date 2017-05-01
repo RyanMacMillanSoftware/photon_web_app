@@ -4,7 +4,7 @@ validates :name,  presence: true, length: { maximum: 50 }
 
   #Check in and update attributes   
   def do_check_in(check_in)
-  	update_columns(name: check_in.name, check_in: check_in.time, check_in_seconds: check_in.seconds_since_midnight)
+  	update_columns(name: check_in.name, check_in: check_in.time, check_in_seconds: check_in.seconds_since_midnight, guest: check_in.guest)
 					
   end
   

@@ -99,8 +99,21 @@ class SelectionsController < ApplicationController
  	 		
 			selection = Selection.last 	 		
  	 		rownum = 1
- 	 		TimePunch.all.each do |time_punch|
- 	 			if selection.name.present? 
+ 	 		if selection.name == "Guest"
+ 	 			TimePunch.all.each do |time_punch|
+ 	 					sheet1.row(rownum).push"DEBUGGINGLMAO"
+ 	 				if time_punch.guest && time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
+ 	 					row = sheet1.row(rownum)
+ 	 					row.push "#{time_punch.name}"
+ 	 					row.push "#{time_punch.buddy}"
+ 	 					row.push "#{time_punch.check_in}"
+						row.push "#{time_punch.check_out}"
+						row.push "#{time_punch.seconds_elapsed}"
+ 	 					rownum += 1
+ 	 				end
+ 	 			end	
+ 	 		elsif selection.name.present? 
+ 	 			TimePunch.all.each do |time_punch|
  	 				if time_punch.name == selection.name && time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"
@@ -110,7 +123,9 @@ class SelectionsController < ApplicationController
 						row.push "#{time_punch.seconds_elapsed}"
  	 					rownum += 1
  	 				end
- 	 			elsif time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
+ 	 			end
+ 	 		elsif time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
+ 	 			TimePunch.all.each do |time_punch| 	 				
  	 				row = sheet1.row(rownum)
  	 				row.push "#{time_punch.name}"
  	 				row.push "#{time_punch.buddy}"
@@ -120,6 +135,7 @@ class SelectionsController < ApplicationController
  	 				rownum += 1
  	 			end
  	 		end
+ 	 		
 			
   			@outfile = "Time_Punches_#{selection.from_time}_to_#{selection.to_time}.xls"
   			Selection.delete_all
