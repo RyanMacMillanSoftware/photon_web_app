@@ -13,14 +13,11 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
-table{
-	
+.table{
+	position:relative;
 }
 
-btn-logout{
-	position: absolute;
-	left: 300px;
-}
+
 
 .btn-primary:visited {
     color: #FFFFFF;
@@ -122,6 +119,7 @@ footer {
 
 /* status indicators */
 
+
 .textstatus{
 	font: bold 14px arial, sans-serif;
 	text-align: center;
@@ -130,6 +128,14 @@ footer {
 	position: relative;
   	top: -2px;
 }
+
+.btn-logout{
+	display: inline;
+	position: relative;
+	top: 6px;
+	right: 250px;
+}
+
 .status {
 
 	
