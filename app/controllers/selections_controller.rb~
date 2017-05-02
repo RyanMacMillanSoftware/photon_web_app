@@ -101,7 +101,6 @@ class SelectionsController < ApplicationController
  	 		rownum = 1
  	 		if selection.name == "Guest"
  	 			TimePunch.all.each do |time_punch|
- 	 					sheet1.row(rownum).push"DEBUGGINGLMAO"
  	 				if time_punch.guest && time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"

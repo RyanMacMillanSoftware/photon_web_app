@@ -123,15 +123,17 @@ class SelectionsController < ApplicationController
  	 					rownum += 1
  	 				end
  	 			end
- 	 		elsif time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
- 	 			TimePunch.all.each do |time_punch| 	 				
- 	 				row = sheet1.row(rownum)
- 	 				row.push "#{time_punch.name}"
- 	 				row.push "#{time_punch.buddy}"
- 	 				row.push "#{time_punch.check_in}"
-					row.push "#{time_punch.check_out}"
-					row.push "#{time_punch.seconds_elapsed}"
- 	 				rownum += 1
+ 	 		else 
+ 	 			TimePunch.all.each do |time_punch| 
+ 	 				if time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time	 				
+ 	 					row = sheet1.row(rownum)
+ 	 					row.push "#{time_punch.name}"
+ 	 					row.push "#{time_punch.buddy}"
+ 	 					row.push "#{time_punch.check_in}"
+						row.push "#{time_punch.check_out}"
+						row.push "#{time_punch.seconds_elapsed}"
+ 	 					rownum += 1
+ 	 				end
  	 			end
  	 		end
  	 		
