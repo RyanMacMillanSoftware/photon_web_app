@@ -10,10 +10,10 @@
     	<%= f.label :to%>
 		<%= f.date_select :to_time, prompt: {year: 'Year', month: 'Month', day: 'Day'}, start_year: 2017, end_year: 2030%>
 	
-		 	<%= f.label :optional_name %>
-    	<%@users = User.where(activated: true) %>
+		 	<%= f.label :user_name "User Name" %>
+    	<%@users = MicroFabUser.all %>
       <%= f.collection_select :name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
-      				:name, prompt: '' %>
+      				:name,{include_blank: 'All Users'} %>
 	
 		
   		<%= f.submit "Download", class: "btn btn-primary" %>
