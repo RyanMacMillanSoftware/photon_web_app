@@ -64,10 +64,7 @@
 			<tr>
 			<td><%=check_in.name%></td>
 			<td><%=check_in.buddy%></td>
-			<td><%=check_in.time%></td>
-			<td class= "btn-logout">			
-			<%= link_to "Log Out", check_in, method: :delete ,class: "btn, btn-default, btn-logout", data: { confirm: "Are you sure you would like to log out?"}, class: "btn btn-primary btn-xs" %>
-			</td>
+			<td><%=check_in.time%> <%= link_to "Log Out", check_in, method: :delete , data: { confirm: "Are you sure you would like to log out?"}, class: "btn btn-primary btn-xs btn-logout" %></td>
 			
 			</tr>
 	<% end %>

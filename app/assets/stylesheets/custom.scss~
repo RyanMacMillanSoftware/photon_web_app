@@ -132,8 +132,8 @@ footer {
 .btn-logout{
 	display: inline;
 	position: relative;
-	top: 6px;
-	right: 250px;
+	top: 0px;
+	left: 5px;
 }
 
 .status {
