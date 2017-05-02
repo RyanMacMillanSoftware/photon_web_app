@@ -27,11 +27,17 @@
       				
       <%= f.label :buddy %>
       
+      <div id="non_guest_buddy">
     	<%@users = MicroFabUser.where.not(name: "Guest") %>
       <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name, {include_blank: 'N/A (Staff Only)'}) %>
-
+		</div>
 		
+		<div id="guest_buddy">
+		<%@users = MicroFabUser.where.not(name: "Guest") %>
+      <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
+      				:name) %>
+		</div>
 		
       
   		<%= f.submit "Log In", class: "btn btn-primary" %> 
@@ -64,10 +70,7 @@
 			<tr>
 			<td><%=check_in.name%></td>
 			<td><%=check_in.buddy%></td>
-			<td><%=check_in.time%></td>
-			<td class= "btn-logout">			
-			<%= link_to "Log Out", check_in, method: :delete , data: { confirm: "Are you sure you would like to log out?"}, class: "btn btn-primary btn-xs btn-logout" %>
-			</td>
+			<td><%=check_in.time%> <%= link_to "Log Out", check_in, method: :delete , data: { confirm: "Are you sure you would like to log out?"}, class: "btn btn-primary btn-xs btn-logout" %></td>
 			
 			</tr>
 	<% end %>

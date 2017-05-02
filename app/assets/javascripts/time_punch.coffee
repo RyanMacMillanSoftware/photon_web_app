@@ -35,8 +35,12 @@ jQuery ->
 		selection = select.val()
 		selection2 = select2.val()
 		if selection is "Guest" 
-      	$("#guest_name_id").show()
-		else 
+			$("#guest_buddy").show()
+			$("#non_guest_buddy").hide()
+			$("#guest_name_id").show()
+		else
+			$("#guest_buddy").hide()
+			$("#non_guest_buddy").show()
 			$("#guest_name_id").hide()	
 		if selection2 is "Guest" 
       	$("#guest_buddy_name_id").show()
@@ -49,8 +53,12 @@ jQuery ->
 		select.change ->
 			selection = select.val()
 			if selection is "Guest" 
-      		$("#guest_name_id").show()
+				$("#guest_buddy").show()
+				$("#non_guest_buddy").hide()
+				$("#guest_name_id").show()
 			else 
+				$("#guest_buddy").hide()
+				$("#non_guest_buddy").show()
 				$("#guest_name_id").hide()	
 	
 		select2 = $("#time_punch_buddy")
