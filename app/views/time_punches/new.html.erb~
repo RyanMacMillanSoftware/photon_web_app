@@ -27,15 +27,15 @@
       				
       <%= f.label :buddy %>
       
-      <div id="non_guest_buddy">
     	<%@users = MicroFabUser.where.not(name: "Guest") %>
+    	
+      <div id="non_guest_buddy">
       <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name, {include_blank: 'N/A (Staff Only)'}) %>
 		</div>
 		
 		<div id="guest_buddy">
-		<%@users = MicroFabUser.where.not(name: "Guest") %>
-      <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
+      <%= f.collection_select(:bud, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
 		</div>
 		

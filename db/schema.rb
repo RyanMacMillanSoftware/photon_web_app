@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501043114) do
+ActiveRecord::Schema.define(version: 20170502090925) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170501043114) do
     t.string   "other_name"
     t.boolean  "guest"
     t.string   "guest_name"
+    t.string   "bud"
   end
 
   create_table "users", force: :cascade do |t|

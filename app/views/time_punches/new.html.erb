@@ -35,7 +35,7 @@
 		</div>
 		
 		<div id="guest_buddy">
-      <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
+      <%= f.collection_select(:bud, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
 		</div>
 		

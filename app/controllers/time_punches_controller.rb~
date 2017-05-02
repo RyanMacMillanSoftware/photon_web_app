@@ -16,7 +16,9 @@ class TimePunchesController < ApplicationController
 			return
 		end
 		
-		
+		if params[:time_punch][:name] == "Guest" then
+			params[:time_punch][:bud] = params[:time_punch][:buddy]
+		end
 		
 		if !params[:time_punch][:guest_name].empty? then
 			params[:time_punch][:name] = params[:time_punch][:guest_name]
@@ -34,7 +36,6 @@ class TimePunchesController < ApplicationController
 				@time_punch = TimePunch.new(name: params[:time_punch][:name])
 				if @time_punch.save
 					@time_punch.do_check_in check_in
-					@time_punch.buddy = params[:time_punch][:buddy]
 					check_in.delete
 					@time_punch.do_check_out
 					if	@time_punch.save
