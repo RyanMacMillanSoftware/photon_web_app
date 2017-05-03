@@ -104,7 +104,7 @@ class SelectionsController < ApplicationController
  	 				if time_punch.guest && time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"
- 	 					if time_punch.name.nil?
+ 	 					if time_punch.buddy.nil? || time_punch.buddy.empty?
  	 						row.push "No buddy (Staff)"
  	 					else
  	 						row.push "#{time_punch.buddy}"
@@ -120,7 +120,7 @@ class SelectionsController < ApplicationController
  	 				if time_punch.name == selection.name && time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"
- 	 					if time_punch.buddy.nil?
+ 	 					if time_punch.buddy.nil? || time_punch.buddy.empty?
  	 						row.push "No buddy (Staff)"
  	 					else
  	 						row.push "#{time_punch.buddy}"
@@ -136,7 +136,7 @@ class SelectionsController < ApplicationController
  	 				if time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time	 				
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"
- 	 					if time_punch.buddy.nil?
+ 	 					if time_punch.buddy.nil? || time_punch.buddy.empty?
  	 						row.push "No buddy (Staff)"
  	 					else
  	 						row.push "#{time_punch.buddy}"
