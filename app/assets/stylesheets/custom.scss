@@ -119,15 +119,15 @@ footer {
 
 /* status indicators */
 
-
 .textstatus{
-	font: bold 14px arial, sans-serif;
 	text-align: center;
-	display: inline;
-	margin-left: 5px;
+	display: inline; 
 	position: relative;
-  	top: -2px;
+	
+	font: bold 14px arial, sans-serif;
+	
 }
+
 
 .btn-logout{
 	display: inline;
@@ -137,39 +137,37 @@ footer {
 }
 
 .status {
-
 	
+	
+	
+	border-radius: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	height: 20px;
 	text-align: center;
-  &.green:before {
+		
+}
+	
+.green {
     background-color: #94E185;
     border-color: #78D965;
     box-shadow: 0px 0px 4px 1px #94E185;
   }
 
-  &.orange:before {
+.orange {
     background-color: #FFC182;
     border-color: #FFB161;
     box-shadow: 0px 0px 4px 1px #FFC182;
   }
   
-  &.red:before {
+.red {
     background-color: #C9404D;
     border-color: #C42C3B;
     box-shadow: 0px 0px 4px 1px #C9404D;
   }
 
-  &:before {
-    content: ' ';
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin-top: 5px;
-    margin-right: 0px;
-    border: 1px solid #000;
-    border-radius: 15px;
-    
-  }
-}
+
   
 /* sidebar */
 
