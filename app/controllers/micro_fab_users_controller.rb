@@ -9,7 +9,7 @@ class MicroFabUsersController < ApplicationController
   end  
   
   def index
-    @mf_users = MicroFabUser.all.paginate(page: params[:page])
+    @mf_users = MicroFabUser.order(:name).paginate(page: params[:page])
   end
 
   def show
