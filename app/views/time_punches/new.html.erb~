@@ -4,9 +4,9 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   
-  		<div class="status green" id="green_status">Low to high risk work permitted</div></div>
-  		<div class="status orange" id="orange_status">Low risk work permitted</div>
-  		<div class="status red" id="red_status">University Closed</div>
+  		<div class="status green" id="green_status"><div class = "textstatus">Low to high risk work permitted</div></div>
+  		<div class="status orange" id="orange_status"><div class = "textstatus">Low risk work permitted</div></div>
+  		<div class="status red" id="red_status"><div class = "textstatus">University Closed</div></div>
     
     <%= form_for @time_punch, url: {action: "new"}, method: "post" do |f| %> 
     	<%= render 'shared/time_punch_error_messages', object: @time_punch %>   	
