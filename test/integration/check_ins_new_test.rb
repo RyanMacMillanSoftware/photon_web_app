@@ -15,34 +15,16 @@ class CheckInsNewTest < ActionDispatch::IntegrationTest
   	log_in_as(@non_admin_with_access)
     get microfab_path 
     assert_difference 'CheckIn.count', 1 do
-     post microfab_path, params: { time_punch: { name:  @admin_with_access.name } }
+     post microfab_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
     end
     assert_not flash.empty?
 	 assert_redirected_to microfab_path
 	 follow_redirect!
     assert_difference 'CheckIn.count', -1 do
-     post microfab_path, params: { time_punch: { name:  @admin_with_access.name } }
+     post microfab_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
     end
     assert_not flash.empty?
 	 assert_redirected_to microfab_path
-	end
-	
-	test "deleting check ins as admin" do
-  	 log_in_as(@admin_with_access)
-    get microfab_path
-    assert_difference 'CheckIn.count', -1 do
-      delete check_in_path(@check_in), params: {id: @check_in.id}
-    end 
-    assert_not flash.empty?
-	 assert_redirected_to microfab_path
-	end
-	
-	test "deleting check ins as non-admin" do
-  	 log_in_as(@non_admin_with_access)
-    get microfab_path
-    assert_difference 'CheckIn.count', 0 do
-      delete check_in_path(@check_in), params: {id: @check_in.id}
-    end 
 	end
     
     

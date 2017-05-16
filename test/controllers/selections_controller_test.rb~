@@ -24,7 +24,7 @@ class SelectionsControllerTest < ActionDispatch::IntegrationTest
   	 log_in_as(@non_admin_no_access) 
     get new_selection_path
     assert_redirected_to microfab_path
-    follow_redirect
+    follow_redirect!
     assert_redirected_to root_url
   end
   

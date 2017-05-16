@@ -31,7 +31,7 @@ class CheckInsNewTest < ActionDispatch::IntegrationTest
   	 log_in_as(@admin_with_access)
     get microfab_path
     assert_difference 'CheckIn.count', -1 do
-      delete check_in_path(@check_in_with_access), params: {id: @check_in_with_access.id}
+      delete check_in_path(@check_in), params: {id: @check_in.id}
     end 
     assert_not flash.empty?
 	 assert_redirected_to microfab_path
@@ -41,7 +41,7 @@ class CheckInsNewTest < ActionDispatch::IntegrationTest
   	 log_in_as(@non_admin_with_access)
     get microfab_path
     assert_difference 'CheckIn.count', 0 do
-      delete check_in_path(@check_in_with_access), params: {id: @check_in_with_access.id}
+      delete check_in_path(@check_in), params: {id: @check_in.id}
     end 
 	end
     

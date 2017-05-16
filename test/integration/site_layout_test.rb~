@@ -6,7 +6,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     @admin_with_microfab_access = users(:stanny)
   end
 
-  test "layout links logged in" do
+  test "layout links logged in no microfab" do
   	log_in_as(@user)
     get root_path
     assert_template 'static_pages/home'
@@ -18,7 +18,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "title", full_title("Contact")
   end
   
-  test "layout links logged in" do
+  test "layout links logged in microfab access" do
   	log_in_as(@admin_with_microfab_access)
     get root_path
     assert_template 'static_pages/home'

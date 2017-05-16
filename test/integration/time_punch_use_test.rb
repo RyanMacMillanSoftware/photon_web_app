@@ -16,7 +16,7 @@ class TimePunchUseTest < ActionDispatch::IntegrationTest
     
 	 
     assert_difference 'CheckIn.count', 1 do
-      post microfab_path, params: { time_punch: { name:  @non_admin_with_access.name } }
+      post microfab_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
     end
 
 	assert_not flash.empty?
@@ -24,7 +24,7 @@ class TimePunchUseTest < ActionDispatch::IntegrationTest
 follow_redirect!
     
     assert_difference 'TimePunch.count', 1 do
-     post microfab_path, params: { time_punch: { name:  @non_admin_with_access.name } }
+     post microfab_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
     end
     
     assert_not flash.empty?
@@ -38,8 +38,6 @@ follow_redirect!
   	assert_template 'time_punches/new'
   	
   	assert_select 'a', text: 'Download Spreadsheet', count: 0
-  	assert_select 'a', text: 'delete', count: 0
-		assert_select 'a', text: 'edit', count: 0
 		assert_select 'a', text: 'Buddy Policy'
 		
   
@@ -49,8 +47,6 @@ follow_redirect!
    log_in_as(@admin_with_access)
   	get microfab_path
   	assert_select 'a[href=?]', new_selection_path, text: 'Download Spreadsheet', count: 1
-		assert_select 'a', text: 'delete'
-		assert_select 'a', text: 'edit'
 		assert_select 'a', text: 'Buddy Policy'
     
   end

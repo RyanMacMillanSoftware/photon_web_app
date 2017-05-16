@@ -26,7 +26,7 @@ class CheckInsControllerTest < ActionDispatch::IntegrationTest
   end
   
   test "should not get check in edit when admin without access" do
-    log_in_as(@admin)
+    log_in_as(@admin_no_access)
     get edit_check_in_path(@check_in)
     assert_redirected_to root_url
   end

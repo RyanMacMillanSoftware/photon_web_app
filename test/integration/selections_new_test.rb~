@@ -20,7 +20,6 @@ class SelectionsNewTest < ActionDispatch::IntegrationTest
   	 											'to_time(1i)': 2017, 'to_time(2i)': 1, 'to_time(3i)': 10, name: '' } }
     
     assert_template 'selections/new'
-    assert Selection.count == 0
   end
     
 	test "valid input" do
