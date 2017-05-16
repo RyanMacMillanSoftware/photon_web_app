@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-jp:
+JP:
   name: "James Pearce"
   email: "james@pearce.com"
 
-rc:
+Reub:
   name: "Reuben Cowley"
   email: "reuben@cowley.com"

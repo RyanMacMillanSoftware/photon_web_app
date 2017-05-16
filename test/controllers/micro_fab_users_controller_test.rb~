@@ -38,7 +38,7 @@ class MicroFabUsersControllerTest < ActionDispatch::IntegrationTest
      assert_no_difference 'MicroFabUser.count' do
        delete micro_fab_user_path(@james)
      end
-     assert_redirected_to root_url
+     assert_redirected_to login_url
   end
 
 end
