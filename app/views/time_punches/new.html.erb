@@ -27,19 +27,20 @@
       				
       <%= f.label :buddy %>
       
-    	<%@users = MicroFabUser.where.not(name: "Guest") %>
+    	<%@users = MicroFabUser.all %>
     	
       <div id="non_guest_buddy">
       <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
-      				:name, {include_blank: 'N/A (Staff Only)'}) %>
-		</div>
-		
-		<div id="guest_buddy">
-      <%= f.collection_select(:bud, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
       				:name) %>
 		</div>
+
 		
+      <div id="guest_buddy_name_id">
+      				
+      <%= f.label :guest_name %>
+      <%= f.text_field :bud, class: 'form-control' %>	
       
+      </div>	
   		<%= f.submit "Log In", class: "btn btn-primary" %> 
       
       

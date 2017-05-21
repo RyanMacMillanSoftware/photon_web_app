@@ -16,13 +16,20 @@ class TimePunchesController < ApplicationController
 			return
 		end
 		
-		if params[:time_punch][:name] == "Guest" then
-			params[:time_punch][:buddy] = params[:time_punch][:bud]
-		end
-		
-		if !params[:time_punch][:guest_name].empty? then
+		if params[:time_punch][:name] == "Guest" && !params[:time_punch][:guest_name].empty? then
 			params[:time_punch][:name] = params[:time_punch][:guest_name]
 		end	
+		
+		if params[:time_punch][:bud].empty? && params[:time_punch][:buddy] == "Guest" then
+			flash[:danger] = "You must enter a Guest's name (buddy)"
+			redirect_to root_path
+			return
+		end
+		
+		
+		if params[:time_punch][:buddy] == "Guest" && !params[:time_punch][:bud].empty? then
+			params[:time_punch][:buddy] = params[:time_punch][:bud]
+		end
 	
 		if params[:time_punch][:name] == params[:time_punch][:buddy] then
 			flash[:danger] = "You need a buddy that is not yourself"

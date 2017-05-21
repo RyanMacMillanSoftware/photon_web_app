@@ -12,21 +12,32 @@ class TimePunchesController < ApplicationController
 
 		if params[:time_punch][:guest_name].empty? && params[:time_punch][:name] == "Guest" then
 			flash[:danger] = "You must enter a Guest's name"
-			redirect_to microfab_path
+			redirect_to root_path
 			return
 		end
 		
 		if params[:time_punch][:name] == "Guest" then
-			params[:time_punch][:buddy] = params[:time_punch][:bud]
+			params[:time_punch][:name] = params[:time_punch][:guest_name]
 		end
 		
 		if !params[:time_punch][:guest_name].empty? then
 			params[:time_punch][:name] = params[:time_punch][:guest_name]
 		end	
+		
+		if params[:time_punch][:bud].empty? && params[:time_punch][:buddy] == "Guest" then
+			flash[:danger] = "You must enter a Guest's name (buddy)"
+			redirect_to root_path
+			return
+		end
+		
+		
+		if params[:time_punch][:buddy] == "Guest" then
+			params[:time_punch][:buddy] = params[:time_punch][:bud]
+		end
 	
 		if params[:time_punch][:name] == params[:time_punch][:buddy] then
 			flash[:danger] = "You need a buddy that is not yourself"
-			redirect_to microfab_path
+			redirect_to root_path
 			return
 		end	
 				
@@ -40,7 +51,7 @@ class TimePunchesController < ApplicationController
 					@time_punch.do_check_out
 					if	@time_punch.save
 						flash[:success] = "Successfully logged out"
-						redirect_to microfab_path
+						redirect_to root_path
 					end
 				end
 				return
@@ -56,7 +67,7 @@ class TimePunchesController < ApplicationController
 		if @time_punch.save
 			@time_punch.do_check_in
 			flash[:success] = "Successfully logged in"
-			redirect_to microfab_path
+			redirect_to root_path
 		end
   end
 

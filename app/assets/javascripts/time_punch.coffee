@@ -13,6 +13,8 @@ jQuery ->
 		
 		currentdate = new Date();
 		time = currentdate.getHours()
+		$("#time_punch_buddy").append('<option value="">N/A (Staff Only)</option>')
+	
 		
 		if (((time>=6)&&(time<8))||(time>=22))
       	$("#green_status").hide()
@@ -53,13 +55,13 @@ jQuery ->
 		select.change ->
 			selection = select.val()
 			if selection is "Guest" 
-				$("#guest_buddy").show()
-				$("#non_guest_buddy").hide()
 				$("#guest_name_id").show()
+				$("#time_punch_buddy option[value='']").remove()
+							
 			else 
-				$("#guest_buddy").hide()
-				$("#non_guest_buddy").show()
 				$("#guest_name_id").hide()	
+				$("#time_punch_buddy option[value='']").remove()
+				$("#time_punch_buddy").append('<option value="">N/A (Staff Only)</option>')
 	
 		select2 = $("#time_punch_buddy")
 		select2.change ->
@@ -67,6 +69,7 @@ jQuery ->
 			if selection2 is "Guest" 
       		$("#guest_buddy_name_id").show()
 			else 
-				$("#guest_buddy_name_id").hide()				
+				$("#guest_buddy_name_id").hide()	
+						
 				
 		
