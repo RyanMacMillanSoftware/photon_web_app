@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  root 'time_punches#new'
   #get  '/help',    to: 'static_pages#help'
   #get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get '/microfab', to: 'time_punches#new'
-  post '/microfab', to: 'time_punches#create'
-  delete '/microfab', to: 'time_punches#destroy'
-  put '/microfab', to: 'time_punches#index'
-  patch '/microfab', to: 'time_punches#edit'
+  get '/', to: 'time_punches#new'
+  post '/', to: 'time_punches#create'
+  delete '/', to: 'time_punches#destroy'
+  put '/', to: 'time_punches#index'
+  patch '/', to: 'time_punches#edit'
   
   #dynamic form. access javascript controller
   match ':controller/:action.:format', via: [:get, :post]

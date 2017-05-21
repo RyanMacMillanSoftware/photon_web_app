@@ -49,9 +49,9 @@ class SelectionsController < ApplicationController
     # Confirms an admin user.
     def admin_user
     	if current_user.nil?
-      	redirect_to(root_url)
+      	redirect_to(login_path)
       else
-      	redirect_to(microfab_path) unless current_user.admin?
+      	redirect_to(root_path) unless current_user.admin?
       end
     end
     
@@ -67,9 +67,9 @@ class SelectionsController < ApplicationController
     # Confirms a user with microfab access.
     def microfab_access
       if current_user.nil?
-      	redirect_to(root_url)
+      	redirect_to(login_path)
       else
-      	redirect_to(root_url) unless current_user.microfab?
+      	redirect_to(login_path) unless current_user.microfab?
       end
     end
     

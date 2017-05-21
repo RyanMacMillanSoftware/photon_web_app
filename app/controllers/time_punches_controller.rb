@@ -12,7 +12,7 @@ class TimePunchesController < ApplicationController
 
 		if params[:time_punch][:guest_name].empty? && params[:time_punch][:name] == "Guest" then
 			flash[:danger] = "You must enter a Guest's name"
-			redirect_to microfab_path
+			redirect_to root_path
 			return
 		end
 		
@@ -26,7 +26,7 @@ class TimePunchesController < ApplicationController
 	
 		if params[:time_punch][:name] == params[:time_punch][:buddy] then
 			flash[:danger] = "You need a buddy that is not yourself"
-			redirect_to microfab_path
+			redirect_to root_path
 			return
 		end	
 				
@@ -40,7 +40,7 @@ class TimePunchesController < ApplicationController
 					@time_punch.do_check_out
 					if	@time_punch.save
 						flash[:success] = "Successfully logged out"
-						redirect_to microfab_path
+						redirect_to root_path
 					end
 				end
 				return
@@ -56,7 +56,7 @@ class TimePunchesController < ApplicationController
 		if @time_punch.save
 			@time_punch.do_check_in
 			flash[:success] = "Successfully logged in"
-			redirect_to microfab_path
+			redirect_to root_path
 		end
   end
 
@@ -67,9 +67,9 @@ class TimePunchesController < ApplicationController
     # Confirms an admin user.
     def admin_user
     	if current_user.nil?
-      	redirect_to(root_url)
+      	redirect_to(login_path)
       else
-      	redirect_to(root_url) unless current_user.admin?
+      	redirect_to(login_path) unless current_user.admin?
       end
     end
     
@@ -85,9 +85,9 @@ class TimePunchesController < ApplicationController
     # Confirms a user with microfab access.
     def microfab_access
       if current_user.nil?
-      	redirect_to(root_url)
+      	redirect_to(login_path)
       else
-      	redirect_to(root_url) unless current_user.microfab?
+      	redirect_to(login_path) unless current_user.microfab?
       end
     end
     

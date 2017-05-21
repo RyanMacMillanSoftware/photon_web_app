@@ -11,7 +11,7 @@ class CheckInsController < ApplicationController
     time_punch.do_check_out
     	@check_in.delete
 		flash[:success] = "Successfully logged out"
-		redirect_to microfab_path
+		redirect_to root_path
   
 
   end
@@ -25,9 +25,9 @@ class CheckInsController < ApplicationController
     # Confirms an admin user.
     def admin_user
     	if current_user.nil?
-      	redirect_to(root_url)
+      	redirect_to(login_path)
       else
-      	redirect_to(root_url) unless current_user.admin?
+      	redirect_to(login_path) unless current_user.admin?
       end
     end
     
@@ -44,9 +44,9 @@ class CheckInsController < ApplicationController
     # Confirms a user with microfab access.
     def microfab_access
       if current_user.nil?
-      	redirect_to(root_url)
+      	redirect_to(login_path)
       else
-      	redirect_to(root_url) unless current_user.microfab?
+      	redirect_to(login_path) unless current_user.microfab?
       end
     end
 
