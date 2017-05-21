@@ -53,9 +53,9 @@
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">Currently Punched In</div>
+  <div class="panel-heading">Currently Logged In</div>
   <div class = "panel-body">
-    Remember to punch out!
+    Remember to log out!
   </div>
 
   <!-- Table -->

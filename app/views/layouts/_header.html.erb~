@@ -3,10 +3,10 @@
     <%= link_to "photon factory", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
+        
         <% if logged_in? %>
-        	 <li><%= link_to "Clean Room", root_path %></li>
-
+        	<li><%= link_to "Home", root_path %></li>
+        	 
 			<% if current_user.admin?%>
           <li><%= link_to "Users", micro_fab_users_path %></li>
          
