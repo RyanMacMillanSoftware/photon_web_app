@@ -2,22 +2,29 @@ class CheckIn < ApplicationRecord
 
 	validates :name,  presence: true, length: { maximum: 50 },
                     uniqueness: { case_sensitive: true }
-   validate :student_needs_buddy
-
+   
+   after_create :set_expire_time
   #Check in and update attributes   
   def do_check_in
   	update_columns(time: DateTime.current(), 
   							seconds_since_midnight: DateTime.now.seconds_since_midnight())
   end
   
-  private
-		def student_needs_buddy
-			user = User.find_by(name: name)
-			return if user.name == 'Staff'
-
-  			if user.name == "Student" && buddy.empty?
-    			errors.add(:to_time, "students need a buddy") 
-  			end 
-		end
+  
+  #register the timer
+  def set_expire_time
+  		time_now = Time.new
+  		midnight_this_morning = time_now.beginning_of_day()
+  		midnight_tonight = midnight_this_morning.change(day: midnight_this_morning.day + 1)
+  		
+	  delay(:run_at => midnight_tonight).expire
+	end
+	
+	
+	#delete the checkin
+	#send mail to user and to mike
+	def expire
+		
+	end
   
 end

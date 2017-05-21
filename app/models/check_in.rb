@@ -10,5 +10,4 @@ class CheckIn < ApplicationRecord
   end
   
   
-  
 end

@@ -11,11 +11,15 @@ class CheckInsController < ApplicationController
     time_punch.do_check_out
     	@check_in.delete
 		flash[:success] = "Successfully logged out"
-		redirect_to microfab_path
+		redirect_to root_path
   
 
   end
 
+	def expire_after_midnight
+		
+	end
+		handle_asynchronously :expire_after_midnight, :run_at => Proc.new { !!!!!!! }
 	
 	
 	private

@@ -28,7 +28,11 @@ $gray-medium-light: #eaeaea;
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 70px;
+}
+/*for resizing to cellphone width*/
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
 }
 
 section {
@@ -140,7 +144,6 @@ footer {
 	
 	
 	
-	display: inline-block;
 	border-radius: 15px;
 	margin-left: auto;
 	margin-right: auto;

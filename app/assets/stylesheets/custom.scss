@@ -30,6 +30,10 @@ $gray-medium-light: #eaeaea;
 body {
   padding-top: 60px;
 }
+/*for resizing to cellphone width*/
+@media screen and (max-width: 768px) {
+    body { padding-top: 100px; }
+}
 
 section {
   overflow: auto;

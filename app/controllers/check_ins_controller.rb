@@ -16,6 +16,12 @@ class CheckInsController < ApplicationController
 
   end
 
+	def expire_after_midnight
+		@check_in = CheckIn.find(params[:id])
+		@check_in.delete
+		#INSERT MAILER CODE HERE
+	end
+		handle_asynchronously :expire_after_midnight, :run_at => Proc.new { !!!!!!! }
 	
 	
 	private
