@@ -46,8 +46,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   	assert_redirected_to login_path
    	get contact_path
    	assert_redirected_to login_path
-   	get microfab_path
-   	assert_redirected_to login_path
    end
   
 end

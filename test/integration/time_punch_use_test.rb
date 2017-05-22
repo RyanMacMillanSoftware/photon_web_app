@@ -12,29 +12,29 @@ class TimePunchUseTest < ActionDispatch::IntegrationTest
   
   test "should punch to check_in, then punch for time_punch" do
   	log_in_as(@non_admin_with_access)
-    get microfab_path
+    get root_path
     
 	 
     assert_difference 'CheckIn.count', 1 do
-      post microfab_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
+      post root_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
     end
 
 	assert_not flash.empty?
-	 assert_redirected_to microfab_path
+	 assert_redirected_to root_path
 follow_redirect!
     
     assert_difference 'TimePunch.count', 1 do
-     post microfab_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
+     post root_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
     end
     
     assert_not flash.empty?
-	 assert_redirected_to microfab_path
+	 assert_redirected_to root_path
 	 follow_redirect!    
    end
   
   test "microfab as non admin" do
   	log_in_as(@non_admin_with_access)
-  	get microfab_path
+  	get root_path
   	assert_template 'time_punches/new'
   	
   	assert_select 'a', text: 'Download Spreadsheet', count: 0
@@ -45,7 +45,7 @@ follow_redirect!
   
   test "microfab as admin" do
    log_in_as(@admin_with_access)
-  	get microfab_path
+  	get root_path
   	assert_select 'a[href=?]', new_selection_path, text: 'Download Spreadsheet', count: 1
 		assert_select 'a', text: 'Buddy Policy'
     

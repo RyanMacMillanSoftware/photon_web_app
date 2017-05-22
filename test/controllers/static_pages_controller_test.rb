@@ -14,7 +14,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   	log_in_as(@user)
     get root_path
     assert_response :success
-    assert_select "title", "#{@base_title}"
   end
 
   

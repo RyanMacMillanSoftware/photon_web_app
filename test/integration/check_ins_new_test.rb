@@ -43,7 +43,7 @@ class CheckInsNewTest < ActionDispatch::IntegrationTest
 	 # assert_equal 0, CheckIn.count
 	
 
-	end
+	#end
     
     
 end

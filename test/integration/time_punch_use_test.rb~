@@ -24,7 +24,7 @@ class TimePunchUseTest < ActionDispatch::IntegrationTest
 follow_redirect!
     
     assert_difference 'TimePunch.count', 1 do
-     post microfab_path, params: { time_punch: { name:  "Frank", buddy: "Frank2" } }
+     post microfab_path, params: { time_punch: { name:  "Frank", buddy: "Frank2", guest_name: "", bud: "" } }
     end
     
     assert_not flash.empty?

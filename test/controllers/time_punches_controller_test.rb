@@ -7,7 +7,7 @@ class TimePunchControllerTest < ActionDispatch::IntegrationTest
   end
   
    test "should redirect microfab when not logged in" do
-    get microfab_path
+    get root_path
     assert_redirected_to login_url
   end
   

@@ -18,7 +18,7 @@ class SelectionsControllerTest < ActionDispatch::IntegrationTest
   test "should redirect selections when non-admin with microfab access" do
   	 log_in_as(@non_admin_with_access) 
     get new_selection_path
-    assert_redirected_to microfab_path
+    assert_redirected_to root_path
   end
     
 	test "should access selections when admin with microfab access" do
