@@ -57,8 +57,6 @@ jQuery ->
 				selection2 = select2.val()
 				if selection2 is "Guest" 
       			$("#guest_buddy_name_id").show()
-      		
-							
 			else 
 				$("#guest_name_id").hide()	
 				$("#time_punch_buddy option[value='']").remove()
