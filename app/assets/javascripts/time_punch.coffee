@@ -54,12 +54,9 @@ jQuery ->
 				$("#guest_name_id").show()
 				$("#time_punch_buddy option[value='']").remove()
 				select2 = $("#time_punch_buddy")
-				select2.change ->
 				selection2 = select2.val()
 				if selection2 is "Guest" 
-      		$("#guest_buddy_name_id").show()
-      		
-							
+      			$("#guest_buddy_name_id").show()
 			else 
 				$("#guest_name_id").hide()	
 				$("#time_punch_buddy option[value='']").remove()
