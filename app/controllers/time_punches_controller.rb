@@ -1,7 +1,6 @@
 class TimePunchesController < ApplicationController
 	
 	before_action :logged_in_user
-	before_action :microfab_access, only:[:create]
    
   def new
   	@time_punch = TimePunch.new
@@ -88,15 +87,7 @@ class TimePunchesController < ApplicationController
         redirect_to login_url
       end
     end
-    
-    # Confirms a user with microfab access.
-    def microfab_access
-      if current_user.nil?
-      	redirect_to(login_path)
-      else
-      	redirect_to(login_path) unless current_user.microfab?
-      end
-    end
+   
     
     
 end

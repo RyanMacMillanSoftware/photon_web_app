@@ -7,3 +7,11 @@ jp:
 rc:
   name: "Reuben Cowley"
   email: "reuben@cowley.com"
+
+
+  
+<% 60.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+<% end %>

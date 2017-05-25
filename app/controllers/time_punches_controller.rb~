@@ -16,11 +16,7 @@ class TimePunchesController < ApplicationController
 			return
 		end
 		
-		if params[:time_punch][:name] == "Guest" then
-			params[:time_punch][:name] = params[:time_punch][:guest_name]
-		end
-		
-		if !params[:time_punch][:guest_name].empty? then
+		if params[:time_punch][:name] == "Guest" && !params[:time_punch][:guest_name].empty? then
 			params[:time_punch][:name] = params[:time_punch][:guest_name]
 		end	
 		
@@ -31,7 +27,7 @@ class TimePunchesController < ApplicationController
 		end
 		
 		
-		if params[:time_punch][:buddy] == "Guest" then
+		if params[:time_punch][:buddy] == "Guest" && !params[:time_punch][:bud].empty? then
 			params[:time_punch][:buddy] = params[:time_punch][:bud]
 		end
 	
