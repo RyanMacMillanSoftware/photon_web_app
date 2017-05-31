@@ -1,6 +1,5 @@
 class CheckInsController < ApplicationController
 
-  before_action :admin_user
   before_action :microfab_access
 	
 	def destroy
