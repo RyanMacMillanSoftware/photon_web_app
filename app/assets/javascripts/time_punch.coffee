@@ -15,7 +15,7 @@ jQuery ->
 		
 		currentdate = new Date();
 		time = currentdate.getHours()
-		$("#time_punch_buddy").append('<option value="">N/A (Staff Only)</option>')
+		$("#time_punch_buddy").append('<option value="">Staff</option>')
 	
 		
 		if (((time>=6)&&(time<8))||(time>=22))
@@ -66,7 +66,7 @@ jQuery ->
 			else 
 				$("#guest_name_id").hide()	
 				$("#time_punch_buddy option[value='']").remove()
-				$("#time_punch_buddy").append('<option value="">N/A (Staff Only)</option>')
+				$("#time_punch_buddy").append('<option value="">Staff</option>')
 	
 		select2 = $("#time_punch_buddy")
 		select2.change ->
