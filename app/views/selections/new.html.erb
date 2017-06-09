@@ -20,3 +20,55 @@
 		 <% end %>
   </div>
 </div>
+
+
+<!--source: https://stackoverflow.com/questions/18380100/date-select-save-higher-day-of-the-month-available-->
+<script>
+$(function(){
+  railsFromMonthDates();
+  railsToMonthDates();
+  $("select[id*=from_time_2i], select[id*=from_time_1i]").change( railsFromMonthDates );
+  $("select[id*=to_time_2i], select[id*=to_time_1i]").change( railsToMonthDates );
+});
+
+function railsFromMonthDates() {
+  $("select[id*=from_time_2i]").each(function(){
+    $monthSelect = $(this);
+    $daySelect = $(this).siblings("select[id*=from_time_3i]");
+    $yearSelect = $(this).siblings("select[id*=from_time_1i]");
+
+    var year = parseInt($yearSelect.val());
+    var month = parseInt($monthSelect.val());
+    var days = new Date(year, month, 0).getDate();
+
+    var selectedDay = $daySelect.val()
+    $daySelect.html('');
+
+      $daySelect.append('<option value="'+""+'">'+"Day"+'</option>');
+    for(var i=1; i<=days; i++) {
+      $daySelect.append('<option value="'+i+'">'+i+'</option>');
+    }
+    $daySelect.val(selectedDay);
+  });
+}
+  function railsToMonthDates() {
+  $("select[id*=to_time_2i]").each(function(){
+    $monthSelect = $(this);
+    $daySelect = $(this).siblings("select[id*=to_time_3i]");
+    $yearSelect = $(this).siblings("select[id*=to_time_1i]");
+
+    var year = parseInt($yearSelect.val());
+    var month = parseInt($monthSelect.val());
+    var days = new Date(year, month, 0).getDate();
+
+    var selectedDay = $daySelect.val()
+    $daySelect.html('');
+
+      $daySelect.append('<option value="'+""+'">'+"Day"+'</option>');
+    for(var i=1; i<=days; i++) {
+      $daySelect.append('<option value="'+i+'">'+i+'</option>');
+    }
+    $daySelect.val(selectedDay);
+  });
+}
+</script>
