@@ -134,7 +134,7 @@ class SelectionsController < ApplicationController
  	 			end
       ##Print all indiscrimatly
  	 		else 
- 	 			sorted_all_tps_by_check_outs.all.each do |time_punch| 
+ 	 			sorted_all_tps_by_check_outs.each do |time_punch| 
  	 				if time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time	 				
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"
