@@ -1,6 +1,5 @@
 class CheckInsController < ApplicationController
 
-  before_action :microfab_access
 	
 	def destroy
     @check_in = CheckIn.find(params[:id])
