@@ -98,6 +98,7 @@ class SelectionsController < ApplicationController
       sorted_all_tps_by_check_outs = all_tps.sort{ |a,b| a.check_out <=> b.check_out}
 			selection = Selection.last 	 		
  	 		rownum = 1
+      ##Print all guests
  	 		if selection.name == "Guest"
  	 			sorted_all_tps_by_check_outs.each do |time_punch|
  	 				if time_punch.guest && time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
@@ -113,9 +114,10 @@ class SelectionsController < ApplicationController
 						row.push "#{time_punch.seconds_elapsed}"
  	 					rownum += 1
  	 				end
- 	 			end	
+ 	 			end
+      ##Print all for a specifed person	
  	 		elsif selection.name.present? 
- 	 			TimePunch.all.each do |time_punch|
+ 	 			sorted_all_tps_by_check_outs.each do |time_punch|
  	 				if time_punch.name == selection.name && time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"
@@ -130,8 +132,9 @@ class SelectionsController < ApplicationController
  	 					rownum += 1
  	 				end
  	 			end
+      ##Print all indiscrimatly
  	 		else 
- 	 			TimePunch.all.each do |time_punch| 
+ 	 			sorted_all_tps_by_check_outs.all.each do |time_punch| 
  	 				if time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time	 				
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"
