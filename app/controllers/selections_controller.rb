@@ -94,11 +94,12 @@ class SelectionsController < ApplicationController
  	 	
  	 		#content
  	 		sheet1.row(0).push 'Name', 'Buddy', 'DateTime In','DateTime Out', 'Minutes Elapsed'
- 	 		
+ 	 		all_tps = TimePunch.all
+      sorted_all_tps_by_check_outs = all_tps.sort{ |a,b| a.check_out <=> b.check_out}
 			selection = Selection.last 	 		
  	 		rownum = 1
  	 		if selection.name == "Guest"
- 	 			TimePunch.all.each do |time_punch|
+ 	 			sorted_all_tps_by_check_outs.each do |time_punch|
  	 				if time_punch.guest && time_punch.check_in >= selection.from_time && time_punch.check_out <= selection.to_time
  	 					row = sheet1.row(rownum)
  	 					row.push "#{time_punch.name}"
