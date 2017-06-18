@@ -33,20 +33,8 @@ jQuery ->
 				
 		
 	
-		select = $("#time_punch_name")
-		select2 = $("#time_punch_buddy")	
-		selection = select.val()
-		selection2 = select2.val()
-		if selection is "Guest" 
-			$("#guest_name_id").show()
-			$("#time_punch_buddy option[value='Staff']").remove()
-		else
-			$("#guest_name_id").hide()	
-		if selection2 is "Guest" 
-      	$("#guest_buddy_name_id").show()
-      	
-		else 
-			$("#guest_buddy_name_id").hide()	
+		$("#guest_name_id").hide()	
+		$("#guest_buddy_name_id").hide()	
 			
 			
 			
@@ -61,7 +49,7 @@ jQuery ->
 				select2 = $("#time_punch_buddy")
 				selection2 = select2.val()
 				if selection2 is "Guest" 
-      			$("#guest_buddy_name_id").show()
+      				$("#guest_buddy_name_id").show()
 			else 
 				$("#guest_name_id").hide()	
 	
