@@ -15,7 +15,7 @@ jQuery ->
 		
 		currentdate = new Date();
 		time = currentdate.getHours()
-		$("#time_punch_buddy").append('<option value="">Staff</option>')
+		$("#time_punch_buddy").append('<option value="Staff">Staff</option>')
 	
 		
 		if (((time>=6)&&(time<8))||(time>=22))
@@ -39,7 +39,7 @@ jQuery ->
 		selection2 = select2.val()
 		if selection is "Guest" 
 			$("#guest_name_id").show()
-			$("#time_punch_buddy option[value='']").remove()
+			$("#time_punch_buddy option[value='Staff']").remove()
 		else
 			$("#guest_name_id").hide()	
 		if selection2 is "Guest" 
@@ -58,15 +58,12 @@ jQuery ->
 			selection = select.val()
 			if selection is "Guest" 
 				$("#guest_name_id").show()
-				$("#time_punch_buddy option[value='']").remove()
 				select2 = $("#time_punch_buddy")
 				selection2 = select2.val()
 				if selection2 is "Guest" 
       			$("#guest_buddy_name_id").show()
 			else 
 				$("#guest_name_id").hide()	
-				$("#time_punch_buddy option[value='']").remove()
-				$("#time_punch_buddy").append('<option value="">Staff</option>')
 	
 		select2 = $("#time_punch_buddy")
 		select2.change ->

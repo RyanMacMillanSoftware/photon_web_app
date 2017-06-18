@@ -8,6 +8,11 @@ class TimePunchesController < ApplicationController
   
 	def create
 		
+		if params[:time_punch][:name].empty? || params[:time_punch][:buddy].empty? then
+			flash[:danger] = "You must fill both fields. If you are staff, select \"Staff\" as your buddy"
+			redirect_to root_path
+			return
+		end	
 
 		if params[:time_punch][:guest_name].empty? && params[:time_punch][:name] == "Guest" then
 			flash[:danger] = "You must enter a Guest's name"
@@ -35,6 +40,8 @@ class TimePunchesController < ApplicationController
 			redirect_to root_path
 			return
 		end	
+
+		
 				
 		CheckIn.all.each do |check_in| 
 			
