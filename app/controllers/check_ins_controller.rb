@@ -1,6 +1,7 @@
 class CheckInsController < ApplicationController
 
-	
+	before_action :logged_in_user
+  
 	def destroy
     @check_in = CheckIn.find(params[:id])
     time_punch = TimePunch.new(name: @check_in.name)
