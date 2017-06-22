@@ -7,7 +7,7 @@ validate :to_must_be_before_from_time
 
 
 private
-
+	#handle error when time's are not in proper order
 	def to_must_be_before_from_time
       return if to_time.blank? || from_time.blank?
 

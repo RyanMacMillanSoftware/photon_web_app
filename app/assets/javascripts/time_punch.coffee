@@ -15,9 +15,11 @@ jQuery ->
 		
 		currentdate = new Date();
 		time = currentdate.getHours()
+
+		#The staff option is appended. In the future this option could become a MicroFabUser that is hidden from the index. This would make it alphabetically sorted. Another improvement would be appending to the start of the list (still below the blank default#
 		$("#time_punch_buddy").append('<option value="Staff">Staff</option>')
 	
-		
+		#shows the status of the lab dependant on chemistry guidelines as of June 2017#
 		if (((time>=6)&&(time<8))||(time>=22))
       	$("#green_status").hide()
       	$("#orange_status").show()
@@ -32,15 +34,16 @@ jQuery ->
       	$("#red_status").show()	
 				
 		
-	
+		#hide the guest text entry fields#
 		$("#guest_name_id").hide()	
 		$("#guest_buddy_name_id").hide()	
 			
 			
 			
 		
-		#change dynamically#
+		#the visibility of guest entry fields changes dynamically. only show guest entry fields when guest is selected from the corresponding dropdown#
 	
+		#name dropdown event handler#
 		select = $("#time_punch_name")
 		select.change ->
 			selection = select.val()
@@ -52,7 +55,8 @@ jQuery ->
       				$("#guest_buddy_name_id").show()
 			else 
 				$("#guest_name_id").hide()	
-	
+		
+		#buddy dropdown event handler#
 		select2 = $("#time_punch_buddy")
 		select2.change ->
 			selection2 = select2.val()

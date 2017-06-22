@@ -1,7 +1,10 @@
 class CheckInsController < ApplicationController
 
+  #CheckIns are created and stored while a user is in the lab. The data from a CheckIn is used to
+  #create a TimePunch when they log out. The creation of CheckIns is handled by the TimePunch controller (I know this is bad)/
 	before_action :logged_in_user
   
+  #Called when the "log out" button on the CheckIn table is pressed/
 	def destroy
     @check_in = CheckIn.find(params[:id])
     time_punch = TimePunch.new(name: @check_in.name)
@@ -15,6 +18,7 @@ class CheckInsController < ApplicationController
 
   end
 
+  #THIS DOES NOT WORK. We want CheckIns to clear at midnight/
 	def expire_after_midnight
 		CheckIn.delete_all
 		#INSERT MAILER CODE HERE
@@ -26,15 +30,6 @@ class CheckInsController < ApplicationController
 
     # Before filters
 
-    # Confirms an admin user.
-    def admin_user
-    	if current_user.nil?
-      	redirect_to(login_path)
-      else
-      	redirect_to(login_path) unless current_user.admin?
-      end
-    end
-    
 	# Confirms a logged-in user.
     def logged_in_user
       unless logged_in?
@@ -44,14 +39,4 @@ class CheckInsController < ApplicationController
       end
     end
     
-     
-    # Confirms a user with microfab access.
-    def microfab_access
-      if current_user.nil?
-      	redirect_to(login_path)
-      else
-      	redirect_to(login_path) unless current_user.microfab?
-      end
-    end
-
 end

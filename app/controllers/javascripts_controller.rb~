@@ -1,3 +1,7 @@
+/Unsure if this is still in use. I was playing with alot of stackoverflow advice to get Javascript working.
+Highly doubt this is useful.
+TODO: Delete this and see if the code still works
+/
 class JavascriptsController < ApplicationController
 	def dynamic_stats
 		@states=State.find(:all)

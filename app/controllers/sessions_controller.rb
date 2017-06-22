@@ -1,8 +1,10 @@
+#Sessions are stored so that access users don't have to re log in upon exiting and reentering the browser
 class SessionsController < ApplicationController
 
   def new
   end
 
+  #create a session when you log in
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
@@ -22,6 +24,7 @@ class SessionsController < ApplicationController
      end
   end
 
+  #only end the session when the access user explicitly logs out
   def destroy
     log_out if logged_in?
     redirect_to login_path

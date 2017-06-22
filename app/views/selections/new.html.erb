@@ -1,3 +1,4 @@
+<!--Form for selecting a date range to download data.-->
 <% provide(:title, 'Data Select') %>
 <h1>Retrieve Data</h1>
 <div class="row">
@@ -23,6 +24,8 @@
 
 
 <!--source: https://stackoverflow.com/questions/18380100/date-select-save-higher-day-of-the-month-available-->
+<!--this javascript fills the "Day" dropdowns with the appropriate amount of days for a given month. Rails
+  Otherwise defaults to 31 for every month and this causes error.-->
 <script>
 $(function(){
   railsFromMonthDates();

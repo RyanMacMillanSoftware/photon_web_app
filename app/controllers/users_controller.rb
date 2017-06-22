@@ -1,3 +1,4 @@
+#handles Access accounts that can login from anywhere!
 class UsersController < ApplicationController
 
   before_action :logged_in_user
@@ -21,11 +22,13 @@ class UsersController < ApplicationController
   
    def update
     @user = User.find(params[:id])
+
+    #trying to remove "microfab" user attribute. this code block should go!
     if params[:user][:microfab] == true
     	admin_user
     end
-    if @user.update_attributes(user_params)
-    	
+
+    if @user.update_attributes(user_params)	
     	@user.save
       flash[:success] = "Profile updated"
       redirect_to @user

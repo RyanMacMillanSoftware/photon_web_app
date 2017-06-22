@@ -1,3 +1,4 @@
+#This handles the "Download Spreadsheet". You use a seleciton of dates to specify the data to download./
 require 'rubygems'
 require 'spreadsheet'
 
@@ -8,7 +9,7 @@ class SelectionsController < ApplicationController
    
   
   
-  
+  #use the form to get the start and end dates for downloading data
   def create
   	
   	@selection = Selection.new
@@ -21,8 +22,11 @@ class SelectionsController < ApplicationController
   		if params[:selection][:name].present?
   			@selection.name = params[:selection][:name]
   		end
+      #If the selection is valid, then just download it!
   		if @selection.save
   			download_data
+        #after downloading, you can not redirect. the page looses all functionality at this point. would be a
+        #nice fix
   		else
   			render 'new'
   		end
@@ -62,15 +66,7 @@ class SelectionsController < ApplicationController
       end
     end
     
-    # Confirms a user with microfab access.
-    def microfab_access
-      if current_user.nil?
-      	redirect_to(login_path)
-      else
-      	redirect_to(login_path) unless current_user.microfab?
-      end
-    end
-    
+    #Handles the creation of the spreadsheet and then the download. uses the spreadsheet ruby gem
     def download_data
     	Spreadsheet.client_encoding = 'UTF-8'
 			book = Spreadsheet::Workbook.new
@@ -86,6 +82,7 @@ class SelectionsController < ApplicationController
  	 		sheet1.row(0).default_format = bold
  	 		
  	 		
+      //
  	 		sheet1.column(0).width = 20
  	 		sheet1.column(1).width = 20
  	 		sheet1.column(2).width = 30
@@ -152,12 +149,15 @@ class SelectionsController < ApplicationController
  	 		end
  	 		
 			
+      #name file
   			@outfile = "Time_Punches_#{selection.from_time}_to_#{selection.to_time}.xls"
   			Selection.delete_all
   			
     		require 'stringio'
     		data = StringIO.new ''
+        #write to book
     		book.write data
+        #initiate download
     		send_data data.string, :type=>"application/excel", :disposition=>'attachment', :filename => @outfile
     end
    

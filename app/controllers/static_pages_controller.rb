@@ -1,3 +1,5 @@
+#idk if this is used anymore.
+#TODO: Delete, see if it breaks
 class StaticPagesController < ApplicationController
 
 

@@ -27,9 +27,12 @@ $gray-medium-light: #eaeaea;
     color: #FFFFFF;
 }
 
+
+/*for bootstrap header*/
 body {
   padding-top: 60px;
 }
+
 /*for resizing to cellphone width*/
 @media screen and (max-width: 768px) {
     body { padding-top: 100px; }
@@ -133,24 +136,14 @@ footer {
 }
 
 
-.btn-logout{
-	display: inline;
-	position: relative;
-	top: 0px;
-	left: 50px;
-}
 
 .status {
-	
-	
-	
 	border-radius: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 300px;
 	height: 20px;
-	text-align: center;
-		
+	text-align: center;		
 }
 	
 .green {
@@ -274,4 +267,11 @@ input {
   @include box_sizing;
   
   
+}
+
+.btn-logout{
+  display: inline;
+  position: relative;
+  top: 0px;
+  left: 50px;
 }
