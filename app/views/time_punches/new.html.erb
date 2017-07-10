@@ -17,7 +17,7 @@
     	<%= f.label :name %>
     	<%@users = MicroFabUser.all %>
       <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
-      				:name, {:include_blank => ''}) %>
+      				:name) %>
             
       
       <div id="guest_name_id">
@@ -33,7 +33,7 @@
     	
       <div id="non_guest_buddy">
       <%= f.collection_select(:buddy, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
-      				:name, {:include_blank => ''}) %>
+      				:name) %>
 		</div>
 
 		
