@@ -1,10 +1,10 @@
 # photon_web_app
 Developer: Ryan MacMillan
-contact: rmac460@aucklanduni.ac.nz
+contact: rmac460@aucklanduni.ac.nz || ryanmacmillan1996@gmail.com
 
 A web project for a research group. A time punching system to record staff movements.
 
-Database -> Spreadsheet downloading
+An in depth manual will be added as "documentation.pdf"
 
 To run (on linux):
 
@@ -24,9 +24,9 @@ To run (on linux):
 
 7 Use command: u = User.new(name: "Your Name", email: "your_email@address.com", password: "choose_a_password", password_confirmation: "choose_a_password", authenticated: true, microfab: true, admin: true)
                 
-8 Use command: u.save (If this fails, then a field of "u" is not valid)
+8 Use command: u.save 
 
-9 Exit console ("quit"/ctrl + c)
+9 Exit console "quit"
 
 10 Log in using your email and password in the browser
 
