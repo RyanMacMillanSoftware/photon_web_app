@@ -18,13 +18,7 @@ class CheckInsController < ApplicationController
 
   end
 
-  #THIS DOES NOT WORK. We want CheckIns to clear at midnight/
-	def expire_after_midnight
-		CheckIn.delete_all
-		#INSERT MAILER CODE HERE
-	end
-		handle_asynchronously :expire_after_midnight, :run_at => Proc.new { Time.now.change(hour: 23, min: 59, sec:59) }
-	
+
 	
 	private
 
