@@ -4,8 +4,6 @@ contact: rmac460@aucklanduni.ac.nz || ryanmacmillan1996@gmail.com
 
 A web project for a research group. A time punching system to record staff movements.
 
-An in depth manual will be added as "documentation.pdf"
-
 To run (on linux):
 
 1 Download the source code / clone
