@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :check_ins
   resources :selections
   resources :micro_fab_users
-  
+  resources :printer_data
    
   
 end

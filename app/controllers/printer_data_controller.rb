@@ -1,0 +1,2 @@
+class PrinterDataController < ApplicationController
+end

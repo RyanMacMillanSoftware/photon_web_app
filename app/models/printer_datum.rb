@@ -1,0 +1,2 @@
+class PrinterDatum < ApplicationRecord
+end

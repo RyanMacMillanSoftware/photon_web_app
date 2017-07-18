@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521223749) do
+ActiveRecord::Schema.define(version: 20170718231121) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 20170521223749) do
   create_table "micro_fab_users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "printer_data", force: :cascade do |t|
+    t.string   "name"
+    t.string   "project"
+    t.string   "printer"
+    t.time     "from_time"
+    t.time     "to_time"
+    t.integer  "volume"
+    t.string   "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
