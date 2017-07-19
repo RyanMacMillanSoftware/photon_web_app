@@ -23,6 +23,8 @@ class PrinterDataController < ApplicationController
 
     # Before filters
 
+    
+
     # Confirms an admin user.
     def admin_user
     	if current_user.nil?
