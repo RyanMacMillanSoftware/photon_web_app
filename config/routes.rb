@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   patch '/', to: 'time_punches#edit'
   get 'printer_data/new', to: 'printer_data#new'
   post '/printer_data/new', to: 'printer_data#create'
+  put '/printer_data/index', to: 'printer_data#index'
+  post 'printer_data/index', to: 'printer_data#download'
   
   #dynamic form. access javascript controller
   match ':controller/:action.:format', via: [:get, :post]
