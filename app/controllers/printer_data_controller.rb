@@ -15,7 +15,7 @@ class PrinterDataController < ApplicationController
    		@printer_data = PrinterDatum.new(data_params)
     	if @printer_data.save
     		flash[:success] = "Data Stored Successfully"
-    		redirect_to new_printer_data
+    		redirect_to new_printer_datum_path
     	else
       		render 'new'
       	end
@@ -30,7 +30,7 @@ class PrinterDataController < ApplicationController
     # Before filters
 
     def data_params
-      params.permit(:name, :project, :printer, :phonenumber,
+      params.require(:printer_datum).permit(:name, :project, :printer, :phonenumber,
                                    :from_time, :to_time, :volume, :notes)
     end
 
