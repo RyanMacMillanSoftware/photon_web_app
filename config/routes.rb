@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   delete '/', to: 'time_punches#destroy'
   put '/', to: 'time_punches#index'
   patch '/', to: 'time_punches#edit'
+  get 'printer_data/new', to: 'printer_data#new'
+  post '/printer_data/new', to: 'printer_data#create'
   
   #dynamic form. access javascript controller
   match ':controller/:action.:format', via: [:get, :post]
