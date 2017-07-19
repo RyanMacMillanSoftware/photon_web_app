@@ -7,7 +7,7 @@ class PrinterDataController < ApplicationController
 	before_action :logged_in_user
    
 	def new
-  		@printer_data = PrinterData.new
+  		@printer_data = PrinterDatum.new
 	end
   
 
@@ -40,9 +40,6 @@ class PrinterDataController < ApplicationController
         redirect_to login_url
       end
     end
-   
-    
-    
-end
+ 
 
 end

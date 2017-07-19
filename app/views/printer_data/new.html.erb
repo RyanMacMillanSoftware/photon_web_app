@@ -11,7 +11,7 @@
     
     <!--Form for check in and time punches-->
     <%= form_for @printer_data, url: {action: "new"}, method: "post" do |f| %> 
-    	<%= render 'shared/time_punch_error_messages', object: @printer_data%>   	
+    	<%= render 'shared/printer_data_error_messages', object: @printer_data%>   	
     	
     	
     	<%= f.label :name %>
