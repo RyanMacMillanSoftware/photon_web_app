@@ -72,7 +72,7 @@ class TimePunchesController < ApplicationController
 			end
 		end
 		
-		#store whether the use is a guest or not upon checkin. this is useful when downloading 
+		#store whether the user is a guest or not upon checkin. this is useful when downloading 
 		#data under SelectionsController for all Guests
 		if params[:time_punch][:guest_name].empty? then
 			@time_punch = CheckIn.new(name: params[:time_punch][:name], buddy: params[:time_punch][:buddy], guest: false )

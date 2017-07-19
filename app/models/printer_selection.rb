@@ -1,0 +1,2 @@
+class PrinterSelection < ApplicationRecord
+end
