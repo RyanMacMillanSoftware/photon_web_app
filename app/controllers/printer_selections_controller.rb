@@ -16,7 +16,8 @@ class PrinterSelectionsController < ApplicationController
   									(params[:printer_selection][:'from_time(3i)'].to_i),0,0,0,"+13:00")
   			@p_selection.to_time= DateTime.new(params[:printer_selection][:'to_time(1i)'].to_i, params[:printer_selection][:'to_time(2i)'].to_i,
   									params[:printer_selection][:'to_time(3i)'].to_i, 23,59,59,"+13:00")
-      		#If the selection is valid, then just download it!
+
+        	#If the selection is valid, then just download it!
   			if @p_selection.save
   				download_printer_data
         	#after downloading, you can not redirect. the page looses all functionality at this point. would be a
@@ -86,12 +87,12 @@ class PrinterSelectionsController < ApplicationController
  	 	#content
  	 	sheet1.row(0).push 'Name', 'Project', 'Printer', 'Volume','DateTime Start Print','DateTime Finish Print', 'Notes'
  	 	all_data = PrinterDatum.all
-      	sorted_all_data = all_data.sort{ |a,b| a.to_time <=> b.to_time}
+    sorted_all_data = all_data.sort{ |a,b| a.to_time <=> b.to_time}
 		selection = PrinterSelection.last 	 		
  	 	rownum = 1
-      	sorted_all_data.each do |data| 
- 	 		if data.from_time >= selection.from_time && data.to_time <= selection.to_time	 				
- 	 			row = sheet1.row(rownum)
+    sorted_all_data.each do |data| 
+ 	 	  if data.from_time >= selection.from_time && data.to_time <= selection.to_time	 				
+ 	 	    row = sheet1.row(rownum)
  	 			row.push "#{data.name}"
  	 			row.push "#{data.project}"
  	 			row.push "#{data.printer}"
@@ -104,7 +105,7 @@ class PrinterSelectionsController < ApplicationController
  	 	end
  	 	
       #name file
-  		@outfile = "Printer_Data_#{selection.from_time}_to_#{selection.to_time}.xls"
+  		@outfile = "Printer_Data_#{selection.from_time.year}_#{selection.from_time.month}_#{selection.from_time.day}_to_#{selection.to_time.year}_#{selection.to_time.month}_#{selection.to_time.year.day}.xls"
   		PrinterSelection.delete_all
   		
     	require 'stringio'
