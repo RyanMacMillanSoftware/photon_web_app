@@ -17,8 +17,11 @@ class PrinterDataController < ApplicationController
       @printer_data.from_time = Time.new(params[:printer_datum][:'from_time(1i)'], params[:printer_datum][:'from_time(2i)'], params[:printer_datum][:'from_time(3i)'], params[:printer_datum][:'from_time(4i)'], params[:printer_datum][:'from_time(5i)'], 0)
       @printer_data.to_time = Time.new(params[:printer_datum][:'to_time(1i)'], params[:printer_datum][:'to_time(2i)'], params[:printer_datum][:'to_time(3i)'], params[:printer_datum][:'to_time(4i)'], params[:printer_datum][:'to_time(5i)'], 59)
     	if @printer_data.save
+        #update printer status
+        printer = PrinterStatus.find_by(printer: @printer_data.printer)
+        printer.update_attributes(available: false, completion_time: @printer_data.to_time)
     		flash[:success] = "Data Stored Successfully"
-    		redirect_to new_printer_datum_path
+    		redirect_to printer_statuses_path
     	else
       		render 'new'
       	end
