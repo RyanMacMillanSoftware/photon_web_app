@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :micro_fab_users
   resources :printer_data
   resources :printer_selections
+  resources :printer_statuses
    
   
 end

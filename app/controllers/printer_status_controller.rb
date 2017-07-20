@@ -1,2 +1,0 @@
-class PrinterStatusController < ApplicationController
-end
