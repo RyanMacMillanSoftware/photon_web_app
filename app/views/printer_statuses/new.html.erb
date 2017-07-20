@@ -1,0 +1,16 @@
+<!--form for creating new mfusers-->
+<% provide(:title, 'Add Printer') %>
+<% provide(:button_text, 'Add Printer') %>
+<h1>Create a Printer</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@new_printer) do |f| %>
+  <%= render 'shared/printer_status_error_messages', object: @new_printer %>
+
+  <%= f.label :printer_name %>
+  <%= f.text_field :printer, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
+  </div>
+</div>

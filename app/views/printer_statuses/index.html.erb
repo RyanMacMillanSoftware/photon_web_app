@@ -8,6 +8,10 @@
  		<th>Printer</th>
  		<th>Availability</th>
  		<th>Estimated Completion Time</th>
+ 		<%if current_user.admin?%>
+		<th></th>
+		<%end%>
+	
  	</tr>
 	<% PrinterStatus.all.each do |printer| %>
 			<tr>
@@ -20,7 +24,10 @@
 			<%if printer.completion_time.nil?%>
 			<td>-</td>
 			<%else%>
-			<td><%=printer.completion_time%></td>
+			<td><%=printer.completion_time.hour%>:<%=printer.completion_time.min%></td>
+			<%end%>
+			<%if current_user.admin?%>
+			<td><%= link_to "Delete Printer", printer, method: :delete , data: { confirm: "Are you sure you would like to remove \"#{printer.printer}\"?"}, class: "btn btn-primary btn-xs btn-logout" %></td>
 			<%end%>
 			</tr>
 	<% end %>

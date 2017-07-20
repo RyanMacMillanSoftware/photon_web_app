@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   post '/printer_data/new', to: 'printer_data#create'
   get '/printer_selections/new', to: 'printer_selections#new'
   post '/printer_selections/new', to: 'printer_selections#create'
+  get '/printer_status/new', to: 'printer_statuses#new'
+  post 'printer_status/new', to: 'printer_statuses#create'
+  delete '/printer_status/new', to: 'printer_statuses#delete'
   
   #dynamic form. access javascript controller
   match ':controller/:action.:format', via: [:get, :post]
