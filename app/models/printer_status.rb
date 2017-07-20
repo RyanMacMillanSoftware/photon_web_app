@@ -1,0 +1,2 @@
+class PrinterStatus < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class PrinterStatusController < ApplicationController
+end
