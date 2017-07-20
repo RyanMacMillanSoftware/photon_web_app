@@ -24,9 +24,9 @@
       <%= f.label :project %>
       <%= f.text_field :project, class: 'form-control' %>	
 
-
       <%= f.label :printer %>
-      <%= f.text_field :printer, class: 'form-control' %> 
+      <%@printers = PrinterStatus.all %>
+      <%= f.collection_select(:printer, @printers.sort { |a,b| a.printer.downcase <=> b.printer.downcase } , :printer, :printer) %>
 
       <%= f.label :from_time %>
       <%= f.time_select :from_time %> 
