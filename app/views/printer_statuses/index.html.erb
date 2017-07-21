@@ -5,7 +5,7 @@
  <!-- Table for checkins -->
  <table class="table table-hover">
  	<tr>
- 		<th>Printer</th>
+ 		<th>Printer<%if current_user.admin?%><%= link_to "Add Printer", new_printer_status_path, class: "btn btn-primary btn-xs btn-logout" %><%end%></th>
  		<th>Availability</th>
  		<th>Estimated Completion Time</th>
  		<%if current_user.admin?%>
@@ -14,8 +14,9 @@
 	
  	</tr>
 	<% PrinterStatus.all.each do |printer| %>
-		<%if printer.completion_time <= Time.now%>
+		<%if !printer.completion_time.nil?%><%if printer.completion_time <= Time.now%>
 		<%printer.update_attributes(available: true, completion_time: nil)%>
+		<%end%>
 		<%end%>
 			<tr>
 			<td><%=printer.printer%></td>
@@ -27,7 +28,7 @@
 			<%if printer.completion_time.nil?%>
 			<td>-</td>
 			<%else%>
-			<td><%=printer.completion_time.hour%>:<%=printer.completion_time.min%></td>
+			<td><%=printer.completion_time.strftime "%H:%M"%></td>
 			<%end%>
 			<%if current_user.admin?%>
 			<td><%= link_to "Delete Printer", printer, method: :delete , data: { confirm: "Are you sure you would like to remove \"#{printer.printer}\"?"}, class: "btn btn-primary btn-xs btn-logout" %></td>
@@ -41,7 +42,6 @@
 <div>
 	<%= link_to "Use Printer", new_printer_datum_path , class: "btn btn-primary" %>
 	<%if current_user.admin?%>
-	<%= link_to "Add Printer", new_printer_status_path, class: "btn btn-primary" %>
 	<%= link_to "Download Spreadsheet", new_printer_selection_path , class: "btn btn-primary" %>
 	<%end%>
 	

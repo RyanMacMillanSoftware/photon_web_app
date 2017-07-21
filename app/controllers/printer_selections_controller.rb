@@ -78,14 +78,14 @@ class PrinterSelectionsController < ApplicationController
  	 	#volume
  	 	sheet1.column(3).width = 15
  	 	#from date
- 	 	sheet1.column(4).width = 30
+ 	 	sheet1.column(4).width = 20
  	 	#to date
  	 	sheet1.column(5).width = 30
  	 	#notes
  	 	sheet1.column(6).width = 50
  	 	
  	 	#content
- 	 	sheet1.row(0).push 'Name', 'Project', 'Printer', 'Volume','DateTime Start Print','DateTime Finish Print', 'Notes'
+ 	 	sheet1.row(0).push 'Name', 'Project', 'Printer', 'Volume','Date', 'Notes'
  	 	all_data = PrinterDatum.all
     sorted_all_data = all_data.sort{ |a,b| a.to_time <=> b.to_time}
 		selection = PrinterSelection.last 	 		
@@ -97,15 +97,14 @@ class PrinterSelectionsController < ApplicationController
  	 			row.push "#{data.project}"
  	 			row.push "#{data.printer}"
  	 			row.push "#{data.volume}"
- 	 			row.push "#{data.from_time}"
- 	 			row.push "#{data.to_time}"
+ 	 			row.push "#{data.from_time.strftime "%Y-%m-%d"}"
  	 			row.push "#{data.notes}"
  	 			rownum += 1
  	 		end
  	 	end
  	 	
       #name file
-  		@outfile = "Printer_Data_#{selection.from_time.year}_#{selection.from_time.month}_#{selection.from_time.day}_to_#{selection.to_time.year}_#{selection.to_time.month}_#{selection.to_time.year.day}.xls"
+  		@outfile = "Printer_Data_#{selection.from_time.strftime "%Y-%m-%d"}_to_#{selection.to_time.strftime "%Y-%m-%d"}.xls"
   		PrinterSelection.delete_all
   		
     	require 'stringio'

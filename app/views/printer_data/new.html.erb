@@ -28,11 +28,7 @@
       <%@printers = PrinterStatus.all %>
       <%= f.collection_select(:printer, @printers.sort { |a,b| a.printer.downcase <=> b.printer.downcase } , :printer, :printer) %>
 
-      <%= f.label :from_time %>
-      <%= f.time_select :from_time %> 
-
-
-      <%= f.label :to_time %>
+      <%= f.label :time_of_completion_estimate %>
       <%= f.time_select :to_time %> 
 
 

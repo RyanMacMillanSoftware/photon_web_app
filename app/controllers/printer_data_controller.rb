@@ -12,10 +12,8 @@ class PrinterDataController < ApplicationController
   
 
 	def create
-   		@printer_data = PrinterDatum.new(data_params)
-      #set the date of the times to today
-      @printer_data.from_time = Time.new(params[:printer_datum][:'from_time(1i)'], params[:printer_datum][:'from_time(2i)'], params[:printer_datum][:'from_time(3i)'], params[:printer_datum][:'from_time(4i)'], params[:printer_datum][:'from_time(5i)'], 0)
-      @printer_data.to_time = Time.new(params[:printer_datum][:'to_time(1i)'], params[:printer_datum][:'to_time(2i)'], params[:printer_datum][:'to_time(3i)'], params[:printer_datum][:'to_time(4i)'], params[:printer_datum][:'to_time(5i)'], 59)
+    to_time = DateTime.now.change(hour: params[:printer_datum][:'to_time(4i)'].to_i, min: params[:printer_datum][:'to_time(5i)'].to_i, sec: 59)
+   		@printer_data = PrinterDatum.new(name: params[:printer_datum][:'name'], project: params[:printer_datum][:'project'], printer:params[:printer_datum][:'printer'], phonenumber: params[:printer_datum][:'phonenumber'], volume: params[:printer_datum][:'volume'], notes: params[:printer_datum][:'notes'], from_time: DateTime.now, to_time: to_time)
     	if @printer_data.save
         #update printer status
         printer = PrinterStatus.find_by(printer: @printer_data.printer)
@@ -31,11 +29,6 @@ class PrinterDataController < ApplicationController
    private
 
     # Before filters
-
-    def data_params
-      params.require(:printer_datum).permit(:name, :project, :printer, :phonenumber,
-                                   :from_time, :to_time, :volume, :notes)
-    end
 
     # Confirms an admin user.
     def admin_user

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720021615) do
+ActiveRecord::Schema.define(version: 20170720222843) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "name"
@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(version: 20170720021615) do
     t.string   "name"
     t.string   "project"
     t.string   "printer"
-    t.time     "from_time"
-    t.time     "to_time"
     t.integer  "volume"
     t.string   "notes"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "phonenumber"
+    t.datetime "to_time"
+    t.datetime "from_time"
   end
 
   create_table "printer_selections", force: :cascade do |t|
