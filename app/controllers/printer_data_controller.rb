@@ -12,7 +12,11 @@ class PrinterDataController < ApplicationController
   
 
 	def create
-    to_time = DateTime.now.change(hour: params[:printer_datum][:'to_time(4i)'].to_i, min: params[:printer_datum][:'to_time(5i)'].to_i, sec: 59)
+    hour =  params[:'hour'].to_i
+    if params[:meridian] == "PM"
+      hour = hour + 12
+    end
+    to_time = DateTime.now.change(hour: hour, min: params[:'minute'].to_i, sec: 59)
    		@printer_data = PrinterDatum.new(name: params[:printer_datum][:'name'], project: params[:printer_datum][:'project'], printer:params[:printer_datum][:'printer'], phonenumber: params[:printer_datum][:'phonenumber'], volume: params[:printer_datum][:'volume'], notes: params[:printer_datum][:'notes'], from_time: DateTime.now, to_time: to_time)
     	if @printer_data.save
         #update printer status
