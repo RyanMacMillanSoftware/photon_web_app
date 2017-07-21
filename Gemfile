@@ -16,6 +16,7 @@ gem 'jquery-rails', '4.1.1'
 gem 'jbuilder',     '2.4.1'
 gem 'delayed_job_active_record'
 gem 'spreadsheet'
+gem 'bootstrap-timepicker-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.12'

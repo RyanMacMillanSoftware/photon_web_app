@@ -27,10 +27,17 @@
       <%= f.label :printer %>
       <%@printers = PrinterStatus.all %>
       <%= f.collection_select(:printer, @printers.sort { |a,b| a.printer.downcase <=> b.printer.downcase } , :printer, :printer) %>
-
-      <%= f.label :time_of_completion_estimate %>
-      <%= f.time_select :to_time %> 
-
+      
+      <%= f.label :time_of_completion_estimate %> 
+      <div class="input-group bootstrap-timepicker timepicker">
+            <%= f.text_field :to_time, id: "timepicker1", class: 'form-control input-small' , value: "17:00"%>
+       
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
+ 
+        <script type="text/javascript">
+            $('#timepicker1').timepicker();
+        </script>
 
       <%= f.label :volume %>
       <%= f.number_field :volume, class: 'form-control' %>

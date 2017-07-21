@@ -14,20 +14,16 @@
 	
  	</tr>
 	<% PrinterStatus.all.each do |printer| %>
-		<%if !printer.completion_time.nil?%><%if printer.completion_time <= Time.now%>
+		<%if !printer.available? && printer.completion_time <= DateTime.now%>
 		<%printer.update_attributes(available: true, completion_time: nil)%>
-		<%end%>
 		<%end%>
 			<tr>
 			<td><%=printer.printer%></td>
 			<%if printer.available%>
 			<td>Available</td>
-			<%else%>
-			<td>In Use</td>
-			<%end%>
-			<%if printer.completion_time.nil?%>
 			<td>-</td>
 			<%else%>
+			<td>In Use</td>
 			<td><%=printer.completion_time.strftime "%H:%M"%></td>
 			<%end%>
 			<%if current_user.admin?%>
