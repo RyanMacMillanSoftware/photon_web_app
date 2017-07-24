@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  printer: MyString
+  printer: MyString1
   available: false
   completion_time: 2017-07-20 14:16:15
 

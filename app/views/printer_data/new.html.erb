@@ -19,7 +19,7 @@
 
 
       <%= f.label :phone_number %>
-      <%= f.number_field :phonenumber, class: 'form-control' %>
+      <%= f.number_field :phonenumber, min: "0", class: 'form-control' %>
 
       <%= f.label :project %>
       <%= f.text_field :project, class: 'form-control' %>	
@@ -40,7 +40,7 @@
         </script>
 
       <%= f.label :volume %>
-      <%= f.number_field :volume, class: 'form-control' %>
+      <%= f.number_field :volume, min: "0" , class: 'form-control' %>
 
 
       <%= f.label :notes %>

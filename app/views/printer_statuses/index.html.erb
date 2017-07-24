@@ -24,7 +24,7 @@
 			<td>-</td>
 			<%else%>
 			<td>In Use</td>
-			<td><%=printer.completion_time.strftime "%H:%M"%></td>
+			<td><%=printer.completion_time.strftime "%I:%M%p"%></td>
 			<%end%>
 			<%if current_user.admin?%>
 			<td><%= link_to "Delete Printer", printer, method: :delete , data: { confirm: "Are you sure you would like to remove \"#{printer.printer}\"?"}, class: "btn btn-primary btn-xs btn-logout" %></td>

@@ -1,19 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  string: 
-  string: 
-  string: 
-  time: 
-  time: 
-  int: 
-  string: 
-
-two:
-  string: 
-  string: 
-  string: 
-  time: 
-  time: 
-  int: 
-  string: 
