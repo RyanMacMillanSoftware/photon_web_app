@@ -10,7 +10,13 @@ class PrinterStatusesController < ApplicationController
     redirect_to printer_statuses_path
   end  
   
- 
+ def show
+  PrinterStatus.each do |printer|
+    if !printer.available? && printer.completion_time <= DateTime.now
+      printer.update_attributes(available: true, completion_time: nil)
+    end
+  end
+ end
   
   def new
   	@new_printer= PrinterStatus.new

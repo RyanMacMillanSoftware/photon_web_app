@@ -14,9 +14,7 @@
 	
  	</tr>
 	<% PrinterStatus.all.each do |printer| %>
-		<%if !printer.available? && printer.completion_time <= DateTime.now%>
-		<%printer.update_attributes(available: true, completion_time: nil)%>
-		<%end%>
+		
 			<tr>
 			<td><%=printer.printer%></td>
 			<%if printer.available%>
