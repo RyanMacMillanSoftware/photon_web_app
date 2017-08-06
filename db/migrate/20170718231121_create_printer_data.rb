@@ -4,8 +4,8 @@ class CreatePrinterData < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :project
       t.string :printer
-      t.time :from_time
-      t.time :to_time
+      t.datetime :from_time
+      t.datetime :to_time
       t.integer :volume
       t.string :notes
 
