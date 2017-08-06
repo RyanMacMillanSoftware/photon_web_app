@@ -13,7 +13,7 @@ class PrinterDataController < ApplicationController
 
 	def create
     hour =  params[:'hour'].to_i
-    if params[:meridian] == "PM"
+    if params[:'meridian'] == "PM"
       hour = hour + 12
     end
     to_time = DateTime.now.change(hour: hour, min: params[:'minute'].to_i, sec: 59)
@@ -21,7 +21,7 @@ class PrinterDataController < ApplicationController
     	if @printer_data.save
         #update printer status
         printer = PrinterStatus.find_by(printer: @printer_data.printer)
-        printer.update_attributes(available: false, completion_time: @printer_data.to_time)
+        printer.update_attributes(available: false, completion_time: to_time)
     		flash[:success] = "Data Stored Successfully"
     		redirect_to printer_statuses_path
     	else
