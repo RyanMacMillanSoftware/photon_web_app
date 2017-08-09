@@ -21,7 +21,7 @@ class PrinterDataController < ApplicationController
     	if @printer_data.save
         #update printer status
         printer = PrinterStatus.find_by(printer: @printer_data.printer)
-        printer.update_attributes(available: false, completion_time: to_time)
+        printer.update_attributes(available: false, completion_time: to_time, name: params[:printer_datum][:'name'])
     		flash[:success] = "Data Stored Successfully"
     		redirect_to printer_statuses_path
     	else
