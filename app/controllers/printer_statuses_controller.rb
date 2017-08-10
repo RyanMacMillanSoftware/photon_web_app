@@ -1,5 +1,5 @@
 class PrinterStatusesController < ApplicationController
-	 #admins can manage microgab users in the "Users" tab/
+  
   before_action :admin_user, only: [:destroy, :new, :create]
   
 

@@ -1,4 +1,8 @@
  <% provide(:title, '3D Printers') %>
+<%if current_user.nil?%>
+	<%current_user = User.new%>
+<%end%>
+
 
 <h1>3D Printer Availability</h1>
 
