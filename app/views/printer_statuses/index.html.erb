@@ -29,8 +29,8 @@
 			<td>-</td>
 			<td>-</td>
 			<%else%>
-			<td><%=printer.name%></td>
 			<td>In Use</td>
+			<td><%=printer.name%></td>
 			<td><%=printer.completion_time.strftime "%I:%M%p"%></td>
 			<%end%>
 			<%if current_user.admin?%>
