@@ -10,6 +10,7 @@
  		<th>Printer<%if !current_user.nil? && current_user.admin?%><%= link_to "Add Printer", new_printer_status_path, class: "btn btn-primary btn-xs btn-logout" %><%end%></th>
  		<th>Availability</th>
  		<th>User</th>
+ 		<th>Contact #</th>
  		<th>Estimated Completion Time</th>
  		<%if !current_user.nil? && current_user.admin?%>
 		<th></th>
@@ -26,9 +27,11 @@
 			<td>Available</td>
 			<td>-</td>
 			<td>-</td>
+			<td>-</td>
 			<%else%>
 			<td>In Use</td>
 			<td><%=printer.name%></td>
+			<td><%=printer.number%></td>
 			<td><%=printer.completion_time.strftime "%I:%M%p"%></td>
 			<%end%>
 			<%if !current_user.nil? && current_user.admin?%>
