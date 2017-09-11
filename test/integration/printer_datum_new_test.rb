@@ -19,5 +19,15 @@ class PrinterDatumNewTest < ActionDispatch::IntegrationTest
                                           meridian: "PM", volume: 20, notes: "Hello" } }
     end
   end
+
+  test "create a invalid printer datum" do
+    log_in_as(@admin)
+    get new_printer_datum_path
+    assert_difference 'PrinterDatum.count', 0 do
+    post new_printer_datum_path, params: { printer_datum: { name: "", phonenumber: -1,
+                                          project: "", printer: @printer.printer, hour: DateTime.now.hour-1, minute: DateTime.now.minute, 
+                                          meridian: "PM", volume: -1, notes: "" } }
+    end
+  end
   
 end
