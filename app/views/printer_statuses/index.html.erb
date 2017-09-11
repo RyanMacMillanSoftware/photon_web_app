@@ -11,7 +11,7 @@
  		<th>Availability</th>
  		<th>User</th>
  		<th>Estimated Completion Time</th>
- 		<%if current_user.admin?%>
+ 		<%if !current_user.nil? && current_user.admin?%>
 		<th></th>
 		<%end%>
 	
@@ -31,7 +31,7 @@
 			<td><%=printer.name%></td>
 			<td><%=printer.completion_time.strftime "%I:%M%p"%></td>
 			<%end%>
-			<%if current_user.admin?%>
+			<%if !current_user.nil? && current_user.admin?%>
 			<td><%= link_to "Delete Printer", printer, method: :delete , data: { confirm: "Are you sure you would like to remove \"#{printer.printer}\"?"}, class: "btn btn-primary btn-xs btn-logout" %></td>
 			<%end%>
 			</tr>
@@ -42,7 +42,7 @@
 
 <div>
 	<%= link_to "Use Printer", new_printer_datum_path , class: "btn btn-primary" %>
-	<%if current_user.admin?%>
+	<%if !current_user.nil? && current_user.admin?%>
 	<%= link_to "Download Spreadsheet", new_printer_selection_path , class: "btn btn-primary" %>
 	<%end%>
 	

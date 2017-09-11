@@ -10,7 +10,7 @@
 
         <li><%= link_to "3D Printers", printer_statuses_path%> </li>
         	 
-			<% if current_user.admin?%>
+			<% if !current_user.nil? && current_user.admin?%>
           <li><%= link_to "Users", micro_fab_users_path %></li>
          
           
