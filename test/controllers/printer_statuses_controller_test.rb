@@ -26,10 +26,10 @@ class PrinterStatusesControllerTest < ActionDispatch::IntegrationTest
 
   #test "shound not delete when not admin" do
   #	log_in_as(@non_admin)
-  #  get printer_statuses_path 
-  #  assert_difference 'CheckIn.count', 0 do
-  #   delete printer_statuses_path(@one)
-  #  end
+   # get printer_statuses_path 
+    #assert_difference 'PrinterStatus.count', 0 do
+     #delete printer_status_path(@one)
+   # end
   #end
 
 end
