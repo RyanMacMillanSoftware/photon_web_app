@@ -9,12 +9,33 @@ class PrinterStatusesIndexTest < ActionDispatch::IntegrationTest
     @printer_two = printer_statuses(:two)
   	end
 
-  	#test "cannot delete a printer status instance as non admin" do
-  	#	log_in_as(@non_admin)
-  	#	assert_difference 'PrinterStatus.count', 0 do
-    #		delete printer_status_path(@printer_one)
-    #	end
-  	#end
+  	test "index appears as it should for a guest" do
+      get printer_statuses_path
+      assert_template 'printer_statuses/index'
+     assert_select "a[href=?]", new_printer_status_path, count: 0
+     assert_select "a[href=?]", new_printer_datum_path, count: 0
+     assert_select "a[href=?]", new_printer_selection_path, count: 0
+     assert_select "a[href=?]", login_path
+     assert_select "a[href=?]", printer_statuses_path
+    end
+
+    test "index appears as it should for a non admin" do
+      log_in_as(@non_admin)
+      get printer_statuses_path
+      assert_template 'printer_statuses/index'
+     assert_select "a[href=?]", new_printer_status_path, count: 0
+     assert_select "a[href=?]", new_printer_datum_path
+     assert_select "a[href=?]", new_printer_selection_path, count: 0
+    end
+
+    test "index appears as it should for an admin" do
+      log_in_as(@admin)
+      get printer_statuses_path
+      assert_template 'printer_statuses/index'
+     assert_select "a[href=?]", new_printer_status_path
+     assert_select "a[href=?]", new_printer_datum_path
+     assert_select "a[href=?]", new_printer_selection_path
+    end
 
 
 end
