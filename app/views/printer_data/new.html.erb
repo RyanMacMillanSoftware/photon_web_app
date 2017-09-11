@@ -39,9 +39,11 @@
             $('#timepicker1').timepicker();
         </script>
 
+      
       <%= f.label :volume %>
-      <%= f.number_field :volume, min: "0" , class: 'form-control' %>
-
+      <div class="input-group">
+      <%= f.number_field :volume, min: "0" , class: 'form-control printer-number' %> <span class="input-group-addon"> mL</span>
+      </div>
 
       <%= f.label :notes %>
       <%= f.text_area :notes, class: 'form-control' %> 
