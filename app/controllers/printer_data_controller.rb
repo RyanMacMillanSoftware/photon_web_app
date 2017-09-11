@@ -1,6 +1,4 @@
 class PrinterDataController < ApplicationController
-	#The ugliest controller in the codebase
-#Creates CheckIns, turns CheckIns into TimePunches. 
 
 
 	
@@ -14,7 +12,7 @@ class PrinterDataController < ApplicationController
 	def create
     hour =  params[:'hour'].to_i
     if params[:'meridian'] == "PM"
-      hour = hour + 12 unless hour = 12
+      hour = hour + 12 unless hour == 12
     end
     to_time = DateTime.now.change(hour: hour, min: params[:'minute'].to_i, sec: 59)
    		@printer_data = PrinterDatum.new(name: params[:printer_datum][:'name'], project: params[:printer_datum][:'project'], printer:params[:printer_datum][:'printer'], phonenumber: params[:printer_datum][:'phonenumber'], volume: params[:printer_datum][:'volume'], notes: params[:printer_datum][:'notes'], from_time: DateTime.now, to_time: to_time)
