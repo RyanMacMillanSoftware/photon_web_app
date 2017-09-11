@@ -1,7 +1,5 @@
  <% provide(:title, '3D Printers') %>
-<%if current_user.nil?%>
-	<%current_user = User.new%>
-<%end%>
+
 
 
 <h1>3D Printer Availability</h1>
@@ -9,7 +7,7 @@
  <!-- Table for checkins -->
  <table class="table table-hover">
  	<tr>
- 		<th>Printer<%if current_user.admin?%><%= link_to "Add Printer", new_printer_status_path, class: "btn btn-primary btn-xs btn-logout" %><%end%></th>
+ 		<th>Printer<%if !current_user.nil? && current_user.admin?%><%= link_to "Add Printer", new_printer_status_path, class: "btn btn-primary btn-xs btn-logout" %><%end%></th>
  		<th>Availability</th>
  		<th>User</th>
  		<th>Estimated Completion Time</th>
