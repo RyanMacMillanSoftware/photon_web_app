@@ -44,7 +44,9 @@
 </div>
 
 <div>
+	<% if logged_in?%>
 	<%= link_to "Use Printer", new_printer_datum_path , class: "btn btn-primary" %>
+	<%end%>
 	<%if !current_user.nil? && current_user.admin?%>
 	<%= link_to "Download Spreadsheet", new_printer_selection_path , class: "btn btn-primary" %>
 	<%end%>
