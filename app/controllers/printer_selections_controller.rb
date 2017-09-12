@@ -63,8 +63,8 @@ class PrinterSelectionsController < ApplicationController
  	 	
  	 	#formatting
  	 	date_time = Spreadsheet::Format.new :number_format => 'DD/MM/YYYY hh:mm:ss'
- 	 	sheet1.column(2).default_format = date_time
- 	 	sheet1.column(3).default_format = date_time
+ 	 	sheet1.column(4).default_format = date_time
+ 	 	sheet1.column(5).default_format = date_time
  	 	
  	 	bold = Spreadsheet::Format.new :weight => :bold
  	 	sheet1.row(0).default_format = bold
