@@ -11,11 +11,6 @@ class PrinterStatusesController < ApplicationController
   end  
   
  def show
-  PrinterStatus.all.each do |printer|
-    if !printer.available? && (printer.completion_time.hour < DateTime.now.hour || (printer.completion_time.hour == DateTime.now.hour && printer.completion_time.min < DateTime.now.min))
-      printer.update_attributes(available: true, completion_time: nil)
-    end
-  end
  end
   
   def new
