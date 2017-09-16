@@ -12,6 +12,9 @@
  		<th>User</th>
  		<th>Contact #</th>
  		<th>Estimated Completion Time</th>
+ 		<%if logged_in?%>
+		<th></th>
+		<%end%>
  		<%if !current_user.nil? && current_user.admin?%>
 		<th></th>
 		<%end%>
@@ -28,11 +31,18 @@
 			<td>-</td>
 			<td>-</td>
 			<td>-</td>
+			<%if logged_in?%>
+			<td><%= link_to "Use Equipment", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs btn-logout" %></td>
+			<%end%>
+
 			<%else%>
 			<td>In Use</td>
 			<td><%=printer.name%></td>
 			<td><%=printer.number%></td>
 			<td><%=printer.completion_time.strftime "%I:%M%p"%></td>
+			<%end%>
+			<%if logged_in?%>
+			<td></td>
 			<%end%>
 			<%if !current_user.nil? && current_user.admin?%>
 			<td><%= link_to "Delete", printer, method: :delete , data: { confirm: "Are you sure you would like to remove \"#{printer.printer}\"?"}, class: "btn btn-primary btn-xs btn-logout" %></td>
