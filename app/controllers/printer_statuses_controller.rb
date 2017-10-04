@@ -34,7 +34,7 @@ class PrinterStatusesController < ApplicationController
    private
 
     def ps_params
-      params.require(:printer_status).permit(:printer)
+      params.require(:printer_status).permit(:printer, :image)
     end
 
 

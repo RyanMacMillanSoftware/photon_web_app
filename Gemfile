@@ -18,6 +18,9 @@ gem 'delayed_job_active_record'
 gem 'spreadsheet'
 gem 'bootstrap-timepicker-rails'
 
+gem "rmagick"
+gem "carrierwave"
+
 group :development, :test do
   gem 'sqlite3', '1.3.12'
   gem 'byebug',  '9.0.0', platform: :mri
