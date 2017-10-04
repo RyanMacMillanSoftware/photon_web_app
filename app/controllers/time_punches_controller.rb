@@ -4,6 +4,7 @@
 class TimePunchesController < ApplicationController
 	
 	before_action :logged_in_user
+	before_action :
    
   def new
   	@time_punch = TimePunch.new
@@ -92,13 +93,11 @@ class TimePunchesController < ApplicationController
 
     # Before filters
 
-    # Confirms an admin user.
-    def admin_user
-    	if current_user.nil?
-      	redirect_to(login_path)
-      else
-      	redirect_to(login_path) unless current_user.admin?
-      end
+    
+    # Confirms an fabrication user.
+    def microfab_user
+      redirect_to(login_path) unless current_user.admin? || current_user.microfab?
+      
     end
     
 	# Confirms a logged-in user.

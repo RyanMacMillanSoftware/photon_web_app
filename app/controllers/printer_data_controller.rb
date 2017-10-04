@@ -1,8 +1,7 @@
 class PrinterDataController < ApplicationController
 
-
-	
-	before_action :logged_in_user
+  before_action :logged_in_user
+	before_action :fabrication_user
    
 	def new
   		@printer_data = PrinterDatum.new
@@ -35,22 +34,21 @@ class PrinterDataController < ApplicationController
 
     # Before filters
 
-    # Confirms an admin user.
-    def admin_user
-    	if current_user.nil?
-      	redirect_to(login_path)
-      else
-      	redirect_to(login_path) unless current_user.admin?
-      end
+    # Confirms an fabrication user.
+    def fabrication_user
+      redirect_to(login_path) unless current_user.admin? || current_user.fabrication?
+      
     end
-    
-	# Confirms a logged-in user.
+
+
+  # Confirms a logged-in user.
     def logged_in_user
       unless logged_in?
-      	store_location
+        store_location
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
     end
+    
 
 end

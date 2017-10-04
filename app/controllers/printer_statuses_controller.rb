@@ -1,7 +1,6 @@
 class PrinterStatusesController < ApplicationController
   
   before_action :admin_user, only: [:destroy, :new, :create]
-  
 
   #delete the user
   def destroy

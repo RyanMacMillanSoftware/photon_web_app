@@ -8,7 +8,7 @@
  <table class="table table-hover">
  	<tr>
  		<th>Image</th>
- 		<th>Equipment<%if !current_user.nil? && current_user.admin?%><%= link_to "Add Equipment", new_printer_status_path, class: "btn btn-primary btn-xs btn-logout" %><%end%></th>
+ 		<th>Equipment  <%if !current_user.nil? && current_user.admin?%><%= link_to "Add Equipment", new_printer_status_path, class: "btn btn-primary btn-xs" %><%end%></th>
  		<th>Availability</th>
  		<th>User</th>
  		<th>Contact #</th>
@@ -34,7 +34,7 @@
 			<td>-</td>
 			<td>-</td>
 			<%if logged_in?%>
-			<td><%= link_to "Use Equipment", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs btn-logout" %></td>
+			<td><%= link_to "Use Equipment", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs" %></td>
 			<%end%>
 
 			<%else%>
@@ -48,7 +48,7 @@
 			<%end%>
 			<%end%>
 			<%if !current_user.nil? && current_user.admin?%>
-			<td><%= link_to "Delete", printer, method: :delete , data: { confirm: "Are you sure you would like to remove \"#{printer.printer}\"?"}, class: "btn btn-primary btn-xs btn-logout" %></td>
+			<td><%= link_to "Delete", printer, method: :delete , data: { confirm: "Are you sure you would like to remove \"#{printer.printer}\"?"}, class: "btn btn-primary btn-xs" %></td>
 			<%end%>
 			</tr>
 	<% end %>
