@@ -34,6 +34,6 @@ Rails.application.routes.draw do
   resources :printer_data
   resources :printer_selections
   resources :printer_statuses
-   
+  resources :fabrication_users
   
 end

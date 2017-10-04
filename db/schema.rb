@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003042124) do
+ActiveRecord::Schema.define(version: 20171004075603) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20171003042124) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "fabrication_users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
   end
 
   create_table "micro_fab_users", force: :cascade do |t|
