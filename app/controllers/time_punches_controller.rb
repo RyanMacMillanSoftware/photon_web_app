@@ -4,7 +4,7 @@
 class TimePunchesController < ApplicationController
 	
 	before_action :logged_in_user
-	before_action :
+	before_action :microfab_user
    
   def new
   	@time_punch = TimePunch.new
