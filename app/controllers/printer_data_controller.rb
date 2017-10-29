@@ -9,9 +9,9 @@ class PrinterDataController < ApplicationController
   
 
 	def create
-    to_time = DateTime.now.change(hour: params[:printer_datum][:'to_time(4i)'].to_i, min: params[:printer_datum][:'to_time(5i)'].to_i, sec: 1)
+    to_time = DateTime.current.change(hour: params[:printer_datum][:'to_time(4i)'].to_i, min: params[:printer_datum][:'to_time(5i)'].to_i, sec: 1)
    		
-      if params[:printer_datum][:'to_time(4i)'].to_i < DateTime.now.hour #tomorrow
+      if params[:printer_datum][:'to_time(4i)'].to_i < DateTime.current.hour #tomorrow
         to_time = to_time.change(day: to_time.day+1)
         #completion_time = Time.new(Time.now.year, Time.now.month, Time.now.day+1, hour, params[:'minute'].to_i, 0)
         #else #today
