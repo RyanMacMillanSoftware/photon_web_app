@@ -44,7 +44,7 @@
 			<td><%=printer.completion_time.strftime "%I:%M%p"%></td>
 		
 			<%if logged_in?%>
-			<td></td>
+			<td><%= link_to "Use Equipment", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs" %></td>
 			<%end%>
 			<%end%>
 			<%if !current_user.nil? && current_user.admin?%>
