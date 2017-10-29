@@ -37,13 +37,6 @@ class PrinterStatusesController < ApplicationController
       params.require(:printer_status).permit(:printer, :image)
     end
 
-
-   def not_lablogin
-      if !current_user.nil? && current_user.microfab?
-        redirect_to(login_path) unless current_user.admin?
-      end
-    end
-    
     # Confirms an admin user.
     def admin_user
     	if current_user.nil?
