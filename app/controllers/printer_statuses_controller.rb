@@ -1,5 +1,6 @@
 class PrinterStatusesController < ApplicationController
   
+  before_action :not_lablogin
   before_action :admin_user, only: [:destroy, :new, :create]
 
   #delete the user
@@ -37,7 +38,11 @@ class PrinterStatusesController < ApplicationController
     end
 
 
-   
+   def not_lablogin
+      if !current_user.nil? && current_user.microfab?
+        redirect_to(login_path) unless current_user.admin?
+      end
+    end
     
     # Confirms an admin user.
     def admin_user
