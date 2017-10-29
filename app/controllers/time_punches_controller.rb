@@ -96,7 +96,7 @@ class TimePunchesController < ApplicationController
     
     # Confirms an fabrication user.
     def microfab_user
-      redirect_to(login_path) unless current_user.admin? || current_user.microfab?
+      redirect_to(printer_statuses_path) unless current_user.admin? || current_user.microfab?
       
     end
     
