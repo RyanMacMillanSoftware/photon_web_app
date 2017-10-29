@@ -33,7 +33,7 @@
 			<td>-</td>
 			<td>-</td>
 			<td>-</td>
-			<%if logged_in?%>
+			<%if logged_in? && !current_user.nil? && (current_user.fabrication? || current_user.admin?)%>
 			<td><%= link_to "Use Equipment", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs" %></td>
 			<%end%>
 
