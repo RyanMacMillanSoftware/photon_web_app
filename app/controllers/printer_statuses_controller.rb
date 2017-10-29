@@ -1,6 +1,5 @@
 class PrinterStatusesController < ApplicationController
   
-  before_action :not_lablogin
   before_action :admin_user, only: [:destroy, :new, :create]
 
   #delete the user
