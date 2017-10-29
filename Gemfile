@@ -17,7 +17,6 @@ gem 'jbuilder',     '2.4.1'
 gem 'delayed_job_active_record'
 gem 'spreadsheet'
 gem 'bootstrap-timepicker-rails'
-
 gem "rmagick"
 gem "carrierwave"
 

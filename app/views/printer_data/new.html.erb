@@ -1,4 +1,4 @@
-<% provide(:title, '3D Printer Use Report') %>
+<% provide(:title, 'Equipment Use Report') %>
 
 <h1>Enter your details</h1>
 <div class="row">
@@ -28,15 +28,7 @@
       <%= f.text_field :project, class: 'form-control' %>	
 
       <%= f.label :time_of_completion_estimate %> 
-      <div class="input-group bootstrap-timepicker timepicker">
-            <%= f.text_field :to_time, id: "timepicker1", class: 'form-control input-small' , value: "17:00"%>
-       
-            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-        </div>
- 
-        <script type="text/javascript">
-            $('#timepicker1').timepicker();
-        </script>
+      <%= time_select :printer_datum, 'to_time', prompt: true ,minute_step: 10 %>
 
       
       <%= f.label :volume %>
