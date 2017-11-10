@@ -21,7 +21,9 @@
 		<%end%>
 	
  	</tr>
-	<% PrinterStatus.all.each do |printer| %>
+ 	<%@printers = PrinterStatus.all.sort { |a,b| a.id <=> b.id} %>
+     
+	<% @printers.each do |printer| %>
 		<%if !printer.available? && (printer.completion_time < DateTime.now) %>
  		<% printer.update_attributes(available: true, completion_time: nil)%>
  		<%end%>
