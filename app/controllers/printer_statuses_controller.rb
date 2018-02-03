@@ -33,7 +33,7 @@ class PrinterStatusesController < ApplicationController
    private
 
     def ps_params
-      params.require(:printer_status).permit(:printer, :image)
+      params.require(:printer_status).permit(:printer)
     end
 
     # Confirms an admin user.

@@ -7,7 +7,6 @@
  <!-- Table for checkins -->
  <table class="table table-hover">
  	<tr>
- 		<th>Image</th>
  		<th>Equipment  <%if !current_user.nil? && current_user.admin?%><%= link_to "Add Equipment", new_printer_status_path, class: "btn btn-primary btn-xs" %><%end%></th>
  		<th>Availability</th>
  		<th>User</th>
@@ -28,7 +27,6 @@
  		<% printer.update_attributes(available: true, completion_time: nil)%>
  		<%end%>
 			<tr>
-			<td><%= image_tag printer.image.thumb.url if printer.image? %></td>
 			<td><%=printer.printer%></td>
 			<%if printer.available%>
 			<td>Available</td>
