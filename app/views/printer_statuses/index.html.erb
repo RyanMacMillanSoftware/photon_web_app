@@ -7,7 +7,7 @@
  <!-- Table for checkins -->
  <table class="table table-hover">
  	<tr>
- 		<th>Equipment  <%if !current_user.nil? && current_user.admin?%><%= link_to "Add Equipment", new_printer_status_path, class: "btn btn-primary btn-xs" %><%end%></th>
+ 		<th>Equipment  <%if !current_user.nil? && current_user.admin?%><%= link_to "Add", new_printer_status_path, class: "btn btn-primary btn-xs" %><%end%></th>
  		<th>Availability</th>
  		<th>User</th>
  		<th>Contact #</th>
@@ -34,7 +34,7 @@
 			<td>-</td>
 			<td>-</td>
 			<%if logged_in? && !current_user.nil? && (current_user.fabrication? || current_user.admin?)%>
-			<td><%= link_to "Use Equipment", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs" %></td>
+			<td><%= link_to "Use", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs" %></td>
 			<%end%>
 
 			<%else%>
@@ -44,7 +44,7 @@
 			<td><%=printer.completion_time.strftime "%I:%M%p"%></td>
 		
 			<%if logged_in? && !current_user.nil? && (current_user.fabrication? || current_user.admin?)%>
-			<td><%= link_to "Use Equipment", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs" %></td>
+			<td><%= link_to "Use", new_printer_datum_path(printer: printer.id), class: "btn btn-primary btn-xs" %></td>
 			<%end%>
 			<%end%>
 			<%if !current_user.nil? && current_user.admin?%>
