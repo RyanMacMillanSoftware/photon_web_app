@@ -28,7 +28,7 @@
       <%= f.text_field :project, class: 'form-control' %>	
 
       <%= f.label :time_of_completion_estimate %> 
-      <%= time_select :printer_datum, 'to_time', prompt: true ,minute_step: 10 %>
+      <%= f.time_select :to_time, {minute_step: 10, ampm: true}, class: 'time-select'%>
 
       
       <%= f.label :volume %>

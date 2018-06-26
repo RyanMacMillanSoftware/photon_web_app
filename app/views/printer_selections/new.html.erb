@@ -9,9 +9,9 @@
     
   	<%= render 'shared/p_selection_error_messages', object: @p_selection %>   	
     	<%= f.label :from%>
-    	<%= f.date_select :from_time, prompt: {year: 'Year', month: 'Month', day: 'Day'}, start_year: 2017, end_year: 2100%>
+    	<%= f.date_select :from_time, {prompt: {year: 'Year', month: 'Month', day: 'Day'}, start_year: 2017, end_year: 2100}, class: 'time-select'%>
     	<%= f.label :to%>
-		<%= f.date_select :to_time, prompt: {year: 'Year', month: 'Month', day: 'Day'}, start_year: 2017, end_year: 2100%>
+		<%= f.date_select :to_time, {prompt: {year: 'Year', month: 'Month', day: 'Day'}, start_year: 2017, end_year: 2100}, class: 'time-select'%>
 	
   		<%= f.submit "Download", class: "btn btn-primary" %>
 		 <% end %>
