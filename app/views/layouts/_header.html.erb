@@ -4,7 +4,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         
-        <% if logged_in? && !current_user.nil? && current_user.microfab?%>
+        <% if logged_in? && !current_user.nil? && (current_user.microfab? || current_user.admin?)%>
         	<li><%= link_to "Clean Room Login", root_path %></li>
         <%end%>
 
