@@ -1,3 +1,9 @@
 // Place all the styles related to the PrinterData controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form input[type='number']::-webkit-outer-spin-button,
+form input[type='number']::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
