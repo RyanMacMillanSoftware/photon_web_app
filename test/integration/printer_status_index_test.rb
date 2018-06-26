@@ -4,7 +4,7 @@ class PrinterStatusesIndexTest < ActionDispatch::IntegrationTest
 
 	def setup
 	@admin = users(:michael)
-	@non_admin = users(:archer)
+	@non_admin = users(:stan)
 	@printer_one = printer_statuses(:one)
     @printer_two = printer_statuses(:two)
   	end
@@ -24,7 +24,7 @@ class PrinterStatusesIndexTest < ActionDispatch::IntegrationTest
       get printer_statuses_path
       assert_template 'printer_statuses/index'
      assert_select "a[href=?]", new_printer_status_path, count: 0
-     assert_select "a[href=?]", new_printer_datum_path
+     assert_select "a[href=?]", new_printer_datum_path(printer: @printer_one.id)
      assert_select "a[href=?]", new_printer_selection_path, count: 0
     end
 
@@ -33,7 +33,7 @@ class PrinterStatusesIndexTest < ActionDispatch::IntegrationTest
       get printer_statuses_path
       assert_template 'printer_statuses/index'
      assert_select "a[href=?]", new_printer_status_path
-     assert_select "a[href=?]", new_printer_datum_path
+     assert_select "a[href=?]", new_printer_datum_path(printer: @printer_one.id)
      assert_select "a[href=?]", new_printer_selection_path
     end
 
