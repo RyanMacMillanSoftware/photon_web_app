@@ -77,15 +77,15 @@ class PrinterSelectionsController < ApplicationController
  	 	sheet1.column(2).width = 20
  	 	#volume
  	 	sheet1.column(3).width = 15
- 	 	#from date
+ 	 	#date
  	 	sheet1.column(4).width = 20
- 	 	#to date
- 	 	sheet1.column(5).width = 30
+ 	 	#time taken
+ 	 	sheet1.column(5).width = 15
  	 	#notes
  	 	sheet1.column(6).width = 50
  	 	
  	 	#content
- 	 	sheet1.row(0).push 'Name', 'Project', 'Printer', 'Volume','Date', 'Notes'
+ 	 	sheet1.row(0).push 'Name', 'Project', 'Printer', 'Volume','Date', 'Time Taken (m)', 'Notes'
  	 	all_data = PrinterDatum.all
     sorted_all_data = all_data.sort{ |a,b| a.to_time <=> b.to_time}
 		selection = PrinterSelection.last 	 		
@@ -93,11 +93,21 @@ class PrinterSelectionsController < ApplicationController
     sorted_all_data.each do |data| 
  	 	  if data.from_time >= selection.from_time && data.to_time <= selection.to_time	 				
  	 	    row = sheet1.row(rownum)
+
+        seconds = ((data.to_time - data.from_time)*24*60*60).to_i
+        sec = seconds % 60
+        sinutes = seconds / 60
+        min = sinutes % 60
+        hours = minutes / 60
+        hour = hours % 24
+        time_taken = hour.to_s + 'Hours, '+ min.to_s + 'Mins, ' + sec.to_s + 'Secs'
+
  	 			row.push "#{data.name}"
  	 			row.push "#{data.project}"
  	 			row.push "#{data.printer}"
  	 			row.push "#{data.volume}"
  	 			row.push "#{data.from_time.strftime "%Y-%m-%d"}"
+        row.push '#{time_taken}'
  	 			row.push "#{data.notes}"
  	 			rownum += 1
  	 		end
