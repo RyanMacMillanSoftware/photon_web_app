@@ -97,7 +97,7 @@ class PrinterSelectionsController < ApplicationController
         seconds = ((data.to_time - data.from_time)*24*60*60).to_i
         sec = seconds % 60
         minutes = seconds / 60
-        min = sinutes % 60
+        min = minutes % 60
         hours = minutes / 60
         hour = hours % 24
         time_taken = hour.to_s + 'Hours, '+ min.to_s + 'Mins, ' + sec.to_s + 'Secs'
