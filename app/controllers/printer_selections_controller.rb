@@ -94,22 +94,24 @@ class PrinterSelectionsController < ApplicationController
  	 	  if data.from_time >= selection.from_time && data.to_time <= selection.to_time	 				
  	 	    row = sheet1.row(rownum)
 
-        seconds = ((data.to_time - data.from_time)*24*60*60).to_i
-        minutes = seconds / 60
-        min = minutes % 60
-        hours = minutes / 60
-        hour = hours % 24
-        time_taken = hour.to_s + 'Hours, '+ min.to_s + 'Mins'
+              
+        from_time = data.from_time
+        to_time = data.to_time
+        distance_in_hours   = (((to_time - from_time).abs) / 3600).round
+        distance_in_minutes = ((((to_time - from_time).abs) % 3600) / 60).round
+
+        difference_in_words = ''
+
+        difference_in_words << "#{distance_in_hours} #{distance_in_hours > 1 ? 'hours' : 'hour' } and " if distance_in_hours > 0
+        difference_in_words << "#{distance_in_minutes} #{distance_in_minutes == 1 ? 'minute' : 'minutes' }"
 
  	 			row.push "#{data.name}"
  	 			row.push "#{data.project}"
  	 			row.push "#{data.printer}"
  	 			row.push "#{data.volume}"
  	 			row.push "#{data.from_time.strftime "%Y-%m-%d"}"
-        row.push "#{time_taken}"
+        row.push "#{difference_in_words}"
  	 			row.push "#{data.notes}"
-        row.push "#{data.from_time}"
- 	 			row.push "#{data.to_time}"
         rownum += 1
  	 		end
  	 	end
