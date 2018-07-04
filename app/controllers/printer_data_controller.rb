@@ -18,7 +18,7 @@ class PrinterDataController < ApplicationController
         #completion_time = Time.new(Time.now.year, Time.now.month, Time.now.day, hour, params[:'minute'].to_i, 0)
       end
 
-      @printer_data = PrinterDatum.new(name: params[:printer_datum][:'name'], project: params[:printer_datum][:'project'], phonenumber: params[:printer_datum][:'phonenumber'], volume: params[:printer_datum][:'volume'], notes: params[:printer_datum][:'notes'], from_time: DateTime.now, to_time: to_time)
+      @printer_data = PrinterDatum.new(name: params[:printer_datum][:'name'], project: params[:printer_datum][:'project'], phonenumber: params[:printer_datum][:'phonenumber'], volume: params[:printer_datum][:'volume'], notes: params[:printer_datum][:'notes'], from_time: DateTime.current, to_time: to_time)
     	
       @printer_data.printer = PrinterStatus.find(params[:printer]).printer
       if @printer_data.save
