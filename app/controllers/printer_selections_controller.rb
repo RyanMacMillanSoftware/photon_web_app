@@ -80,7 +80,7 @@ class PrinterSelectionsController < ApplicationController
  	 	#date
  	 	sheet1.column(4).width = 20
  	 	#time taken
- 	 	sheet1.column(5).width = 15
+ 	 	sheet1.column(5).width = 30
  	 	#notes
  	 	sheet1.column(6).width = 50
  	 	
