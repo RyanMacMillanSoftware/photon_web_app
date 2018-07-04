@@ -108,7 +108,9 @@ class PrinterSelectionsController < ApplicationController
  	 			row.push "#{data.from_time.strftime "%Y-%m-%d"}"
         row.push "#{time_taken}"
  	 			row.push "#{data.notes}"
- 	 			rownum += 1
+        row.push "#{data.from_time}"
+ 	 			row.push "#{data.to_time}"
+        rownum += 1
  	 		end
  	 	end
  	 	
