@@ -1,5 +1,5 @@
 <% provide(:title, 'Equipment Use Report') %>
-
+<%= link_to "Back", printer_statuses_path , class: "btn btn-primary" %>
 <h1>Using <%=PrinterStatus.find(params[:printer]).printer%></h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -27,13 +27,13 @@
       <%= f.label :project, class: "required"  %>
       <%= f.text_field :project, class: 'form-control' %>	
 
-      <%= f.label :time_of_completion_estimate %> 
+      <%= f.label :time_of_completion_estimate, class: "required" %> 
       <%= f.time_select :to_time, {minute_step: 10, ampm: true}, class: 'time-select'%>
 
       
       <%= f.label :volume %>
       <div class="input-group">
-      <%= f.number_field :volume, min: "0" , class: 'form-control printer-number' %> <span class="input-group-addon"> mL</span>
+      <%= f.number_field :volume, min: "0" , class: 'form-control printer-number' %>
       </div>
 
       <%= f.label :notes %>
