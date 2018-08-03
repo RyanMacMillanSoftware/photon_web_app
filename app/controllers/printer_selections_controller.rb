@@ -85,7 +85,7 @@ class PrinterSelectionsController < ApplicationController
  	 	sheet1.column(6).width = 50
  	 	
  	 	#content
- 	 	sheet1.row(0).push 'Name', 'Project', 'Printer', 'Volume','Date', 'Time Taken (m)', 'Notes'
+ 	 	sheet1.row(0).push 'Name', 'Project', 'Printer', 'Volume','Date', 'Time Taken (m)', 'Email', 'Notes'
  	 	all_data = PrinterDatum.all
     sorted_all_data = all_data.sort{ |a,b| a.to_time <=> b.to_time}
 		selection = PrinterSelection.last 	 		
@@ -105,12 +105,15 @@ class PrinterSelectionsController < ApplicationController
         difference_in_words << "#{distance_in_hours} #{distance_in_hours > 1 ? 'hours' : 'hour' } and " if distance_in_hours > 0
         difference_in_words << "#{distance_in_minutes} #{distance_in_minutes == 1 ? 'minute' : 'minutes' }"
 
+        email = MicroFabUser.find_by(name: data.name).email
+
  	 			row.push "#{data.name}"
  	 			row.push "#{data.project}"
  	 			row.push "#{data.printer}"
  	 			row.push "#{data.volume}"
  	 			row.push "#{data.from_time.strftime "%Y-%m-%d"}"
         row.push "#{difference_in_words}"
+        row.push "#{email}"
  	 			row.push "#{data.notes}"
         rownum += 1
  	 		end
