@@ -11,6 +11,7 @@ class FabricationUsersController < ApplicationController
       respond_with @f_user.number
     else
       respont_with ""
+    end
   end
 
   #delete the user
