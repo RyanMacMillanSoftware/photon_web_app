@@ -19,7 +19,6 @@ gem 'spreadsheet'
 gem 'bootstrap-timepicker-rails'
 gem "rmagick"
 gem "carrierwave"
-gem "responders"
 
 group :development, :test do
   gem 'sqlite3', '1.3.12'
