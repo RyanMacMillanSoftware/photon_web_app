@@ -105,7 +105,7 @@ class PrinterSelectionsController < ApplicationController
         difference_in_words << "#{distance_in_hours} #{distance_in_hours > 1 ? 'hours' : 'hour' } and " if distance_in_hours > 0
         difference_in_words << "#{distance_in_minutes} #{distance_in_minutes == 1 ? 'minute' : 'minutes' }"
 
-        email = MicroFabUser.find_by(name: data.name).email
+        email = FabricationUser.find_by(name: data.name).email
 
  	 			row.push "#{data.name}"
  	 			row.push "#{data.project}"
