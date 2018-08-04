@@ -28,7 +28,11 @@ class PrinterDataController < ApplicationController
         
         printer = PrinterStatus.find_by(printer: @printer_data.printer)
         printer.update_attributes(available: false, completion_time: to_time, name: params[:printer_datum][:'name'], number: params[:printer_datum][:'phonenumber'])
-    		flash[:success] = "Data Stored Successfully"
+    		
+        user = FabricationUser.find_by(name: params[:printer_datum][:'name'])
+        user.update_attributes(number: params[:printer_datum][:'phonenumber'])
+
+        flash[:success] = "Data Stored Successfully"
     		redirect_to printer_statuses_path
     	else
       	render 'new'
