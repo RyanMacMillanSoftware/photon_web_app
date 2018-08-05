@@ -11,9 +11,9 @@ jQuery ->
 		select.change ->
 			selection = select.val()
 			phonenumber = ""
-			for i in users
-				if selection is users[i].name
-					phonenumber = users[i].number
+			for index,user of users
+				if selection is user.name
+					phonenumber = user.number
 					alert phonenumber
 			if phonenumber != null
 				select.val(phonenumber)
