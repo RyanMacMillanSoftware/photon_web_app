@@ -5,6 +5,7 @@ class PrinterDataController < ApplicationController
    
 	def new
   		@printer_data = PrinterDatum.new
+      @f_users = FabricationUser.all.to_json
 	end
   
 
