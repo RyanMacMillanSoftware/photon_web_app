@@ -1,18 +1,8 @@
 #These are the users that can log in and out of the lab. Admins need a microfabuser account to if they
 #plan on using the lab. These accounts do not give access. They just fill the form dropdown menus. 
 class FabricationUsersController < ApplicationController
-  respond_to :json, :html, only: :show
    #admins can manage microgab users in the "Users" tab/
   before_action :admin_user
-  
-  def show
-    @f_user = FabricationUser.find_by(name: params[:name])
-    if @f_user.number != nul
-      respond_with @f_user.number
-    else
-      respont_with ""
-    end
-  end
 
   #delete the user
   def destroy
