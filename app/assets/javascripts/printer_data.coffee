@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->   
+jQuery ->  
+	$(document).ready -> 
 		users = f_users
 		alert users
 		console.log users
