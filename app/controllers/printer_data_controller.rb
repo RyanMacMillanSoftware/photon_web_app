@@ -5,7 +5,6 @@ class PrinterDataController < ApplicationController
    
 	def new
   		@printer_data = PrinterDatum.new
-      gon.f_users = FabricationUser.all
 	end
   
 

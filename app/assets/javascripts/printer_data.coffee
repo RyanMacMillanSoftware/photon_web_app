@@ -3,15 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->   
-		gon.f_users
-		alert gon.f_users
+		users = f_users
+		alert users
 		#name dropdown event handler#
 		select = $("#printer_data_name")
 		select.change ->
 			selection = select.val()
-			for i in gon.f_users
-				if gon.f_users[i].name == selection
-					phonenumber = gon.f_users[i].number
+			for i in f_users
+				if f_users[i].name == selection
+					phonenumber = f_users[i].number
 					alert phonenumber
 			if phonenumber != null
 				select.val(phonenumber)
