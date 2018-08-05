@@ -46,5 +46,5 @@
 </div>
 
 <%= javascript_tag do %>
-  window.f_users = "<%= FabricationUser.all.to_json %>";
+  window.f_users = "<%= @f_users.to_s.html_safe %>";
 <% end %>
