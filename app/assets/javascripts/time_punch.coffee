@@ -2,26 +2,36 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->   		
+jQuery ->   
+	
+	
+	
+
+		
+	
 	$(document).ready ->
+
+			
+
 		# Setup on doc load#
+		
 		currentdate = new Date();
 		time = currentdate.getHours()
 
+
 		#shows the status of the lab dependant on chemistry guidelines as of June 2017#
 		if (((time>=6)&&(time<8))||(time>=22))
-			$("#green_status").hide()
-			$("#orange_status").show()
-			$("#red_status").hide()
+      	$("#green_status").hide()
+      	$("#orange_status").show()
+      	$("#red_status").hide()
 		else if ((time>=8)&&(time<22))
-			$("#green_status").show()
-			$("#orange_status").hide()
-			$("#red_status").hide()		
+      	$("#green_status").show()
+      	$("#orange_status").hide()
+      	$("#red_status").hide()		
 		else 
-			$("#green_status").hide()
-			$("#orange_status").hide()
-			$("#red_status").show()
-		
+      	$("#green_status").hide()
+      	$("#orange_status").hide()
+      	$("#red_status").show()
 		#The staff option is appended. In the future this option could become a MicroFabUser that is hidden from the index. This would make it alphabetically sorted. Another improvement would be appending to the start of the list (still below the blank default#
 		$('#time_punch_buddy').prepend($('<option>', {
 			value: 'Guest',
