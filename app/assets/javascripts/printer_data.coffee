@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->   
-	$(document).ready ->
 		users = users
 		console.log(JSON.parse(users))
 		#name dropdown event handler#
