@@ -11,8 +11,9 @@ jQuery ->
 		select.change ->
 			alert "change"
 			selection = select.val()
+			phonenumber = ""
 			for i in f_users
-				if f_users[i].name == selection
+				if selection is f_users[i].name
 					phonenumber = f_users[i].number
 					alert phonenumber
 			if phonenumber != null

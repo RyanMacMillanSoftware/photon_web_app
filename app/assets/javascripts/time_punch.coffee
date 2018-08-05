@@ -3,15 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->   
-	
-	
-	
-
 		
 	
 	$(document).ready ->
 
-			
 
 		# Setup on doc load#
 		
