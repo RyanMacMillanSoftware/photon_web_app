@@ -4,17 +4,18 @@
 
 jQuery ->  
 	$(document).ready -> 
-		users = f_users
-		alert f_users
+		alert "ready"
+		#users = window.f_users
+		#alert window.f_users
 		#name dropdown event handler#
 		select = $("#printer_datum_name")
 		select.change ->
 			alert "change"
 			selection = select.val()
-			phonenumber = ""
-			for i in f_users
-				if selection is f_users[i].name
-					phonenumber = f_users[i].number
-					alert phonenumber
+			phonenumber = "3"
+			#for i in f_users
+			#	if selection is f_users[i].name
+			#		phonenumber = f_users[i].number
+			#		alert phonenumber
 			if phonenumber != null
 				select.val(phonenumber)
