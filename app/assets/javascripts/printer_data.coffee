@@ -4,8 +4,8 @@
 
 jQuery ->  
 	$(document).ready -> 
-		users = window.f_users
-		alert window.f_users
+		users = f_users
+		alert f_users
 		#name dropdown event handler#
 		select = $("#printer_datum_name")
 		select.change ->
