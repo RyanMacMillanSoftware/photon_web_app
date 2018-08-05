@@ -5,8 +5,11 @@
 jQuery ->   
 		users = f_users
 		alert users
+		console.log users
+		console.log "hello"
+		console.log f_users
 		#name dropdown event handler#
-		select = $("#printer_data_name")
+		select = $("#printer_datum_name")
 		select.change ->
 			selection = select.val()
 			for i in f_users
