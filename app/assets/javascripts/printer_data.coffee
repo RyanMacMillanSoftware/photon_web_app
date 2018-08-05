@@ -10,6 +10,7 @@ jQuery ->
 		number_field = $("#printer_datum_phonenumber")
 		select.change ->
 			selection = select.val()
+			phonenumber = ""
 			for index,user of users
 				if selection is user.name
 					phonenumber = user.number
