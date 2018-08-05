@@ -5,15 +5,13 @@
 jQuery ->  
 	$(document).ready -> 
 		users = f_users
-		console.log users
 		#name dropdown event handler#
 		select = $("#printer_datum_name")
+		number_field = $("#printer_datum_phonenumber")
 		select.change ->
 			selection = select.val()
-			phonenumber = ""
 			for index,user of users
 				if selection is user.name
 					phonenumber = user.number
-					alert phonenumber
 			if phonenumber != null
-				select.val(phonenumber)
+				number_field.val(phonenumber)
