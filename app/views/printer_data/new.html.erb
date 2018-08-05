@@ -46,5 +46,5 @@
 </div>
 
 <%= javascript_tag do %>
-  window.f_users = "<%=raw FabricationUser.all.to_json %>";
+  window.f_users = "<%= FabricationUser.all.to_json %>";
 <% end %>
