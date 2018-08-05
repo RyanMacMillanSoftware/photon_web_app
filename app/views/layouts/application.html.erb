@@ -3,6 +3,7 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
+    <%= include_gon %>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
     <%= yield(:head) %>
