@@ -6,8 +6,8 @@
   
       <!--Status indicators-->
   		<div class="status green" id="green_status"><div class = "textstatus">Low to high risk work permitted</div></div>
-  		<div class="status orange" id="orange_status"><div class = "textstatus">Low risk work permitted</div></div>
-  		<div class="status red" id="red_status"><div class = "textstatus">University Closed</div></div>
+  		<div class="status orange hidden" id="orange_status"><div class = "textstatus">Low risk work permitted</div></div>
+  		<div class="status red hidden" id="red_status"><div class = "textstatus">University Closed</div></div>
     
     <!--Form for check in and time punches-->
     <%= form_for @printer_data, url: {action: "new"}, method: "post" do |f| %> 
@@ -44,5 +44,5 @@
 </div>
 
 <%= javascript_tag do %>
-  window.f_users = <%= @f_users.html_safe -%>;
+  window.f_users = <%= @f_users.html_safe %>;
 <% end %>
