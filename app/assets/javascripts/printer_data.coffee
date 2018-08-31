@@ -8,6 +8,14 @@ jQuery ->
 		#name dropdown event handler#
 		select = $("#printer_datum_name")
 		number_field = $("#printer_datum_phonenumber")
+		selection = select.val()
+		for index,user of users
+			if selection is user.name
+				phonenumber = user.number
+		if phonenumber != null
+			number_field.val(phonenumber)
+		else
+			number_field.val("")
 		select.change ->
 			selection = select.val()
 			for index,user of users
