@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180803232235) do
+ActiveRecord::Schema.define(version: 20180831012442) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "name"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20180803232235) do
     t.integer  "seconds_since_midnight"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.string   "buddy"
     t.boolean  "guest"
+    t.string   "buddy"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -44,22 +44,20 @@ ActiveRecord::Schema.define(version: 20180803232235) do
   end
 
   create_table "micro_fab_users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "email"
   end
 
   create_table "printer_data", force: :cascade do |t|
     t.string   "name"
     t.string   "project"
     t.string   "printer"
+    t.datetime "from_time"
+    t.datetime "to_time"
     t.string   "notes"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "phonenumber"
-    t.datetime "to_time"
-    t.datetime "from_time"
     t.string   "volume"
   end
 
@@ -98,11 +96,11 @@ ActiveRecord::Schema.define(version: 20180803232235) do
     t.integer  "seconds_elapsed"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.string   "buddy"
     t.string   "other_name"
     t.boolean  "guest"
-    t.string   "guest_name"
     t.string   "bud"
+    t.string   "guest_name"
+    t.string   "buddy"
   end
 
   create_table "users", force: :cascade do |t|
@@ -119,6 +117,7 @@ ActiveRecord::Schema.define(version: 20180803232235) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "temporary_password"
+    t.boolean  "temporary_active"
     t.boolean  "microfab"
     t.boolean  "fabrication"
     t.index ["email"], name: "index_users_on_email", unique: true
