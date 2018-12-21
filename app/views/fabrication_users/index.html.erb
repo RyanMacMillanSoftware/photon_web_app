@@ -1,0 +1,17 @@
+<!--index all mfusers using a paginate-->
+<% provide(:title, 'Equipment users') %>
+<h1>All Equipment Users</h1>
+
+<div>
+	<% if current_user.admin? %>
+	<%= link_to "Add User", new_fabrication_user_path , class: "btn btn-primary" %>
+	<%end%>
+</div>
+
+<%= will_paginate @f_users %>
+
+<ul class="users">
+  <%= render @f_users %>
+</ul>
+
+<%= will_paginate @f_users%>

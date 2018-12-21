@@ -17,8 +17,6 @@ $gray-medium-light: #eaeaea;
 	position:relative;
 }
 
-
-
 .btn-primary:visited {
     color: #FFFFFF;
 }
@@ -240,6 +238,10 @@ input {
   }
 }
 
+.time-select {
+  width: 100px;
+}
+
 #session_remember_me {
   width: auto;
   margin-left: 0;
@@ -275,3 +277,5 @@ input {
   top: 0px;
   left: 50px;
 }
+
+

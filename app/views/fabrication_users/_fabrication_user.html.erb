@@ -1,0 +1,14 @@
+<!--entry into paginated microfab user-->
+<%if fabrication_user.name != "Guest"%>
+<li>
+	
+  <%= fabrication_user.name %> <%= fabrication_user.email %>
+  
+	<% if current_user.admin? %>
+	 | <%= link_to "edit", edit_fabrication_user_path(fabrication_user) %>
+    | <%= link_to "delete", fabrication_user, method: :delete,
+                                  data: { confirm: "Are you sure?" } %>
+  <% end %>
+</li>
+
+  <%end%>

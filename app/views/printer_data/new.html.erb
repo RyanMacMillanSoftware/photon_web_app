@@ -1,0 +1,48 @@
+<% provide(:title, 'Equipment Use Report') %>
+<%= link_to "Back", printer_statuses_path , class: "btn btn-primary" %>
+<h1>Using <%=PrinterStatus.find(params[:printer]).printer%></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  
+      <!--Status indicators-->
+  		<div class="status green" id="green_status"><div class = "textstatus">Low to high risk work permitted</div></div>
+  		<div class="status orange hidden" id="orange_status"><div class = "textstatus">Low risk work permitted</div></div>
+  		<div class="status red hidden" id="red_status"><div class = "textstatus">University Closed</div></div>
+    
+    <!--Form for check in and time punches-->
+    <%= form_for @printer_data, url: {action: "new"}, method: "post" do |f| %> 
+    	<%= render 'shared/printer_data_error_messages', object: @printer_data%>   	
+    	
+    	<%= hidden_field_tag :printer, params[:printer] %>
+
+    	<%= f.label :name, class: "required" %>
+      <%@users = FabricationUser.all %>
+      <%= f.collection_select(:name, @users.sort { |a,b| a.name.downcase <=> b.name.downcase } , :name, 
+              :name) %>
+
+
+      <%= f.label :phone_number, class: "required"  %>
+      <%= f.number_field :phonenumber, min: "0", class: 'form-control', as: :string %>
+
+      <%= f.label :project, class: "required"  %>
+      <%= f.text_field :project, class: 'form-control' %>	
+
+      <%= f.label :time_of_completion_estimate, class: "required" %> 
+      <%= f.time_select :to_time, {minute_step: 10, ampm: true}, class: 'time-select'%>
+
+      
+      <%= f.label :volume %>
+      <%= f.text_field :volume , class: 'form-control' %>
+
+      <%= f.label :notes %>
+      <%= f.text_area :notes, class: 'form-control' %> 
+
+  		<%= f.submit "Send Data", class: "btn btn-primary" %> 
+      
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  window.f_users = <%= @f_users.html_safe %>;
+<% end %>

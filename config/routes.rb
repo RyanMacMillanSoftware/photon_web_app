@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   delete '/', to: 'time_punches#destroy'
   put '/', to: 'time_punches#index'
   patch '/', to: 'time_punches#edit'
+  get 'printer_data/new', to: 'printer_data#new'
+  post '/printer_data/new', to: 'printer_data#create'
+  get '/printer_selections/new', to: 'printer_selections#new'
+  post '/printer_selections/new', to: 'printer_selections#create'
+  get '/printer_status/new', to: 'printer_statuses#new'
+  post 'printer_status/new', to: 'printer_statuses#create'
+  delete '/printer_status/new', to: 'printer_statuses#delete'
   
   #dynamic form. access javascript controller
   match ':controller/:action.:format', via: [:get, :post]
@@ -24,7 +31,9 @@ Rails.application.routes.draw do
   resources :check_ins
   resources :selections
   resources :micro_fab_users
-  
-   
+  resources :printer_data
+  resources :printer_selections
+  resources :printer_statuses
+  resources :fabrication_users
   
 end

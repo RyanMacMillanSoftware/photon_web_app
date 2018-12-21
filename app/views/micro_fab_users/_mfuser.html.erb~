@@ -1,9 +1,0 @@
-<li>
-  <%= link_to mf_user.name, mf_user %>
-	<% if current_user.admin? %>
-	 | <%= link_to "edit", edit_micro_fab_user_path(mf_user) %>
-    | <%= link_to "delete", mf_user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-  
-</li>

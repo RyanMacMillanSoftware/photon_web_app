@@ -4,6 +4,7 @@
 class TimePunchesController < ApplicationController
 	
 	before_action :logged_in_user
+	before_action :microfab_user
    
   def new
   	@time_punch = TimePunch.new
@@ -72,7 +73,7 @@ class TimePunchesController < ApplicationController
 			end
 		end
 		
-		#store whether the use is a guest or not upon checkin. this is useful when downloading 
+		#store whether the user is a guest or not upon checkin. this is useful when downloading 
 		#data under SelectionsController for all Guests
 		if params[:time_punch][:guest_name].empty? then
 			@time_punch = CheckIn.new(name: params[:time_punch][:name], buddy: params[:time_punch][:buddy], guest: false )
@@ -92,13 +93,11 @@ class TimePunchesController < ApplicationController
 
     # Before filters
 
-    # Confirms an admin user.
-    def admin_user
-    	if current_user.nil?
-      	redirect_to(login_path)
-      else
-      	redirect_to(login_path) unless current_user.admin?
-      end
+    
+    # Confirms an fabrication user.
+    def microfab_user
+      redirect_to(printer_statuses_path) unless current_user.admin? || current_user.microfab?
+      
     end
     
 	# Confirms a logged-in user.

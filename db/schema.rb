@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521223749) do
+ActiveRecord::Schema.define(version: 20180831012442) do
 
   create_table "check_ins", force: :cascade do |t|
     t.string   "name"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20170521223749) do
     t.integer  "seconds_since_midnight"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.string   "buddy"
     t.boolean  "guest"
+    t.string   "buddy"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -37,11 +37,46 @@ ActiveRecord::Schema.define(version: 20170521223749) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "fabrication_users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "number"
+  end
+
   create_table "micro_fab_users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+  end
+
+  create_table "printer_data", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
+    t.string   "project"
+    t.string   "printer"
+    t.datetime "from_time"
+    t.datetime "to_time"
+    t.string   "notes"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "phonenumber"
+    t.string   "volume"
+  end
+
+  create_table "printer_selections", force: :cascade do |t|
+    t.datetime "from_time"
+    t.datetime "to_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "printer_statuses", force: :cascade do |t|
+    t.string   "printer"
+    t.boolean  "available"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.string   "number"
+    t.string   "image"
+    t.datetime "completion_time"
   end
 
   create_table "selections", force: :cascade do |t|
@@ -61,11 +96,11 @@ ActiveRecord::Schema.define(version: 20170521223749) do
     t.integer  "seconds_elapsed"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.string   "buddy"
     t.string   "other_name"
     t.boolean  "guest"
-    t.string   "guest_name"
     t.string   "bud"
+    t.string   "guest_name"
+    t.string   "buddy"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,7 +117,9 @@ ActiveRecord::Schema.define(version: 20170521223749) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "temporary_password"
+    t.boolean  "temporary_active"
     t.boolean  "microfab"
+    t.boolean  "fabrication"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
